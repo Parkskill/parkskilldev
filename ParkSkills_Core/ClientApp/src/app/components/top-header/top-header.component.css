@@ -1,0 +1,36 @@
+.topheader-wrapper {
+  position: fixed;
+  width: 100%;
+  padding: 0;
+  margin: 0 auto;
+  z-index: 9999;
+  /* background-color: rgba(225,225,225,0.5); */
+}
+
+.nav-h {
+  min-height: 80px;
+}
+
+.brand {
+  white-space: nowrap;
+}
+
+.nav-pills-customise {
+  /* background-color: #b04520; */
+  background-color: #000;
+  border-radius: 30px;
+}
+
+.nav-link {
+  color: #fff;
+  border-radius: 30px;
+}
+
+  .nav-link:focus, .nav-link:hover {
+    color: #fff;
+    background-color: #2a2a2a;
+  }
+
+  .nav-link.dropdown-toggle .dropdown-toggle::after {
+    display: none !important;
+  }

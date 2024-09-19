@@ -1,0 +1,121 @@
+<div class="product-cgs-wrapper">
+  <div class="d-flex flex-column banner-item align-items-center justify-content-center">
+    <div class="container position-absolute banner-text zindex1">
+      <p>-Find your perfect collection</p>
+      <h1>Product Search</h1>
+      <h5>Parkskill Tile has a stunning selection of products for any <br />application and design style</h5>
+    </div>
+  </div>
+  <div class="container pt-5">
+    <div class="d-flex justify-content-center pb-5">
+      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link nl-pill pill1 active" id="pills-tiles-tab" data-toggle="pill" data-target="#pills-tiles" type="button" role="tab" aria-controls="pills-tiles" aria-selected="true">Tiles</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link nl-pill pill2" id="pills-collectionGallery-tab" data-toggle="pill" data-target="#pills-collectionGallery" type="button" role="tab" aria-controls="pills-collectionGallery" aria-selected="false">Collection Gallery</button>
+        </li>
+      </ul>
+    </div>
+    <div class="tab-content" id="pills-tabContent">
+      <div class="tab-pane fade show active" id="pills-tiles" role="tabpanel" aria-labelledby="pills-tiles-tab">
+        <div class="row">
+          <div class="col-sm-3 tiles-filters-section">
+            <div class="d-flex justify-content-between align-items-center pb-3 border-bottom">
+              <h4 class="title-text-style m-0">Filters</h4>
+              <p class="text-secondary text-xs m-0 pt-1">
+                <a href="#" class="text-secondary text-decoration-none">Clear All</a>
+              </p>
+            </div>
+          </div>
+          <div class="col-sm-9 tiles-content-section">
+            <div class="d-flex flex-column">
+              <div class="pb-3 mb-5 border-bottom">
+                <h4 class="title-text-style m-0">Collection <span class="text-secondary text-xs no-tts">(5 results)</span></h4>
+              </div>
+              <div class="row row-cols-1 row-cols-md-3">
+
+                <div *ngFor="let item of tilesCollection" class="col mb-4">
+                  <div class="card h-100">
+                    <div class="card-image rounded-top"><img src="{{'data:image/jpg;base64,' + item.pst_thumbnail}}" /></div>
+                    <div class="card-body">
+                      <p class="text-dark"></p>
+                      <h4 class="card-title title-text-style">{{item.pst_name}}</h4>
+                      <p class="text-secondary">12.1x24.4</p>
+                      <div class="d-flex justify-content-center">
+                        <small class="text-muted mr-auto"></small>
+                        <a href="#" class="icon-action">
+                          <i class="icon icon-favourite"></i>
+                        </a>
+                        <a href="#" class="icon-action">
+                          <i class="icon icon-info"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="pills-collectionGallery" role="tabpanel" aria-labelledby="pills-collectionGallery-tab">
+        <div class="row">
+          <div class="col-sm-3 tiles-filters-section">
+            <div class="d-flex justify-content-between align-items-center pb-3 border-bottom">
+              <h4 class="title-text-style m-0">Filters</h4>
+              <p class="text-secondary text-xs m-0 pt-1">
+                <a href="#" class="text-secondary text-decoration-none">Clear All</a>
+              </p>
+            </div>
+          </div>
+          <div class="col-sm-9 tiles-content-section">
+            <div class="d-flex flex-column">
+              <div class="pb-3 mb-5 border-bottom">
+                <h4 class="title-text-style m-0">Look <span class="text-secondary text-xs no-tts">(5 results)</span></h4>
+              </div>
+              <div class="row row-cols-1 row-cols-md-3">
+                <div class="col mb-4">
+                  <div class="card h-100">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col mb-4">
+                  <div class="card h-100">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">This is a short card.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col mb-4">
+                  <div class="card h-100">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col mb-4">
+                  <div class="card h-100">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

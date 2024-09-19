@@ -1,0 +1,81 @@
+.footer-wrapper {
+  background-color: #000;
+  min-height: 100px;
+  width: 100%;
+}
+
+.bdr-db {
+  border-bottom: 1px solid #2b2a2a;
+}
+
+/* .social .sl-item{
+    padding: 0 15px;
+    font-weight: 600;
+    font-size: 1rem;
+}
+.social .sl-item .sl-link{
+    color: #fff;
+    text-decoration: none;
+}
+.social .sl-item .sl-link:hover{
+    color: #b04520;
+} */
+
+.subscribe_email label {
+  color: #fff;
+  font-weight: 600;
+}
+
+.subscribe_email .form-control {
+  background-color: transparent;
+  height: 50px;
+  color: #767676;
+}
+
+  .subscribe_email .form-control::placeholder {
+    color: #767676;
+  }
+
+  .subscribe_email .form-control:focus {
+    background-color: transparent;
+    box-shadow: none;
+    border-color: #fff;
+  }
+
+.download_catalog {
+  border: 1px solid #b04520;
+  border-radius: 30px;
+  text-align: center;
+  color: #767676;
+  width: 300px;
+}
+
+  .download_catalog h5 {
+    color: #b04520;
+  }
+
+.nav {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+  .nav .nav-item {
+    padding: 0;
+    margin: 10px 0;
+    list-style: none;
+  }
+
+    .nav .nav-item .nav-link {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      color: #a1a1a8;
+      text-decoration: none;
+      font-size: 0.875rem;
+      display: table;
+    }
+
+      .nav .nav-item .nav-link:hover {
+        color: #b04520;
+      }
