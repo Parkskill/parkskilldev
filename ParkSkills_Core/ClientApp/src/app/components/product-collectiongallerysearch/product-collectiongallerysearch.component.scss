@@ -1,0 +1,39 @@
+.hero {
+  border: 2px solid #70a0d0;
+  border-top: none;
+}
+.card {
+  img {
+    height: 200px;
+  }
+  background: none;
+  border: 2px solid #70a0d0;
+}
+
+.search-hero {
+  max-width: 500px;
+  padding-bottom: 50px;
+  margin: auto;
+}
+
+.searchBox {
+  margin-bottom: 1rem;
+  form {
+    display: flex;
+    .form-control {
+      box-shadow: 0 10px 40px 0 #b0c1d9;
+      width: 75%;
+      margin-right: .5rem;
+    }
+  }
+}
+
+.catFilters {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  button {
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+}
