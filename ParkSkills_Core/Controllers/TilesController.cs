@@ -37,8 +37,8 @@ namespace ParkSkills_Core.Controllers
             // EntityCollection entColl = DataverseService.Instance().RetrieveMultiple(new FetchExpression(fetchXML));
 
             // return new JsonResult(entColl.Entities.ToList().Select(r => r.ToEntity<pst_tile>()).ToList());
-            //return CommonMethods.ConvertResponseToJson(rResponse);
-            return new JsonResult(rResponse.Records.ToString());
+            return CommonMethods.ConvertResponseToJson(rResponse);
+           // return new JsonResult(rResponse.Records.ToString());
         }
 
         [HttpGet("gettiles")]
