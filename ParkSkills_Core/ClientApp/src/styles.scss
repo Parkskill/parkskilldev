@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'bootstrap/scss/bootstrap.scss';
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+body {
+  font-size: 16px;
+  color: #000;
+  font-family: Roboto, Helvetica, sans-serif;
+}
+
+button, .btn {
+  border-color: #70a0d0 !important;
+  color: #000 !important;
+  &:hover {
+    background-color: #70a0d0 !important;
+    color: #fff !important;
+  }
+}
+
+.spinner-border {
+  height: 3rem;
+}

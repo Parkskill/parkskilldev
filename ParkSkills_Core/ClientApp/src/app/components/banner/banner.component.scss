@@ -1,0 +1,27 @@
+.carousel {
+  img {
+    max-height: 650px;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    opacity: .75;
+  }
+  .carousel-caption {
+    bottom: 40%;
+    text-shadow: 0cap;
+    text-shadow: #70a0d0 1px 0 10px;
+    h5 {
+      font-size: 3rem;
+    }
+    p {
+      font-size: 1.25rem;
+    }
+  }
+  .carousel-control-prev,.carousel-control-next {
+    background: none !important;
+    .carousel-control-prev-icon, .carousel-control-next-icon {
+      height: 3rem;
+      width: 3rem;
+    }
+  }
+}

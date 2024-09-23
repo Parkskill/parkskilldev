@@ -6,7 +6,7 @@ import { ApicallService } from '../../shared/apicall.service';
 @Component({
   selector: 'app-banner',
   templateUrl: './banner.component.html',
-  styleUrls: ['./banner.component.css']
+  styleUrls: ['./banner.component.scss']
 })
 export class BannerComponent implements OnInit {
 
@@ -33,10 +33,7 @@ export class BannerComponent implements OnInit {
   }
 
   onSearch(event :any): void {
-
     console.log('clicked');
-   
-
   }
 }
 interface Configuration {

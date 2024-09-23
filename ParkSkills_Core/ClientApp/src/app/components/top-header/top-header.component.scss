@@ -1,0 +1,43 @@
+nav {
+  border: 2px solid #70A0D0;
+  padding: 0;
+  font-size: 1.25rem;
+  img {
+    width: 60%;
+  }
+  background-color: #fff;
+  .navbar-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    .nav-item {
+      text-align: center;
+      width: 100%;
+      a {
+        color: #fff;
+      }
+      &:first-child {
+        background-color: #0AC6E0;
+      }
+      &:nth-child(2) {
+        background-color: #0AB9E0;
+      }
+      &:last-child {
+        background-color: #0A9CE0;
+      }
+
+      .dropdown-menu {
+        width: 100%;
+        a {
+          font-size: 1.25rem;
+          color: #70A0D0;
+          &:hover {
+            width: auto;
+            background: none;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
