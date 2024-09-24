@@ -1,8 +1,10 @@
 .footer-component {
   font-size: 1.25rem;
   color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
   footer {
-    background: #466079;
+    background: #3f5571;
   }
   padding: 0;
   .content {
@@ -15,5 +17,12 @@
   }
   .nav-link{
     color: #fff;
+    &:hover {
+      color: #B5BABF;
+      visibility: visible;
+      -webkit-transform: scaleX(1);
+      -ms-transform: scaleX(1);
+      transform: scaleX(1);
+    }
   }
 }

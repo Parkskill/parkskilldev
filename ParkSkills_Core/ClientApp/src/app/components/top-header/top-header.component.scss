@@ -12,23 +12,29 @@ nav {
   img {
     width: 75%;
   }
-  .nav-link {
+  a.nav-link {
     padding: 1.75rem;
-    font-weight: 500;
-    color: #4d4d4d;
+    font-weight: 600;
+    color: #3f5571;
     text-transform: uppercase;
     letter-spacing: 2px;
     position: relative;
     opacity: 1 !important;
+
+    &:hover {
+      visibility: visible;
+      background-color: #3f5571 !important;
+      color: #fff;
+      -webkit-transform: scaleX(1);
+      -ms-transform: scaleX(1);
+      transform: scaleX(1);
+    }
+    &.dropdown-toggle.show {
+      background-color: #3f5571 !important;
+      color: #fff;
+    }
   }
-  .nav-link:hover {
-    visibility: visible;
-    background-color: #3f5571 !important;
-    color: #fff;
-    -webkit-transform: scaleX(1);
-    -ms-transform: scaleX(1);
-    transform: scaleX(1);
-  }
+
   .navbar-nav {
     .nav-item {
       .dropdown-menu {
