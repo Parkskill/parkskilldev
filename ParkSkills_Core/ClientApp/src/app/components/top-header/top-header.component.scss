@@ -1,36 +1,41 @@
 nav {
-  border: 2px solid #70A0D0;
-  padding: 0;
-  font-size: 1.25rem;
-  img {
-    width: 60%;
+  a {
+    color: #6d6a68;
   }
-  background-color: #fff;
+  height: 4rem;
+  background: #fff;
+  .nav-link-container {
+    @media screen and (max-width: 991.98px) {
+      background: #fff;
+    }
+  }
+  img {
+    width: 75%;
+  }
+  .nav-link {
+    padding: 1.75rem;
+    font-weight: 500;
+    color: #4d4d4d;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    opacity: 1 !important;
+  }
+  .nav-link:hover {
+    visibility: visible;
+    background-color: #3f5571 !important;
+    color: #fff;
+    -webkit-transform: scaleX(1);
+    -ms-transform: scaleX(1);
+    transform: scaleX(1);
+  }
   .navbar-nav {
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
     .nav-item {
-      text-align: center;
-      width: 100%;
-      a {
-        color: #fff;
-      }
-      &:first-child {
-        background-color: #0AC6E0;
-      }
-      &:nth-child(2) {
-        background-color: #0AB9E0;
-      }
-      &:last-child {
-        background-color: #0A9CE0;
-      }
-
       .dropdown-menu {
         width: 100%;
         a {
-          font-size: 1.25rem;
-          color: #70A0D0;
+          color: #4d4d4d;
+          text-transform: uppercase;
           &:hover {
             width: auto;
             background: none;
@@ -41,3 +46,46 @@ nav {
     }
   }
 }
+// nav {
+//   border: 2px solid #70A0D0;
+//   padding: 0;
+//   font-size: 1.25rem;
+//   img {
+//     width: 60%;
+//   }
+//   // background-color: #fff;
+//   .navbar-nav {
+//     // width: 100%;
+//     display: flex;
+//     justify-content: space-evenly;
+//     .nav-item {
+//       text-align: center;
+//       width: 100%;
+//       // a {
+//       //   color: #fff;
+//       // }
+//       // &:first-child {
+//       //   background-color: #0AC6E0;
+//       // }
+//       // &:nth-child(2) {
+//       //   background-color: #0AB9E0;
+//       // }
+//       // &:last-child {
+//       //   background-color: #0A9CE0;
+//       // }
+
+//       .dropdown-menu {
+//         width: 100%;
+//         a {
+//           font-size: 1.25rem;
+//           color: #70A0D0;
+//           &:hover {
+//             width: auto;
+//             background: none;
+//             text-decoration: underline;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
