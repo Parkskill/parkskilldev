@@ -37,8 +37,19 @@ nav {
 
   .navbar-nav {
     .nav-item {
+      .dropdown-menu[data-bs-popper] {
+        margin-top: 0;
+      }
       .dropdown-menu {
         width: 100%;
+        &.show {
+          li {
+            padding: 0.25rem 0;
+            a {
+              font-weight: 600;
+            }
+          }
+        }
         a {
           color: #4d4d4d;
           text-transform: uppercase;
