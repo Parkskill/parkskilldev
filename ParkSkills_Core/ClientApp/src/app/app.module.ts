@@ -20,7 +20,7 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { ApicallService } from './shared/apicall.service';
 import { ApiResolver } from './shared/api-resolver.service';  // Import the resolver
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-
+import { RoomScenesComponent } from './components/room-scenes/room-scenes.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +31,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     HomeComponent,
     ProductCollectiongalleryitemviewComponent,
     ProductCollectiongallerysearchComponent,
+    RoomScenesComponent,
     ProductTilesearchComponent,
     SideNavComponent,
     SubscriptionComponent,
@@ -49,6 +50,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
         { path: 'TileSearch', component: ProductTilesearchComponent, pathMatch: 'full' },
         { path: 'CollectionGallerySearch', component: ProductCollectiongallerysearchComponent, pathMatch: 'full', resolve: { data: ApiResolver } },
         { path: 'CollectionGalleryItem', component: ProductCollectiongalleryitemviewComponent, pathMatch: 'full' },
+        { path: 'room-scenes', component:RoomScenesComponent, pathMatch: 'full'}
 
         //{ path: 'counter', component: CounterComponent },
         //{ path: 'fetch-data', component: FetchDataComponent },
