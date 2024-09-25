@@ -41,12 +41,12 @@
     <!-- category search -->
     <div *ngIf="!loading" class="row catFilters">
       <div class="col filterButtons">
-        Color Filter:
+        <h3>Help yourself with below filters</h3>
         <button
           *ngFor="let item of searchFilters"
           type="button"
           class="btn btn-outline-primary"
-          (click)="onFilterClick('{{item.pst_name}}')"
+          (click)="onFilterClick(item.pst_name)"
         >
           {{ item.pst_name }}
         </button>
