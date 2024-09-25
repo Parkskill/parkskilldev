@@ -16,11 +16,14 @@ export class ProductCollectiongallerysearchComponent implements OnInit {
   searching = false
 
   public tilesCollection: any = {};
+  public searchFilters: any = {};
+  public noResults: any = {}
   constructor(
     private route: ActivatedRoute,
     public apicallService: ApicallService
   ) {
     this.filtered = this.getAllTiles()
+    this.getFilters()
     console.log(this.filtered)
   }
 
@@ -40,14 +43,17 @@ export class ProductCollectiongallerysearchComponent implements OnInit {
   // For click filters
   onFilterClick(value: any) {
     this.searching = true
+    this.noResults = false
     this.loading = true
     setTimeout(() => {
       this.getAllTiles() 
       this.filtered = this.tilesCollection.filter( 
         (tile: any) => tile?.pst_name.toLowerCase().includes(value.toLowerCase())
       );
-      this.loading = false
-
+      if(this.filtered = []) {
+        console.log("123 no results")
+        this.noResults = true
+      }
     }, 2000);
    
   }
@@ -58,6 +64,23 @@ export class ProductCollectiongallerysearchComponent implements OnInit {
       next: (httpResponse) => {
         this.tilesCollection = httpResponse;
         
+      },
+
+      error: (error) => {
+        console.log('Error', error);
+      },
+      complete: () => {
+        this.loading = false
+        console.log('Completed');
+      },
+    });
+  }
+  
+  getFilters() {
+    this.apicallService.getAllTiles().subscribe({
+      next: (httpResponse) => {
+        this.searchFilters = httpResponse;
+        console.log(this.searchFilters)
       },
 
       error: (error) => {

@@ -40,43 +40,31 @@
 
     <!-- category search -->
     <div *ngIf="!loading" class="row catFilters">
-      <div class="col">
+      <div class="col filterButtons">
         Color Filter:
         <button
+          *ngFor="let item of searchFilters"
           type="button"
           class="btn btn-outline-primary"
-          (click)="onFilterClick('black')"
+          (click)="onFilterClick('{{item.pst_name}}')"
         >
-          Black
+          {{ item.pst_name }}
         </button>
-        <button
-          type="button"
-          class="btn btn-outline-primary"
-          (click)="onFilterClick('grey')"
-        >
-          Grey
-        </button>
-        <button
-          type="button"
-          class="btn btn-outline-primary"
-          (click)="onFilterClick('silver')"
-        >
-          Silver
-        </button>
-        <button
-          type="button"
-          class="btn btn-outline-primary"
-          (click)="onFilterClick('pine')"
-        >
-          Pine
-        </button>
-        <button
-          type="button"
-          class="btn btn-outline-primary"
-          (click)="onFilterClick('clear-all')"
+      </div>
+    </div>
+
+    <!-- No Results found -->
+    <div *ngIf="!loading && searching && noResults" class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1>No Results Found</h1>
+        <p class="lead text-muted">
+          Try for another search or reset you search using <a
+          class="link"
+          (click)="onFilterClick('reset')"
         >
           Reset
-        </button>
+        </a> click
+        </p>
       </div>
     </div>
 
