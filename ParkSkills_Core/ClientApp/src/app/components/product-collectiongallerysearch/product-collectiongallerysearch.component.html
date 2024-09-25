@@ -46,7 +46,7 @@
           *ngFor="let item of searchFilters"
           type="button"
           class="btn btn-outline-primary"
-          (click)="onFilterClick('{{item.pst_name}}')"
+          (click)="onFilterClick(item.pst_name)"
         >
           {{ item.pst_name }}
         </button>

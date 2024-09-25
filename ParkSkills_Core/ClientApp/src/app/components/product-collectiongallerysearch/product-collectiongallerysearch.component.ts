@@ -24,18 +24,21 @@ export class ProductCollectiongallerysearchComponent implements OnInit {
   ) {
     this.filtered = this.getAllTiles()
     this.getFilters()
-    console.log(this.filtered)
   }
 
   // For search 
   onSubmit(value: any) {
     this.loading = true
     this.searching = true
+    this.noResults = false
     setTimeout(() => {
       this.getAllTiles() 
       this.filtered = this.tilesCollection.filter( 
         (tile: any) => tile?.pst_name.toLowerCase().includes(value.reg.toLowerCase())
       );
+      if(this.filtered.length === 0) {
+        this.noResults = true
+      }
       this.loading = false
     }, 2000);
   }
@@ -43,15 +46,15 @@ export class ProductCollectiongallerysearchComponent implements OnInit {
   // For click filters
   onFilterClick(value: any) {
     this.searching = true
-    this.noResults = false
     this.loading = true
+    this.noResults = false
     setTimeout(() => {
       this.getAllTiles() 
       this.filtered = this.tilesCollection.filter( 
         (tile: any) => tile?.pst_name.toLowerCase().includes(value.toLowerCase())
       );
-      if(this.filtered = []) {
-        console.log("123 no results")
+      this.loading = false
+      if(this.filtered.length === 0) {
         this.noResults = true
       }
     }, 2000);
@@ -63,15 +66,11 @@ export class ProductCollectiongallerysearchComponent implements OnInit {
     this.apicallService.getAllTiles().subscribe({
       next: (httpResponse) => {
         this.tilesCollection = httpResponse;
-        
       },
-
       error: (error) => {
-        console.log('Error', error);
       },
       complete: () => {
         this.loading = false
-        console.log('Completed');
       },
     });
   }
@@ -80,15 +79,12 @@ export class ProductCollectiongallerysearchComponent implements OnInit {
     this.apicallService.getAllTiles().subscribe({
       next: (httpResponse) => {
         this.searchFilters = httpResponse;
-        console.log(this.searchFilters)
       },
 
       error: (error) => {
-        console.log('Error', error);
       },
       complete: () => {
         this.loading = false
-        console.log('Completed');
       },
     });
   }
