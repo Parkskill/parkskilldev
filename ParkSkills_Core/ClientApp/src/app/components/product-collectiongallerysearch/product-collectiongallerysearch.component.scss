@@ -1,5 +1,5 @@
 .hero {
-  border: 2px solid #70a0d0;
+  border: 2px solid #3f5571;
   border-top: none;
   background: url("../../../assets/images/hero/prod-search-hero.webp");
   background-size: cover;
@@ -16,8 +16,19 @@
   img {
     height: 200px;
   }
+  text-transform: uppercase;
+  letter-spacing: 2px;
   background: none;
-  border: 2px solid #70a0d0;
+  border: 3px solid #3f5571;
+  transition:.3s;
+  &:hover {
+    //box-shadow: 8px 8px 8px blue;
+    transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+}
 }
 
 .search-hero {
