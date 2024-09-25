@@ -19,7 +19,6 @@ import { TopHeaderComponent } from './components/top-header/top-header.component
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { ApicallService } from './shared/apicall.service';
 import { ApiResolver } from './shared/api-resolver.service';  // Import the resolver
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { RoomScenesComponent } from './components/room-scenes/room-scenes.component';
 
 @NgModule({
@@ -43,7 +42,6 @@ import { RoomScenesComponent } from './components/room-scenes/room-scenes.compon
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
-    Ng2SearchPipeModule,
     RouterModule.forRoot(
       [
         { path: '', component: HomeComponent, pathMatch: 'full', resolve: { data: ApiResolver } },
