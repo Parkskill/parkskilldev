@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'bootstrap/scss/bootstrap.scss';
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
 *,
 *::before,
 *::after {
@@ -9,7 +11,16 @@ body {
   font-size: 16px;
   color: #000;
   font-family: Roboto, Helvetica, sans-serif;
+  margin: 0 auto;
 }
+
+h1, h2, h3, h4 {
+  color: #3f5571;
+}
+
+// SeconadyCOlor:#6D6A68
+//Prim1:#3f5571
+//Prim2: #657A92
 
 button, .btn {
   border-color: #70a0d0 !important;

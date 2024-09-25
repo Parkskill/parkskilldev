@@ -396,3 +396,8 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+WebAPIService.dll
+node_modules
+*/*/.angular/
+ParkSkills_Core/ParkSkills_Core.csproj
