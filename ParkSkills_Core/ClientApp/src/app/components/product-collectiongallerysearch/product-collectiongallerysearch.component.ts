@@ -56,8 +56,8 @@ export class ProductCollectiongallerysearchComponent implements OnInit {
     this.loading = true
     this.apicallService.getAllTiles().subscribe({
       next: (httpResponse) => {
-        this.tilesCollection = JSON.parse(httpResponse);
-        // console.log('Length TILES COLLECTION', this.tilesCollection);
+        this.tilesCollection = httpResponse;
+        
       },
 
       error: (error) => {
