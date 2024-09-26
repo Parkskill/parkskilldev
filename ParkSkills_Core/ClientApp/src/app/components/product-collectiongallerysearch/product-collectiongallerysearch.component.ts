@@ -14,9 +14,9 @@ export class ProductCollectiongallerysearchComponent implements OnInit {
   filtered: any = [];
   searching = false;
 
-  public tilesCollection: any = {};
-  public searchFilters: any = {};
-  public noResults: any = {};
+  public tilesCollection: any = [];
+  public searchFilters: any = [];
+  public noResults: any = [];
   constructor(
     private route: ActivatedRoute,
     public apicallService: ApicallService

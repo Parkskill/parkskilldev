@@ -20,6 +20,7 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { ApicallService } from './shared/apicall.service';
 import { ApiResolver } from './shared/api-resolver.service';  // Import the resolver
 import { RoomScenesComponent } from './components/room-scenes/room-scenes.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { RoomScenesComponent } from './components/room-scenes/room-scenes.compon
     ProductCollectiongallerysearchComponent,
     RoomScenesComponent,
     ProductTilesearchComponent,
+    ProductDetailsComponent,
     SideNavComponent,
     SubscriptionComponent,
     TilesCollectionComponent,
@@ -48,7 +50,9 @@ import { RoomScenesComponent } from './components/room-scenes/room-scenes.compon
         { path: 'TileSearch', component: ProductTilesearchComponent, pathMatch: 'full' },
         { path: 'CollectionGallerySearch', component: ProductCollectiongallerysearchComponent, pathMatch: 'full', resolve: { data: ApiResolver } },
         { path: 'CollectionGalleryItem', component: ProductCollectiongalleryitemviewComponent, pathMatch: 'full' },
-        { path: 'room-scenes', component:RoomScenesComponent, pathMatch: 'full'}
+        { path: 'room-scenes', component:RoomScenesComponent, pathMatch: 'full'},
+        { path:  'room-scenes/:id', component:  ProductDetailsComponent}
+
 
         //{ path: 'counter', component: CounterComponent },
         //{ path: 'fetch-data', component: FetchDataComponent },
