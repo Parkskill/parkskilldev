@@ -12,13 +12,13 @@
   <div class="py-5 text-center container">
     <div
       *ngIf="!loading"
-      class="row row-cols-1 row-cols-md-4 g-5 justify-content-center"
+      class="row row-cols-1 row-cols-md-6 g-5 justify-content-center"
     >
       <div *ngFor="let item of roomScenesCollection" class="col">
-        <div class="card">
+        <div class="card h-100">
           <img src="{{ 'data:image/jpg;base64,' + item.pst_thumbnail }}" />
           <div class="card-body">
-            <h5 class="card-title">{{ item.pst_name }}</h5>
+            <p class="card-title">{{ item.pst_name }}</p>
             <!-- <small class="text-muted">12.1x24.4</small> -->
           </div>
         </div>
