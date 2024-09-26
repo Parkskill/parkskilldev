@@ -36,7 +36,7 @@
 
   <ItemGroup>
     <Reference Include="WebAPIService">
-      <HintPath>..\..\..\..\Downloads\PowerApps-Samples-master\PowerApps-Samples-master\dataverse\webapi\C#-NETx\WebAPIService\bin\Debug\net6.0\WebAPIService.dll</HintPath>
+      <HintPath>WebAPIService.dll</HintPath>
     </Reference>
   </ItemGroup>
 

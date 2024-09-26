@@ -1,0 +1,5 @@
+{
+    "appService.preDeployTask": "publish-release",
+    "appService.deploySubpath": "ParkSkills_Core\\bin\\Release\\net6.0\\publish",
+    "appService.defaultWebAppToDeploy": "/subscriptions/ea91410f-929d-46cb-9712-95da1e14c30e/resourceGroups/DefaultResourceGroup-EUS/providers/Microsoft.Web/sites/ParkSkillsCore20240911020855"
+}
