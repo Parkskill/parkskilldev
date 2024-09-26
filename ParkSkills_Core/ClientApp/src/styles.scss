@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'bootstrap/scss/bootstrap.scss';
 @import "bootstrap-icons/font/bootstrap-icons.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 
 *,
 *::before,
@@ -23,10 +25,10 @@ h1, h2, h3, h4 {
 //Prim2: #657A92
 
 button, .btn {
-  border-color: #70a0d0 !important;
+  border-color: #3f5571 !important;
   color: #000 !important;
   &:hover {
-    background-color: #70a0d0 !important;
+    background-color: #3f5571 !important;
     color: #fff !important;
   }
 }

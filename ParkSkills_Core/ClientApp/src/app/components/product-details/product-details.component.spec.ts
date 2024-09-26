@@ -1,18 +1,18 @@
-import { RoomScenesComponent } from './room-scenes.component';
+import { ProductDetailsComponent } from './product-details.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 
-describe('RoomScenesComponent', () => {
-  let component: RoomScenesComponent;
-  let fixture: ComponentFixture<RoomScenesComponent>;
+describe('SideNavComponent', () => {
+  let component: ProductDetailsComponent;
+  let fixture: ComponentFixture<ProductDetailsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RoomScenesComponent ]
+      declarations: [ ProductDetailsComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(RoomScenesComponent);
+    fixture = TestBed.createComponent(ProductDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

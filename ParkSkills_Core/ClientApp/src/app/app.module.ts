@@ -1,8 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import {
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -18,9 +22,12 @@ import { TilesCollectionComponent } from './components/tiles-collection/tiles-co
 import { TopHeaderComponent } from './components/top-header/top-header.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { ApicallService } from './shared/apicall.service';
-import { ApiResolver } from './shared/api-resolver.service';  // Import the resolver
-/*import { Ng2SearchPipeModule } from 'ng2-search-filter';*/
+import { ApiResolver } from './shared/api-resolver.service'; // Import the resolver
 import { RoomScenesComponent } from './components/room-scenes/room-scenes.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { MaterialModule } from './material.module';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @NgModule({
   declarations: [
@@ -33,31 +40,62 @@ import { RoomScenesComponent } from './components/room-scenes/room-scenes.compon
     ProductCollectiongallerysearchComponent,
     RoomScenesComponent,
     ProductTilesearchComponent,
+    ProductDetailsComponent,
     SideNavComponent,
     SubscriptionComponent,
     TilesCollectionComponent,
     TopHeaderComponent,
     WelcomeComponent,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  bootstrap: [AppComponent],
   imports: [
+    BrowserAnimationsModule,
+    MaterialModule,
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
-    HttpClientModule,
     FormsModule,
-    /*Ng2SearchPipeModule,*/
-    RouterModule.forRoot(
-      [
-        { path: '', component: HomeComponent, pathMatch: 'full', resolve: { data: ApiResolver } },
-        { path: 'TileSearch', component: ProductTilesearchComponent, pathMatch: 'full' },
-        { path: 'CollectionGallerySearch', component: ProductCollectiongallerysearchComponent, pathMatch: 'full', resolve: { data: ApiResolver } },
-        { path: 'CollectionGalleryItem', component: ProductCollectiongalleryitemviewComponent, pathMatch: 'full' },
-        { path: 'room-scenes', component:RoomScenesComponent, pathMatch: 'full'}
-
-        //{ path: 'counter', component: CounterComponent },
-        //{ path: 'fetch-data', component: FetchDataComponent },
-      ]
-    )
+    RouterModule.forRoot([
+      {
+        path: '',
+        component: HomeComponent,
+        pathMatch: 'full',
+        resolve: { data: ApiResolver },
+      },
+      {
+        path: 'TileSearch',
+        component: ProductTilesearchComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'CollectionGallerySearch',
+        component: ProductCollectiongallerysearchComponent,
+        pathMatch: 'full',
+        resolve: { data: ApiResolver },
+      },
+      {
+        path: 'CollectionGalleryItem',
+        component: ProductCollectiongalleryitemviewComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'RoomScenes',
+        component: RoomScenesComponent,
+        pathMatch: 'full',
+      },
+      { path: 'RoomScenes/:id', component: ProductDetailsComponent },
+      {
+        path: 'ContactUs',
+        component: ContactUsComponent,
+        pathMatch: 'full',
+      },
+      //{ path: 'counter', component: CounterComponent },
+      //{ path: 'fetch-data', component: FetchDataComponent },
+    ]),
   ],
-  providers: [ApicallService, ApiResolver],
-  bootstrap: [AppComponent]
+  providers: [
+    ApicallService,
+    ApiResolver,
+    provideHttpClient(withInterceptorsFromDi()),
+  ],
 })
-export class AppModule { }
+export class AppModule {}

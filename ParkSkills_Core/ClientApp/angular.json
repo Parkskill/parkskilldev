@@ -72,11 +72,11 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ParkSkills_Core:build:production"
+              "buildTarget": "ParkSkills_Core:build:production"
             },
             "development": {
-              "browserTarget": "ParkSkills_Core:build:development",
-              "proxyConfig": "proxy.conf.js"
+              "proxyConfig": "proxy.conf.js",
+              "buildTarget": "ParkSkills_Core:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -84,7 +84,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ParkSkills_Core:build"
+            "buildTarget": "ParkSkills_Core:build"
           }
         },
         "test": {

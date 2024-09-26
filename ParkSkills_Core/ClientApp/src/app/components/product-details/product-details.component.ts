@@ -4,10 +4,10 @@ import { ApicallService } from 'src/app/shared/apicall.service';
 
 @Component({
   selector: 'room-scenes',
-  templateUrl: './room-scenes.component.html',
-  styleUrls: ['./room-scenes.component.scss'],
+  templateUrl: './product-details.component.html',
+  styleUrls: ['./product-details.component.scss'],
 })
-export class RoomScenesComponent implements OnInit {
+export class ProductDetailsComponent implements OnInit {
   loading = true;
   public roomScenesCollection: any = {};
 

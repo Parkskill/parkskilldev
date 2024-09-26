@@ -1,5 +1,8 @@
+.btn,button {
+  text-transform: uppercase;
+}
 .hero {
-  border: 2px solid #70a0d0;
+  border: 2px solid #3f5571;
   border-top: none;
   background: url("../../../assets/images/hero/prod-search-hero.webp");
   background-size: cover;
@@ -16,8 +19,19 @@
   img {
     height: 200px;
   }
+  text-transform: uppercase;
+  letter-spacing: 2px;
   background: none;
-  border: 2px solid #70a0d0;
+  border: 3px solid #3f5571;
+  transition: 0.3s;
+  &:hover {
+    //box-shadow: 8px 8px 8px blue;
+    transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+  }
 }
 
 .search-hero {
@@ -30,6 +44,7 @@
   margin-bottom: 1rem;
   form {
     display: flex;
+    justify-content: center;
     .form-control {
       box-shadow: 0 10px 40px 0 #b0c1d9;
       width: 75%;
@@ -45,5 +60,17 @@
     &:not(:last-child) {
       margin-right: 10px;
     }
+  }
+}
+
+.link {
+  cursor: pointer;
+  font-weight: 700;
+  color: #3f5571 ;
+}
+
+.filterButtons {
+  button {
+    margin: .5rem
   }
 }

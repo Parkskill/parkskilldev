@@ -1,7 +1,7 @@
 <section class="py-5 text-center container-fluid hero">
   <div class="row py-lg-5">
     <div class="col-lg-6 col-md-8 mx-auto">
-      <h1> Product Search</h1>
+      <h1>Product Search</h1>
       <p class="lead text-muted">
         Find and enquire about wide variety of tiles
       </p>
@@ -9,116 +9,95 @@
   </div>
 </section>
 <section class="py-5 text-center container-fluid">
-    <div class="container">
-      <div *ngIf="loading" class="row g-3">
-        <div class="spinner-border" role="status">
-          <span class="visually-hidden">Loading...</span>
-        </div>
+  <div class="container">
+    <div *ngIf="loading" class="row g-3">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
       </div>
+    </div>
 
-      <!-- Regular search -->
-      <div *ngIf="!loading" class="row searchBox">
-        <div class="col">
-          <form (ngSubmit)="onSubmit(f.value)" #f="ngForm">
-            <input
-              type="text"
-              ngModel
-              name="reg"
-              #reg="ngModel"
-              placeholder="Search your tile"
-              class="form-control"
-            />
+    <!-- Regular search -->
+    <div *ngIf="!loading" class="row searchBox">
+      <div class="col">
+        <form (ngSubmit)="onSubmit(f.value)" #f="ngForm">
+          <input
+            type="text"
+            ngModel
+            name="reg"
+            #reg="ngModel"
+            placeholder="Search your tile"
+            class="form-control"
+          />
 
-            <input
-              type="submit"
-              value="Search"
-              class="btn btn-block btn-outline-success"
-            />
-          </form>
-        </div>
+          <input
+            type="submit"
+            value="Search"
+            class="btn btn-block btn-outline-success"
+          />
+        </form>
       </div>
+    </div>
 
-      <!-- category search -->
-      <div *ngIf="!loading" class="row catFilters">
-        <div class="col">
-          Color Filter:
-          <button
-            type="button"
-            class="btn btn-outline-primary"
-            (click)="onFilterClick('black')"
-          >
-            Black
-          </button>
-          <button
-            type="button"
-            class="btn btn-outline-primary"
-            (click)="onFilterClick('grey')"
-          >
-            Grey
-          </button>
-          <button
-            type="button"
-            class="btn btn-outline-primary"
-            (click)="onFilterClick('silver')"
-          >
-            Silver
-          </button>
-          <button
-            type="button"
-            class="btn btn-outline-primary"
-            (click)="onFilterClick('pine')"
-          >
-            Pine
-          </button>
-        </div>
+    <!-- category search -->
+    <div *ngIf="!loading" class="row catFilters">
+      <div class="col filterButtons">
+        <h3>Help yourself with below filters</h3>
+        <button
+          *ngFor="let item of searchFilters"
+          type="button"
+          class="btn btn-outline-primary"
+          (click)="onFilterClick(item.pst_name)"
+        >
+          {{ item.pst_name }}
+        </button>
       </div>
+    </div>
 
-      <!-- Filtered tile load -->
-      <div *ngIf="!loading && searching" class="row g-3">
-        <div *ngFor="let item of filtered" class="col">
-          <div class="card shadow-sm">
-            <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
-            <img src="{{ 'data:image/jpg;base64,' + item.pst_thumbnail }}" />
-            <div class="card-body">
-              <p class="card-text">{{ item.pst_name }}</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button
-                    type="button"
-                    class="btn btn-sm btn-outline-secondary"
-                  >
-                    View Details
-                  </button>
-                </div>
-                <small class="text-muted">12.1x24.4</small>
-              </div>
-            </div>
-          </div>
-        </div>
+    <!-- No Results found -->
+    <div *ngIf="!loading && searching && noResults" class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1>No Results Found</h1>
+        <p class="lead text-muted">
+          Try for another search or reset you search using <a
+          class="link"
+          (click)="onFilterClick('reset')"
+        >
+          Reset
+        </a> click
+        </p>
       </div>
+    </div>
 
-      <!-- Default tile load -->
-      <div *ngIf="!loading && !searching" class="row g-3">
-        <div *ngFor="let item of tilesCollection" class="col">
-          <div class="card shadow-sm">
-            <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
-            <img src="{{ 'data:image/jpg;base64,' + item.pst_thumbnail }}" />
-            <div class="card-body">
-              <p class="card-text">{{ item.pst_name }}</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button
-                    type="button"
-                    class="btn btn-sm btn-outline-secondary"
-                  >
-                    View Details
-                  </button>
-                </div>
-                <small class="text-muted">12.1x24.4</small>
-              </div>
-            </div>
+    <!-- Filtered tile load -->
+    <div
+      *ngIf="!loading && searching"
+      class="row row-cols-1 row-cols-md-4 g-5 justify-content-center"
+    >
+      <div *ngFor="let item of filtered" class="col">
+        <div class="card">
+          <img src="{{ 'data:image/jpg;base64,' + item.pst_thumbnail }}" />
+          <div class="card-body">
+            <h5 class="card-title">{{ item.pst_name }}</h5>
+            <!-- <small class="text-muted">12.1x24.4</small> -->
           </div>
         </div>
       </div>
     </div>
+
+    <!-- Default tile load -->
+    <div
+      *ngIf="!loading && !searching"
+      class="row row-cols-1 row-cols-md-4 g-5 justify-content-center"
+    >
+      <div *ngFor="let item of tilesCollection" class="col">
+        <div class="card">
+          <img src="{{ 'data:image/jpg;base64,' + item.pst_thumbnail }}" />
+          <div class="card-body">
+            <h5 class="card-title">{{ item.pst_name }}</h5>
+            <!-- <small class="text-muted">12.1x24.4</small> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
