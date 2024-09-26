@@ -26,6 +26,8 @@ import { ApiResolver } from './shared/api-resolver.service'; // Import the resol
 import { RoomScenesComponent } from './components/room-scenes/room-scenes.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { MaterialModule } from './material.module';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,7 @@ import { MaterialModule } from './material.module';
     TopHeaderComponent,
     WelcomeComponent,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],
   imports: [
     BrowserAnimationsModule,
@@ -75,11 +78,16 @@ import { MaterialModule } from './material.module';
         pathMatch: 'full',
       },
       {
-        path: 'room-scenes',
+        path: 'RoomScenes',
         component: RoomScenesComponent,
         pathMatch: 'full',
       },
-      { path: 'room-scenes/:id', component: ProductDetailsComponent },
+      { path: 'RoomScenes/:id', component: ProductDetailsComponent },
+      {
+        path: 'ContactUs',
+        component: ContactUsComponent,
+        pathMatch: 'full',
+      },
       //{ path: 'counter', component: CounterComponent },
       //{ path: 'fetch-data', component: FetchDataComponent },
     ]),
