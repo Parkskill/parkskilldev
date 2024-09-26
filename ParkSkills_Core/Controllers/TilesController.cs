@@ -74,6 +74,20 @@ namespace ParkSkills_Core.Controllers
             return CommonMethods.ConvertJObjectToJson(rResponse);
         }
 
+        [HttpGet("getroomscene")]
+        public async Task<IActionResult> getroomscene()
+        {
+            Config config = App.InitializeApp();
+
+            var service = new Service(config);
+
+            RetrieveMultipleResponse rResponse = service.RetrieveMultiple("annotations?$select=annotationid,notetext,documentbody,filename,objecttypecode,_objectid_value,subject&$filter=subject eq 'Room Scene'", 1, false).Result;
+
+            return CommonMethods.ConvertResponseToJson(rResponse);
+        }
+
+
+
 
         [HttpGet("GetFilters")]
         public async Task<IActionResult> GetFilters()
