@@ -19,6 +19,17 @@ export class RoomScenesComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+  public fullImage:any ;
+  displayStyle = "none"; 
+  
+  openPopup(value:any) { 
+    this.fullImage = value
+    console.log(this.fullImage)
+    this.displayStyle = "block"; 
+  } 
+  closePopup() { 
+    this.displayStyle = "none"; 
+  } 
 
   getAllTiles() {
     this.loading = true;

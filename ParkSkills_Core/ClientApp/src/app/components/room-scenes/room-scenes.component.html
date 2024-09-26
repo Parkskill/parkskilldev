@@ -15,8 +15,11 @@
       class="row row-cols-1 row-cols-md-6 g-5 justify-content-center"
     >
       <div *ngFor="let item of roomScenesCollection" class="col">
-        <div class="card h-100">
-          <img src="{{ 'data:image/jpg;base64,' + item.pst_thumbnail }}" />
+        <div class="card h-75">
+          <img
+            (click)="openPopup(item.pst_thumbnail)"
+            src="{{ 'data:image/jpg;base64,' + item.pst_thumbnail }}"
+          />
           <div class="card-body">
             <p class="card-title">{{ item.pst_name }}</p>
             <!-- <small class="text-muted">12.1x24.4</small> -->
@@ -36,3 +39,23 @@
     </div>
   </div>
 </section>
+
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{ display: displayStyle }"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img src="{{ 'data:image/jpg;base64,' + fullImage }}" />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-primary" (click)="closePopup()">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
