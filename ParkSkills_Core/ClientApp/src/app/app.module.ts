@@ -1,8 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import {
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -18,37 +22,72 @@ import { TilesCollectionComponent } from './components/tiles-collection/tiles-co
 import { TopHeaderComponent } from './components/top-header/top-header.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { ApicallService } from './shared/apicall.service';
-import { ApiResolver } from './shared/api-resolver.service';  // Import the resolver
+import { ApiResolver } from './shared/api-resolver.service'; // Import the resolver
 import { RoomScenesComponent } from './components/room-scenes/room-scenes.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { MaterialModule } from './material.module';
 
-@NgModule({ declarations: [
-        AppComponent,
-        FooterComponent,
-        BannerComponent,
-        GetQuoteComponent,
-        HomeComponent,
-        ProductCollectiongalleryitemviewComponent,
-        ProductCollectiongallerysearchComponent,
-        RoomScenesComponent,
-        ProductTilesearchComponent,
-        ProductDetailsComponent,
-        SideNavComponent,
-        SubscriptionComponent,
-        TilesCollectionComponent,
-        TopHeaderComponent,
-        WelcomeComponent,
-    ],
-    bootstrap: [AppComponent], imports: [BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
-        FormsModule,
-        RouterModule.forRoot([
-            { path: '', component: HomeComponent, pathMatch: 'full', resolve: { data: ApiResolver } },
-            { path: 'TileSearch', component: ProductTilesearchComponent, pathMatch: 'full' },
-            { path: 'CollectionGallerySearch', component: ProductCollectiongallerysearchComponent, pathMatch: 'full', resolve: { data: ApiResolver } },
-            { path: 'CollectionGalleryItem', component: ProductCollectiongalleryitemviewComponent, pathMatch: 'full' },
-            { path: 'room-scenes', component: RoomScenesComponent, pathMatch: 'full' },
-            { path: 'room-scenes/:id', component: ProductDetailsComponent }
-            //{ path: 'counter', component: CounterComponent },
-            //{ path: 'fetch-data', component: FetchDataComponent },
-        ])], providers: [ApicallService, ApiResolver, provideHttpClient(withInterceptorsFromDi())] })
-export class AppModule { }
+@NgModule({
+  declarations: [
+    AppComponent,
+    FooterComponent,
+    BannerComponent,
+    GetQuoteComponent,
+    HomeComponent,
+    ProductCollectiongalleryitemviewComponent,
+    ProductCollectiongallerysearchComponent,
+    RoomScenesComponent,
+    ProductTilesearchComponent,
+    ProductDetailsComponent,
+    SideNavComponent,
+    SubscriptionComponent,
+    TilesCollectionComponent,
+    TopHeaderComponent,
+    WelcomeComponent,
+  ],
+  bootstrap: [AppComponent],
+  imports: [
+    BrowserAnimationsModule,
+    MaterialModule,
+    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+    FormsModule,
+    RouterModule.forRoot([
+      {
+        path: '',
+        component: HomeComponent,
+        pathMatch: 'full',
+        resolve: { data: ApiResolver },
+      },
+      {
+        path: 'TileSearch',
+        component: ProductTilesearchComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'CollectionGallerySearch',
+        component: ProductCollectiongallerysearchComponent,
+        pathMatch: 'full',
+        resolve: { data: ApiResolver },
+      },
+      {
+        path: 'CollectionGalleryItem',
+        component: ProductCollectiongalleryitemviewComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'room-scenes',
+        component: RoomScenesComponent,
+        pathMatch: 'full',
+      },
+      { path: 'room-scenes/:id', component: ProductDetailsComponent },
+      //{ path: 'counter', component: CounterComponent },
+      //{ path: 'fetch-data', component: FetchDataComponent },
+    ]),
+  ],
+  providers: [
+    ApicallService,
+    ApiResolver,
+    provideHttpClient(withInterceptorsFromDi()),
+  ],
+})
+export class AppModule {}
