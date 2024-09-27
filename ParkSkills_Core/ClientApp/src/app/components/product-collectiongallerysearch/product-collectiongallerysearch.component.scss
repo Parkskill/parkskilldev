@@ -1,4 +1,5 @@
-.btn,button {
+.btn,
+button {
   text-transform: uppercase;
 }
 .hero {
@@ -16,9 +17,22 @@
   }
 }
 .card {
-  padding: 1rem;
+  .card-body {
+    .card-title {
+      color: #fff;
+    }
+  }
+  &:hover {
+    .card-body {
+      display: block !important;
+      margin-top: -4rem;
+      width: auto;
+      transition: 0.3s;
+      background-color: rgb(63, 85, 113, 0.5);
+    }
+  }
   img {
-    height: 150px;
+    height: 200px;
     width: auto;
     object-fit: cover;
     &:hover {
@@ -28,16 +42,6 @@
   text-transform: uppercase;
   letter-spacing: 2px;
   background: none;
-  border: 3px solid #3f5571;
-  transition: 0.3s;
-  &:hover {
-    //box-shadow: 8px 8px 8px blue;
-    transform: scale(1.05);
-    -webkit-transform: scale(1.05);
-    -moz-transform: scale(1.05);
-    -ms-transform: scale(1.05);
-    -o-transform: scale(1.05);
-  }
 }
 
 .search-hero {
@@ -72,12 +76,12 @@
 .link {
   cursor: pointer;
   font-weight: 700;
-  color: #3f5571 ;
+  color: #3f5571;
 }
 
 .filterButtons {
   button {
-    margin: .5rem
+    margin: 0.5rem;
   }
 }
 
@@ -91,6 +95,6 @@
     }
   }
   .modal-footer {
-    border: none
-  };
+    border: none;
+  }
 }
