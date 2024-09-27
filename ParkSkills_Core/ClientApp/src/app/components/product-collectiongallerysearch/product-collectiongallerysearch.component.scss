@@ -16,9 +16,14 @@
   }
 }
 .card {
+  padding: 1rem;
   img {
-    height: 200px;
+    height: 150px;
+    width: auto;
     object-fit: cover;
+    &:hover {
+      cursor: pointer;
+    }
   }
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -73,5 +78,13 @@
 .filterButtons {
   button {
     margin: .5rem
+  }
+}
+
+.modal-content {
+  .modal-body {
+    img {
+      width: 100%;
+    }
   }
 }

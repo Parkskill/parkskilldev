@@ -13,6 +13,8 @@ export class ProductCollectiongallerysearchComponent implements OnInit {
   loading = true;
   filtered: any = [];
   searching = false;
+  public fullImage:any;
+  displayStyle = "none"; 
 
   public tilesCollection: any = [];
   public searchFilters: any = [];
@@ -24,6 +26,15 @@ export class ProductCollectiongallerysearchComponent implements OnInit {
     this.filtered = this.getAllTiles();
     this.getFilters();
   }
+
+  openPopup(value:any) { 
+    this.fullImage = value
+    console.log(this.fullImage)
+    this.displayStyle = "block"; 
+  } 
+  closePopup() { 
+    this.displayStyle = "none"; 
+  } 
 
   // For search
   onSubmit(value: any) {

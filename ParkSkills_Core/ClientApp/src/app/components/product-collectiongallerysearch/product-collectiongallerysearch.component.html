@@ -58,12 +58,8 @@
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1>No Results Found</h1>
         <p class="lead text-muted">
-          Try for another search or reset you search using <a
-          class="link"
-          (click)="onFilterClick('reset')"
-        >
-          Reset
-        </a> click
+          Try for another search or reset you search using
+          <a class="link" (click)="onFilterClick('reset')"> Reset </a> click
         </p>
       </div>
     </div>
@@ -71,13 +67,16 @@
     <!-- Filtered tile load -->
     <div
       *ngIf="!loading && searching"
-      class="row row-cols-1 row-cols-md-4 g-5 justify-content-center"
+      class="row row-cols-1 row-cols-md-6 g-5 justify-content-center"
     >
       <div *ngFor="let item of filtered" class="col">
-        <div class="card">
-          <img src="{{ 'data:image/jpg;base64,' + item.pst_thumbnail }}" />
+        <div class="card h-75">
+          <img
+            (click)="openPopup(item.pst_thumbnail)"
+            src="{{ 'data:image/jpg;base64,' + item.pst_thumbnail }}"
+          />
           <div class="card-body">
-            <h5 class="card-title">{{ item.pst_name }}</h5>
+            <p class="card-title">{{ item.pst_name }}</p>
             <!-- <small class="text-muted">12.1x24.4</small> -->
           </div>
         </div>
@@ -87,13 +86,16 @@
     <!-- Default tile load -->
     <div
       *ngIf="!loading && !searching"
-      class="row row-cols-1 row-cols-md-4 g-5 justify-content-center"
+      class="row row-cols-1 row-cols-md-6 g-5 justify-content-center"
     >
       <div *ngFor="let item of tilesCollection" class="col">
-        <div class="card">
-          <img src="{{ 'data:image/jpg;base64,' + item.pst_thumbnail }}" />
+        <div class="card h-75">
+          <img
+            (click)="openPopup(item.pst_thumbnail)"
+            src="{{ 'data:image/jpg;base64,' + item.pst_thumbnail }}"
+          />
           <div class="card-body">
-            <h5 class="card-title">{{ item.pst_name }}</h5>
+            <p class="card-title">{{ item.pst_name }}</p>
             <!-- <small class="text-muted">12.1x24.4</small> -->
           </div>
         </div>
@@ -101,3 +103,27 @@
     </div>
   </div>
 </section>
+<!-- Modal code -->
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{ display: displayStyle }"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img src="{{ 'data:image/jpg;base64,' + fullImage }}" />
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-outline-primary"
+          (click)="closePopup()"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
