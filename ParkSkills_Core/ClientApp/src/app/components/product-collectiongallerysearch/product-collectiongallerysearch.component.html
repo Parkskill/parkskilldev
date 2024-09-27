@@ -72,7 +72,7 @@
       <div *ngFor="let item of filtered" class="col">
         <div class="card h-75">
           <img
-            (click)="openPopup(item.pst_thumbnail)"
+            (click)="openPopup(item)"
             src="{{ 'data:image/jpg;base64,' + item.pst_thumbnail }}"
           />
           <div class="card-body">
@@ -91,7 +91,7 @@
       <div *ngFor="let item of tilesCollection" class="col">
         <div class="card h-75">
           <img
-            (click)="openPopup(item.pst_thumbnail)"
+            (click)="openPopup(item)"
             src="{{ 'data:image/jpg;base64,' + item.pst_thumbnail }}"
           />
           <div class="card-body">
@@ -113,7 +113,29 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-body">
-        <img src="{{ 'data:image/jpg;base64,' + fullImage }}" />
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <img
+                src="{{
+                  'data:image/jpg;base64,' + tileDetails?.pst_thumbnail
+                }}"
+              />
+            </div>
+            <div class="col">
+              <div class="container">
+                <div class="row">
+                  <h4>Tile information</h4>
+                  <div class="col-3"><dt>Name:</dt></div>
+                  <div class="col-9">{{ tileDetails?.pst_name }}</div>
+                  <br><br>
+                  <div class="col-3"><dt>Tile ID</dt></div>
+                  <div class="col-9">{{ tileDetails?.pst_tileid }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
         <button

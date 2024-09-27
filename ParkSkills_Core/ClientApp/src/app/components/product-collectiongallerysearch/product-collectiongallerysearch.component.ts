@@ -13,7 +13,7 @@ export class ProductCollectiongallerysearchComponent implements OnInit {
   loading = true;
   filtered: any = [];
   searching = false;
-  public fullImage:any;
+  public tileDetails:any;
   displayStyle = "none"; 
 
   public tilesCollection: any = [];
@@ -28,8 +28,7 @@ export class ProductCollectiongallerysearchComponent implements OnInit {
   }
 
   openPopup(value:any) { 
-    this.fullImage = value
-    console.log(this.fullImage)
+    this.tileDetails = value
     this.displayStyle = "block"; 
   } 
   closePopup() { 
