@@ -43,6 +43,10 @@ export class ApicallService {
     ///Tiles/GetTiles
     return this.http.get(`${this.apiUrl}tiles`);
   }
+  getRoomScenes(): Observable<any> {
+    ///Tiles/GetTiles
+    return this.http.get(`${this.apiUrl}tiles/getroomscene`);
+  }
   getFilters(): Observable<any> {
     ///Tiles/GetTiles
     return this.http.get(`${this.apiUrl}tiles/getfilters`);
