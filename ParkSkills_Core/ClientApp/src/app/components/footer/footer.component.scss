@@ -10,15 +10,28 @@
   .content {
     padding: 2rem;
   }
+
+  .bi {
+    color: #fff;
+    font-size: 2rem;
+    &:hover {
+      color: #b5babf;
+      visibility: visible;
+      -webkit-transform: scaleX(1);
+      -ms-transform: scaleX(1);
+      transform: scaleX(1);
+    }
+  }
+
   h5 {
     padding: 1rem;
     font-weight: 600;
     text-decoration: underline;
   }
-  .nav-link{
+  .nav-link {
     color: #fff;
     &:hover {
-      color: #B5BABF;
+      color: #b5babf;
       visibility: visible;
       -webkit-transform: scaleX(1);
       -ms-transform: scaleX(1);

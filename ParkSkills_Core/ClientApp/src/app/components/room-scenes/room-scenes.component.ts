@@ -16,6 +16,7 @@ export class RoomScenesComponent implements OnInit {
     public apicallService: ApicallService
   ) {
     this.getAllTiles();
+    // this.getDD();
   }
 
   ngOnInit(): void {}
@@ -37,6 +38,22 @@ export class RoomScenesComponent implements OnInit {
       next: (httpResponse) => {
         console.log(httpResponse);
         this.roomScenesCollection = httpResponse;
+      },
+
+      error: (error) => {
+        console.log('Error', error);
+      },
+      complete: () => {
+        this.loading = false;
+        console.log('Completed');
+      },
+    });
+  }
+
+  getDD() {
+    this.apicallService.getDrupalData().subscribe({
+      next: (httpResponse) => {
+        console.log("DData",httpResponse);
       },
 
       error: (error) => {

@@ -75,7 +75,7 @@
               "buildTarget": "ParkSkills_Core:build:production"
             },
             "development": {
-              "proxyConfig": "proxy.conf.js",
+              "proxyConfig": "proxy.conf.json",
               "buildTarget": "ParkSkills_Core:build:development"
             }
           },
