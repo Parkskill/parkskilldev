@@ -33,7 +33,7 @@ export class RoomScenesComponent implements OnInit {
 
   getAllTiles() {
     this.loading = true;
-    this.apicallService.getAllTiles().subscribe({
+    this.apicallService.getRoomScenes().subscribe({
       next: (httpResponse) => {
         console.log(httpResponse);
         this.roomScenesCollection = httpResponse;
