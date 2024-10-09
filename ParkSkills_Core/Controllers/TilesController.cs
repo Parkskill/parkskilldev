@@ -81,7 +81,7 @@ namespace ParkSkills_Core.Controllers
 
             var service = new Service(config);
 
-            RetrieveMultipleResponse rResponse = service.RetrieveMultiple("annotations?$select=annotationid,notetext,documentbody,filename,objecttypecode,_objectid_value,subject&$filter=subject eq 'Room Scene'", 100, false).Result;
+            RetrieveMultipleResponse rResponse = service.RetrieveMultiple("annotations?$select=annotationid,notetext,documentbody,filename,objecttypecode,_objectid_value,subject&$expand=objectid_pst_tile($select=pst_tileid,_pst_collectiontileid_value,pst_name,_pst_tiletypeid_value,_pst_utilizetileid_value)&$filter=subject eq 'Room Scene'", 100, false).Result;
 
             return CommonMethods.ConvertResponseToJson(rResponse);
         }
