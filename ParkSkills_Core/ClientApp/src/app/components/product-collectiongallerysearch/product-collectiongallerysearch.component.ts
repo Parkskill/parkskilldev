@@ -23,7 +23,8 @@ export class ProductCollectiongallerysearchComponent implements OnInit {
     private route: ActivatedRoute,
     public apicallService: ApicallService
   ) {
-    this.filtered = this.getAllTiles();
+    debugger;
+    this.filtered = this.getCollections();
     this.getFilters();
   }
 
@@ -73,6 +74,20 @@ export class ProductCollectiongallerysearchComponent implements OnInit {
         }
       }, 2000);
     }
+  }
+
+  getCollections(){
+    this.loading = true;
+    this.apicallService.getCollections().subscribe({
+      next: (httpResponse) => {
+        debugger;
+        this.tilesCollection = httpResponse;
+      },
+      error: (error) => {},
+      complete: () => {
+        this.loading = false;
+      },
+    });
   }
 
   getAllTiles() {

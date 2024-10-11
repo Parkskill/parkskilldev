@@ -30,12 +30,6 @@ export class ApicallService {
   getDrupalData() {
     return this.http.get('/api/tiles'); // The request will be proxied to http://localhost:8080/users
   }
-
-  
-  // Example method to fetch data from your API
-  getData2(): Observable<any> {
-    return this.http.get(`${this.apiUrl}weatherforecast`);
-  }
   getConfiguration(): Observable<any> {
     return this.http.get(`${this.apiUrl}configuration`);
   }
@@ -53,5 +47,9 @@ export class ApicallService {
   }
   getWelcomeImage(guid: string): Observable<any> {
     return this.http.get(`${this.apiUrl}configuration/GetById?guid=` + guid);
+  }
+  getCollections(): Observable<any> {
+    ///Tiles/GetTiles
+    return this.http.get(`${this.apiUrl}tiles/GetCollections`);
   }
 }

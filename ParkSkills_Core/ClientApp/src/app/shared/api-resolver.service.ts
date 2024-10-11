@@ -13,8 +13,7 @@ export class ApiResolver  {
   constructor(private apiService: ApicallService) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
-    return this.apiService.getData2();
-    
+    return this.apiService.getConfiguration();
   }
   getCongifuration(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
     return this.apiService.getConfiguration();
