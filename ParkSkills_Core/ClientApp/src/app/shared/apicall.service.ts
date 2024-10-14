@@ -27,10 +27,15 @@ export class ApicallService {
 
 
   // Example method to fetch data from your API
-  getDrupalData() {
-    return this.http.get('/api/tiles'); // The request will be proxied to http://localhost:8080/users
+  getNewTiles() {
+    return this.http.get('/api/tiles-list'); // The request will be proxied to http://localhost:8080/users
   }
 
+
+  // Example method to fetch data from your API
+  getNewRoomScenes() {
+    return this.http.get('/api/room-scenes'); // The request will be proxied to http://localhost:8080/users
+  }
   
   // Example method to fetch data from your API
   getData2(): Observable<any> {

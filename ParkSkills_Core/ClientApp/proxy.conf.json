@@ -1,6 +1,6 @@
 {
     "/api": {
-      "target": "https://vaneddsolutions.com/drupal",
+      "target": "https://parkskilltile.com",
       "secure": false,
       "changeOrigin": true,
       "logLevel": "debug"

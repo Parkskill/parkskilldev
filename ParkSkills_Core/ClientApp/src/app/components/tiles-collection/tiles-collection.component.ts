@@ -11,26 +11,41 @@ export class TilesCollectionComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  public configurations: any = {};
-  public imageData: string = "";
-  constructor(private route: ActivatedRoute, public apicallService: ApicallService) {
-    this.apicallService.getConfiguration().subscribe(
-      {
-        next: (httpResponse) => {
-          console.log('data', httpResponse)
-          this.configurations = JSON.parse(httpResponse)[0];
-        },
+  
+  loading = true;
+  public tileDetails:any;
+  displayStyle = "none"; 
 
-        error: (error) => {
-          console.log('Error', error)
-        },
-        complete: () => {
-          console.log('Completed')
-        }
-      }
-    );
-
-
+  public tilesCollection: any = [];
+  public searchFilters: any = [];
+  public noResults: any = [];
+  constructor(
+    private route: ActivatedRoute,
+    public apicallService: ApicallService
+  ) {
+    this.getAllTiles();
   }
+
+  openPopup(value:any) { 
+    this.tileDetails = value
+    this.displayStyle = "block"; 
+  } 
+  closePopup() { 
+    this.displayStyle = "none"; 
+  } 
+
+  getAllTiles() {
+    this.loading = true;
+    this.apicallService.getNewTiles().subscribe({
+      next: (httpResponse) => {
+        this.tilesCollection = httpResponse;
+      },
+      error: (error) => {},
+      complete: () => {
+        this.loading = false;
+      },
+    });
+  }
+
 
 }

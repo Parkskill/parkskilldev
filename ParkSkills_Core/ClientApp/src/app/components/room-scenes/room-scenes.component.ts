@@ -10,13 +10,13 @@ import { ApicallService } from 'src/app/shared/apicall.service';
 export class RoomScenesComponent implements OnInit {
   loading = true;
   public roomScenesCollection: any = {};
-
+  public newRoomScenes: any;
   constructor(
     private route: ActivatedRoute,
     public apicallService: ApicallService
   ) {
-    this.getAllTiles();
-    // this.getDD();
+    // this.getAllTiles();
+    this.getNewRoomScenes();
   }
 
   ngOnInit(): void {}
@@ -50,10 +50,11 @@ export class RoomScenesComponent implements OnInit {
     });
   }
 
-  getDD() {
-    this.apicallService.getDrupalData().subscribe({
+  getNewRoomScenes() {
+    this.apicallService.getNewRoomScenes().subscribe({
       next: (httpResponse) => {
         console.log("DData",httpResponse);
+        this.newRoomScenes = httpResponse
       },
 
       error: (error) => {

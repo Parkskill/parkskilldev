@@ -14,11 +14,15 @@
       *ngIf="!loading"
       class="row row-cols-1 row-cols-md-6 g-5 justify-content-center"
     >
-      <div *ngFor="let item of roomScenesCollection" class="col">
+      <div *ngFor="let item of newRoomScenes" class="col">
         <div class="card h-75">
-          <img
+          <!-- <img
             (click)="openPopup(item.documentbody)"
             src="{{ 'data:image/jpg;base64,' + item.documentbody }}"
+          /> -->
+          <img
+            (click)="openPopup(item.thumbnail)"
+            src="{{ item.thumbnail.replace('\/', '/')}}"
           />
           <!-- <div class="card-body">
             <p class="card-title">{{ item.pst_name }}</p>
@@ -49,7 +53,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-body">
-        <img src="{{ 'data:image/jpg;base64,' + fullImage }}" />
+        <img src="{{fullImage }}" />
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-primary" (click)="closePopup()">

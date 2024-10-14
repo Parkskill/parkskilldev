@@ -1,45 +1,72 @@
-.bg-text {
-  left: 0;
-  width: 100%;
+.btn,
+button {
+  text-transform: uppercase;
+}
+.hero {
+  border: 2px solid #3f5571;
+  border-top: none;
+  background: url("../../../assets/images/hero/prod-search-hero.webp");
+  background-size: cover;
+  h1 {
+    font-size: 4rem;
+    color: #fff;
+  }
+  p {
+    font-size: 2rem;
+    color: #fff !important;
+  }
+}
+.card {
+  .card-body {
+    .card-title {
+      color: #fff;
+    }
+  }
+  &:hover {
+    .card-body {
+      display: block !important;
+      margin-top: -4rem;
+      width: auto;
+      transition: 0.3s;
+      background-color: rgb(63, 85, 113, 0.5);
+    }
+  }
+  img {
+    height: 200px;
+    width: auto;
+    object-fit: cover;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: none;
 }
 
-.title-text::before {
-  left: auto;
+.search-hero {
+  max-width: 500px;
+  padding-bottom: 50px;
+  margin: auto;
 }
 
-.card a {
-  color: #000;
-  text-decoration: none;
-  height: 100%;
+.link {
+  cursor: pointer;
+  font-weight: 700;
+  color: #3f5571;
 }
 
-.card a .card-title {
-  padding-left: 0;
-  transition: 0.3s;
-}
 
-.card a:hover .card-title {
-  color: #c90000;
-  padding-left: 15px;
-  transition: 0.3s;
-}
-
-.card a p {
-  color: #777;
-  text-decoration: none;
-}
-
-.card-img-top {
-  height: 12vw;
-  object-fit: cover;
-}
-
-.card-title {
-  font-style: italic;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-}
-
-.tiles-container {
-  display: flex;
-  justify-content: center;
+.modal {
+  background-color: rgb(63, 85, 113, 0.5);
+  .modal-content {
+    .modal-body {
+      img {
+        width: 100%;
+      }
+    }
+  }
+  .modal-footer {
+    border: none;
+  }
 }

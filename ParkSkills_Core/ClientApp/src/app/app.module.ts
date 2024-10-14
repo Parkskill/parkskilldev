@@ -59,7 +59,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
         path: '',
         component: HomeComponent,
         pathMatch: 'full',
-        resolve: { data: ApiResolver },
+        resolve: { },
       },
       {
         path: 'TileSearch',
@@ -70,11 +70,16 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
         path: 'CollectionGallerySearch',
         component: ProductCollectiongallerysearchComponent,
         pathMatch: 'full',
-        resolve: { data: ApiResolver },
+        resolve: { },
       },
       {
         path: 'CollectionGalleryItem',
         component: ProductCollectiongalleryitemviewComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'TilesCollections',
+        component: TilesCollectionComponent,
         pathMatch: 'full',
       },
       {
