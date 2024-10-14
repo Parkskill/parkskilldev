@@ -23,7 +23,7 @@ export class TilesCollectionComponent implements OnInit {
     private route: ActivatedRoute,
     public apicallService: ApicallService
   ) {
-    this.getAllTiles();
+    this.getTileCollection();
   }
 
   openPopup(value:any) { 
@@ -34,9 +34,22 @@ export class TilesCollectionComponent implements OnInit {
     this.displayStyle = "none"; 
   } 
 
-  getAllTiles() {
+  // getAllTiles() {
+  //   this.loading = true;
+  //   this.apicallService.getNewTiles().subscribe({
+  //     next: (httpResponse) => {
+  //       this.tilesCollection = httpResponse;
+  //     },
+  //     error: (error) => {},
+  //     complete: () => {
+  //       this.loading = false;
+  //     },
+  //   });
+  // }
+
+  getTileCollection() {
     this.loading = true;
-    this.apicallService.getNewTiles().subscribe({
+    this.apicallService.getTileCollection().subscribe({
       next: (httpResponse) => {
         this.tilesCollection = httpResponse;
       },
@@ -46,6 +59,7 @@ export class TilesCollectionComponent implements OnInit {
       },
     });
   }
+
 
 
 }

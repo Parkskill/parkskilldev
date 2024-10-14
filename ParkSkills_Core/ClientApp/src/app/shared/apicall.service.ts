@@ -31,6 +31,9 @@ export class ApicallService {
     return this.http.get('/api/tiles-list'); // The request will be proxied to http://localhost:8080/users
   }
 
+  getTileCollection() {
+    return this.http.get('/api/tiles-collection'); // The request will be proxied to http://localhost:8080/users
+  }
 
   // Example method to fetch data from your API
   getNewRoomScenes() {
