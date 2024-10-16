@@ -31,8 +31,16 @@ export class ApicallService {
     return this.http.get('/api/tiles-list'); // The request will be proxied to http://localhost:8080/users
   }
 
+  getNewFilteredTiles(filter:any) {
+    return this.http.get(`/api/tiles-list/${filter}`); // The request will be proxied to http://localhost:8080/users
+  }
+
   getTileCollection() {
     return this.http.get('/api/tiles-collection'); // The request will be proxied to http://localhost:8080/users
+  }
+
+  getFilteredRoomScenes(filter:any) {
+    return this.http.get(`/api/room-scenes/${filter}`); // The request will be proxied to http://localhost:8080/users
   }
 
   // Example method to fetch data from your API
@@ -51,6 +59,8 @@ export class ApicallService {
     ///Tiles/GetTiles
     return this.http.get(`${this.apiUrl}tiles`);
   }
+
+  
   getRoomScenes(): Observable<any> {
     ///Tiles/GetTiles
     return this.http.get(`${this.apiUrl}tiles/getroomscene`);

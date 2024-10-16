@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApicallService } from '../../shared/apicall.service';
 
 @Component({
@@ -12,6 +12,10 @@ export class TilesCollectionComponent implements OnInit {
   ngOnInit(): void {
   }
   
+  onRedirect(linkUrl:any) {
+    this.router.navigate([`/CollectionGalleryItem/${linkUrl.tax_name}`]); 
+  }
+  
   loading = true;
   public tileDetails:any;
   displayStyle = "none"; 
@@ -21,6 +25,7 @@ export class TilesCollectionComponent implements OnInit {
   public noResults: any = [];
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     public apicallService: ApicallService
   ) {
     this.getTileCollection();

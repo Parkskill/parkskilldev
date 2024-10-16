@@ -73,7 +73,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
         resolve: { },
       },
       {
-        path: 'CollectionGalleryItem',
+        path: 'CollectionGalleryItem/:id',
         component: ProductCollectiongalleryitemviewComponent,
         pathMatch: 'full',
       },
