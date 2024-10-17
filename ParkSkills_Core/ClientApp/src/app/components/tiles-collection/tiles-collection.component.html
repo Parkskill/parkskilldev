@@ -1,82 +1,25 @@
-<section class="py-5 text-center container-fluid hero">
-  <div class="row py-lg-5">
-    <div class="col-lg-6 col-md-8 mx-auto">
-      <h1>Products Collection</h1>
-      <p class="lead text-muted">View our wide variety of tiles</p>
+<section class="text-center container-fluid">
+  <div *ngIf="loading" class="row g-3">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
     </div>
   </div>
-</section>
-<section class="py-5 text-center container-fluid">
-  <div class="container">
-    <div *ngIf="loading" class="row g-3">
-      <div class="spinner-border" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div>
-    </div>
+  <!-- Hero slider container -->
+  <div *ngIf="!loading && tilesCollection.length !== 0" class="text-center">
+    <fancy-carousel [data]="tilesCollection"></fancy-carousel>
+  </div>
 
+  <div *ngIf="!loading" class="container">
     <!-- Default tile load -->
-    <div
-      *ngIf="!loading"
-      class="row row-cols-1 row-cols-md-6 g-5 justify-content-center"
-    >
+    <div class="row row-cols-1 row-cols-md-6 g-5 justify-content-center">
       <div *ngFor="let item of tilesCollection" class="col">
         <div class="card shadow h-75">
-          <img (click)="onRedirect(item)" src="{{ item.tax_image }}" />
+          <img (click)="onRedirect(item)" src="{{ item.thumbnail }}" />
           <div class="card-body d-none">
-            <p class="card-title">{{ item.tax_name }}</p>
-            <!-- <small class="text-muted">12.1x24.4</small> -->
+            <p class="card-title">{{ item.title }}</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- Modal code -->
-<!-- <div
-  class="modal"
-  tabindex="-1"
-  role="dialog"
-  [ngStyle]="{ display: displayStyle }"
->
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-        <div class="container">
-          <div class="row">
-            <div class="col">
-              <img src="{{ tileDetails?.thumbnail }}" />
-            </div>
-            <div class="col">
-              <div class="row">
-                <h4>Tile information</h4>
-                <div class="col-3"><dt>Name:</dt></div>
-                <div class="col-9">{{ tileDetails?.title }}</div>
-                <br /><br />
-                <div class="col-3"><dt>Shape:</dt></div>
-                <div class="col-9">{{ tileDetails?.shape }}</div>
-                <br /><br />
-                <div class="col-3"><dt>Size:</dt></div>
-                <div class="col-9">{{ tileDetails?.size }}</div>
-                <br /><br />
-                <div class="col-3"><dt>Type:</dt></div>
-                <div class="col-9">{{ tileDetails?.type }}</div>
-                <br /><br />
-                <div class="col-3"><dt>Finish:</dt></div>
-                <div class="col-9">{{ tileDetails?.finish }}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-outline-primary"
-          (click)="closePopup()"
-        >
-          Close
-        </button>
-      </div>
-    </div>
-  </div>
-</div> -->

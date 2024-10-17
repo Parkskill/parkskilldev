@@ -9,58 +9,12 @@
     </div>
   </div>
 
-  <!-- result container -->
+  <!-- Room scenes slider container -->
   <div
     *ngIf="!rsLoading && filteredRoomScenesByCategory.length !== 0"
     class="text-center"
   >
-    <div id="carouselSlider" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button
-          *ngFor="let url of filteredRoomScenesByCategory; let i = index"
-          type="button"
-          data-bs-target="#carouselSlider"
-          [attr.data-bs-slide-to]="i"
-          aria-current="true"
-          aria-label="..."
-          [ngClass]="{ active: i == 0 }"
-        ></button>
-      </div>
-
-      <div class="carousel-inner">
-        <div
-          *ngFor="let url of filteredRoomScenesByCategory; let i = index"
-          class="carousel-item"
-          data-bs-interval="3000"
-          [ngClass]="{ active: i == 0 }"
-        >
-          <img
-            src="{{ url.thumbnail.replace('\/', '/') }}"
-            class="d-block w-100"
-            alt="..."
-          />
-        </div>
-      </div>
-
-      <button
-        class="carousel-control-prev"
-        type="button"
-        data-bs-target="#carouselSlider"
-        data-bs-slide="prev"
-      >
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button
-        class="carousel-control-next"
-        type="button"
-        data-bs-target="#carouselSlider"
-        data-bs-slide="next"
-      >
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
+    <fancy-carousel [data]="filteredRoomScenesByCategory"></fancy-carousel>
   </div>
 </section>
 <!-- Tiles section -->
@@ -74,12 +28,12 @@
     </div>
   </div>
   <!-- result container -->
-  <div
-    *ngIf="!tilesLoading"
-    class="py-5 text-center container"
-  >
+  <div *ngIf="!tilesLoading" class="py-5 text-center container">
     <div class="h1 pb-2 mb-4 border-bottom">TILES</div>
-    <div *ngIf="filteredTilesByCategory.length !== 0" class="row row-cols-1 row-cols-md-4 g-5 justify-content-center">
+    <div
+      *ngIf="filteredTilesByCategory.length !== 0"
+      class="row row-cols-1 row-cols-md-4 g-5 justify-content-center"
+    >
       <div *ngFor="let item of filteredTilesByCategory" class="col">
         <div class="card h-95">
           <img
@@ -92,11 +46,17 @@
         </div>
       </div>
     </div>
-    <div *ngIf="filteredTilesByCategory.length == 0" class="row justify-content-center">
+    <div
+      *ngIf="filteredTilesByCategory.length == 0"
+      class="row justify-content-center"
+    >
       <div class="col">
         <div class="starter-template">
           <h1>Stay tuned, we'll comeback with tiles</h1>
-          <p class="lead">Please review our other collections <a href="/TilesCollections">here</a></p>
+          <p class="lead">
+            Please review our other collections
+            <a href="/TilesCollections">here</a>
+          </p>
         </div>
       </div>
     </div>
@@ -116,7 +76,11 @@
         <div class="container">
           <div class="row">
             <div class="col">
-              <img src="{{ tileDetails?.thumbnail }}" />
+              <gallery
+                class="tileGallery"
+                objectFit="contain"
+                [items]="tileDetails?.sliderImages"
+              ></gallery>
             </div>
             <div class="col">
               <div class="row">

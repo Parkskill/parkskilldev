@@ -1,0 +1,45 @@
+<div id="myCarousel" class="carousel slide py-5" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div
+      class="carousel-item"
+      *ngFor="let item of data; let i = index"
+      data-bs-interval="3000"
+      [ngClass]="{ active: i == 0 }"
+    >
+      <div class="mask">
+        <div class="container">
+          <div class="row g-0">
+            <div class="col-md-6 col-12 my-auto order-md-1 order-2">
+              <h4>{{ item.title}}</h4>
+            </div>
+            <div class="col-md-6 col-12 order-md-2 order-1">
+              <img
+                src="{{ item.thumbnail.replace('\/', '/') }}"
+                class="d-block w-100"
+                alt="..."
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a
+  class="carousel-control-prev"
+  data-bs-target="#myCarousel"
+  role="button"
+  data-bs-slide="prev"
+>
+  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  <span class="sr-only">Previous</span>
+</a>
+<a
+  class="carousel-control-next"
+  data-bs-target="#myCarousel"
+  role="button"
+  data-bs-slide="next"
+>
+  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  <span class="sr-only">Next</span>
+</a>
+</div>

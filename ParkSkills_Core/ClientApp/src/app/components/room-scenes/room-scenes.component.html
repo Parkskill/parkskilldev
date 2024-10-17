@@ -1,13 +1,22 @@
-<section class="py-5 text-center hero">
-  <div class="container-fluid">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1>Room Scenes</h1>
-        <p class="lead text-muted">Browse wide variety of Room Scenes</p>
+<section>
+  <!-- loading container -->
+  <div *ngIf="loading" class="container-fluid">
+    <div class="row g-3">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
       </div>
     </div>
   </div>
+
+  <!-- Room scenes slider container -->
+  <div
+    *ngIf="!loading && newRoomScenes.length !== 0"
+    class="text-center"
+  >
+    <fancy-carousel [data]="newRoomScenes"></fancy-carousel>
+  </div>
 </section>
+
 <section>
   <div class="py-5 text-center container">
     <div
@@ -16,17 +25,10 @@
     >
       <div *ngFor="let item of newRoomScenes" class="col">
         <div class="card h-95">
-          <!-- <img
-            (click)="openPopup(item.documentbody)"
-            src="{{ 'data:image/jpg;base64,' + item.documentbody }}"
-          /> -->
           <img
             (click)="openPopup(item.thumbnail)"
             src="{{ item.thumbnail.replace('\/', '/')}}"
           />
-          <!-- <div class="card-body">
-            <p class="card-title">{{ item.pst_name }}</p>
-          </div> -->
         </div>
       </div>
     </div>

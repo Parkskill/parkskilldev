@@ -13,6 +13,12 @@
   }
 }
 
+@media (min-width: 576px) {
+  .modal-dialog {
+      max-width: 1024px;
+  }
+}
+
 .carousel {
   img {
     max-height: 500px;

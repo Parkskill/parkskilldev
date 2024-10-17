@@ -39,19 +39,6 @@ export class TilesCollectionComponent implements OnInit {
     this.displayStyle = "none"; 
   } 
 
-  // getAllTiles() {
-  //   this.loading = true;
-  //   this.apicallService.getNewTiles().subscribe({
-  //     next: (httpResponse) => {
-  //       this.tilesCollection = httpResponse;
-  //     },
-  //     error: (error) => {},
-  //     complete: () => {
-  //       this.loading = false;
-  //     },
-  //   });
-  // }
-
   getTileCollection() {
     this.loading = true;
     this.apicallService.getTileCollection().subscribe({

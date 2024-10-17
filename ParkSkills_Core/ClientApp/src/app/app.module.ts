@@ -7,10 +7,12 @@ import {
 } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GalleryComponent } from '@daelmaak/ngx-gallery';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BannerComponent } from './components/banner/banner.component';
+import { FancyBannerComponent } from './components/common/fancy-carousel/fancy-carousel.component';
 import { GetQuoteComponent } from './components/get-quote/get-quote.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProductCollectiongalleryitemviewComponent } from './components/product-collectiongalleryitemview/product-collectiongalleryitemview.component';
@@ -43,6 +45,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     ProductDetailsComponent,
     SideNavComponent,
     SubscriptionComponent,
+    FancyBannerComponent,
     TilesCollectionComponent,
     TopHeaderComponent,
     WelcomeComponent,
@@ -52,6 +55,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
   imports: [
     BrowserAnimationsModule,
     MaterialModule,
+    GalleryComponent,
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     FormsModule,
     RouterModule.forRoot([
