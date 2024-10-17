@@ -13,7 +13,7 @@ export class TilesCollectionComponent implements OnInit {
   }
   
   onRedirect(linkUrl:any) {
-    this.router.navigate([`/CollectionGalleryItem/${linkUrl.tax_name}`]); 
+    this.router.navigate([`/CollectionGalleryItem/${linkUrl.title}`]); 
   }
   
   loading = true;
