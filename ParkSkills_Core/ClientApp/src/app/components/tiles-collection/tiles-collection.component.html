@@ -5,7 +5,7 @@
     </div>
   </div>
   <!-- Hero slider container -->
-  <div *ngIf="!loading && tilesCollection.length !== 0" class="text-center">
+  <div *ngIf="!loading && routerUrl !== '/' && tilesCollection.length !== 0"  class="text-center">
     <fancy-carousel [data]="tilesCollection"></fancy-carousel>
   </div>
 

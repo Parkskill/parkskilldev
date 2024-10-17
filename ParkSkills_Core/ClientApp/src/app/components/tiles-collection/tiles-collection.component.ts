@@ -23,13 +23,18 @@ export class TilesCollectionComponent implements OnInit {
   public tilesCollection: any = [];
   public searchFilters: any = [];
   public noResults: any = [];
+  public routerUrl:any;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     public apicallService: ApicallService
   ) {
+    console.log("this.", this.router.url)
+     this.routerUrl = this.router.url
+
     this.getTileCollection();
   }
+
 
   openPopup(value:any) { 
     this.tileDetails = value
