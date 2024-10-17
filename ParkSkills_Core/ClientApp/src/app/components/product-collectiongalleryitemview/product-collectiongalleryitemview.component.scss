@@ -13,6 +13,14 @@
   }
 }
 
+.carousel {
+  img {
+    max-height: 500px;
+    width: auto;
+    object-fit: cover;
+  }
+}
+
 .card {
   padding: 1rem;
   img {

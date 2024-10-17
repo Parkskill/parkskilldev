@@ -32,9 +32,10 @@ button {
     }
   }
   img {
-    height: 200px;
     width: auto;
     object-fit: cover;
+    max-height: 250px;
+    height: 100%;
     &:hover {
       cursor: pointer;
     }
@@ -56,7 +57,6 @@ button {
   color: #3f5571;
 }
 
-
 .modal {
   background-color: rgb(63, 85, 113, 0.5);
   .modal-content {
@@ -69,4 +69,17 @@ button {
   .modal-footer {
     border: none;
   }
+}
+
+.card {
+  min-height: 170px;
+  margin: 0;
+  padding: 1.7rem 1.2rem;
+  border: none;
+  border-radius: 0;
+  box-shadow: 0 0 21px rgba(0, 0, 0, 0.27);
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
 }
