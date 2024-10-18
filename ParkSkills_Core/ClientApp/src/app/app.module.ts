@@ -30,7 +30,7 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { MaterialModule } from './material.module';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-
+import { AboutUsComponent } from './components/about-us/about-us.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +49,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     TilesCollectionComponent,
     TopHeaderComponent,
     WelcomeComponent,
+    AboutUsComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],
@@ -89,6 +90,11 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
       {
         path: 'RoomScenes',
         component: RoomScenesComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'AboutUs',
+        component: AboutUsComponent,
         pathMatch: 'full',
       },
       { path: 'RoomScenes/:id', component: ProductDetailsComponent },
