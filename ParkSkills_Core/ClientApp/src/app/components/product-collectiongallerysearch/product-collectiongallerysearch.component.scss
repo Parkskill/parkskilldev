@@ -17,31 +17,30 @@ button {
   }
 }
 .card {
-  .card-body {
-    .card-title {
-      color: #fff;
-    }
-  }
-  &:hover {
-    .card-body {
-      display: block !important;
-      margin-top: -4rem;
-      width: auto;
-      transition: 0.3s;
-      background-color: rgb(63, 85, 113, 0.5);
-    }
-  }
   img {
-    height: 200px;
+    height: 250px;
     width: auto;
     object-fit: cover;
     &:hover {
       cursor: pointer;
     }
   }
+  .card-title {
+    padding: 1.5rem;
+  }
   text-transform: uppercase;
   letter-spacing: 2px;
   background: none;
+  border: 3px solid #3f5571;
+  transition: 0.3s;
+  &:hover {
+    //box-shadow: 8px 8px 8px blue;
+    transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+  }
 }
 
 .search-hero {
@@ -56,6 +55,9 @@ button {
     display: flex;
     justify-content: center;
     .form-control {
+      color: #3f5571;
+      font-weight: 600;
+      padding: 1rem;
       box-shadow: 0 10px 40px 0 #b0c1d9;
       width: 75%;
       margin-right: 0.5rem;

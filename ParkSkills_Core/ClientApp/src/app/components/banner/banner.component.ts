@@ -15,22 +15,7 @@ export class BannerComponent implements OnInit {
   ngOnInit(): void {
   }
   constructor(private route: ActivatedRoute, public apicallService: ApicallService) {
-    this.apicallService.getConfiguration().subscribe(
-      {
-        next: (httpResponse) => {
-          console.log('data', httpResponse)
-          this.configurations = JSON.parse(httpResponse)[0];
-        },
-
-        error: (error) => {
-          console.log('Error', error)
-        },
-        complete: () => {
-          console.log('Completed')
-        }
-      }
-    );
-  }
+ }
 
   onSearch(event :any): void {
     console.log('clicked');

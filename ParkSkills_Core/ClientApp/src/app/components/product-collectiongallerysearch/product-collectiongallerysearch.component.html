@@ -17,15 +17,15 @@
     </div>
 
     <!-- Regular search -->
-    <div *ngIf="!loading" class="row searchBox">
+    <div class="row searchBox">
       <div class="col">
-        <form (ngSubmit)="onSubmit(f.value)" #f="ngForm">
+        <form (ngSubmit)="getSearchResults(f.value)" #f="ngForm">
           <input
             type="text"
             ngModel
             name="reg"
             #reg="ngModel"
-            placeholder="Search your tile"
+            placeholder="Search..."
             class="form-control"
           />
 
@@ -38,112 +38,39 @@
       </div>
     </div>
 
-    <!-- category search -->
-    <div *ngIf="!loading" class="row catFilters">
-      <div class="col filterButtons">
-        <h3>Help yourself with below filters</h3>
-        <button
-          *ngFor="let item of searchFilters"
-          type="button"
-          class="btn btn-outline-primary"
-          (click)="onFilterClick(item.pst_name)"
-        >
-          {{ item.pst_name }}
-        </button>
-      </div>
-    </div>
-
     <!-- No Results found -->
-    <div *ngIf="!loading && searching && noResults" class="row py-lg-5">
+    <div *ngIf="!loading && noResults" class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1>No Results Found</h1>
         <p class="lead text-muted">
-          Try for another search or reset you search using
-          <a class="link" (click)="onFilterClick('reset')"> Reset </a> click
+          Try for another search
         </p>
       </div>
     </div>
 
-    <!-- Filtered tile load -->
-    <div
-      *ngIf="!loading && searching"
-      class="row row-cols-1 row-cols-md-6 g-5 justify-content-center"
-    >
-      <div *ngFor="let item of filtered" class="col">
-        <div class="card shadow h-75">
-          <img
-            (click)="openPopup(item)"
-            src="{{ 'data:image/jpg;base64,' + item.pst_thumbnail }}"
-          />
-          <div class="card-body d-none">
-            <p class="card-title">{{ item.pst_name }}</p>
-            <!-- <small class="text-muted">12.1x24.4</small> -->
-          </div>
+    
+    <!-- <div class="row row-cols-1 row-cols-md-4 g-5 justify-content-center">
+      <div *ngFor="let item of getFilterTags" class="col">
+        <div *ngIf="item.field_type !== ''" class="card h-95">
+          {{item.field_type}}
         </div>
       </div>
-    </div>
+    </div> -->
 
-    <!-- Default tile load -->
-    <div
-      *ngIf="!loading && !searching"
-      class="row row-cols-1 row-cols-md-6 g-5 justify-content-center"
-    >
-      <div *ngFor="let item of tilesCollection" class="col">
-        <div class="card shadow h-75">
-          <img
-            (click)="openPopup(item)"
-            src="{{ 'data:image/jpg;base64,' + item.pst_thumbnail }}"
-          />
-          <div class="card-body d-none">
-            <p class="card-title">{{ item.pst_name }}</p>
-            <!-- <small class="text-muted">12.1x24.4</small> -->
+    <div *ngIf="!loading && !noResults">
+      <div class="row" *ngIf="filtered.length !== 0" >
+        <div class="col">
+          <p>Showing <b>{{  filtered.length }}</b> results</p>
+        </div>
+      </div>
+      <div class="row row-cols-1 row-cols-md-4 g-5 justify-content-center">
+        <div *ngFor="let item of filtered" class="col">
+          <div class="card h-95">
+            <img src="{{ item.img1 ? item.img1 : item.img2 }}" />
+            <h5 class="card-title">{{ item.title }}</h5>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- Modal code -->
-<div
-  class="modal"
-  tabindex="-1"
-  role="dialog"
-  [ngStyle]="{ display: displayStyle }"
->
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-        <div class="container">
-          <div class="row">
-            <div class="col">
-              <img
-                src="{{
-                  'data:image/jpg;base64,' + tileDetails?.pst_thumbnail
-                }}"
-              />
-            </div>
-            <div class="col">
-              <div class="row">
-                <h4>Tile information</h4>
-                <div class="col-3"><dt>Name:</dt></div>
-                <div class="col-9">{{ tileDetails?.pst_name }}</div>
-                <br /><br />
-                <div class="col-3"><dt>Tile ID:</dt></div>
-                <div class="col-9">{{ tileDetails?.pst_tileid }}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-outline-primary"
-          (click)="closePopup()"
-        >
-          Close
-        </button>
-      </div>
-    </div>
-  </div>
-</div>

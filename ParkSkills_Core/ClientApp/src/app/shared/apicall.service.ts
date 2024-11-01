@@ -1,37 +1,34 @@
 import { Inject, Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root' // This makes it globally available in the app
+  providedIn: 'root', // This makes it globally available in the app
 })
 export class ApicallService {
-
-  private apiUrl = '';  //
+  private apiUrl = ''; //
 
   constructor(public http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
     this.apiUrl = baseUrl;
   }
 
   getValues(): Observable<string[]> {
-    return this.http.get<string[]>(this.apiUrl)
-      .pipe(
-        catchError(error => {
-          console.error('Error fetching data', error);
-          return throwError(error);  // Handle errors here
-        })
-      );
+    return this.http.get<string[]>(this.apiUrl).pipe(
+      catchError((error) => {
+        console.error('Error fetching data', error);
+        return throwError(error); // Handle errors here
+      })
+    );
   }
-
 
   // Example method to fetch data from your API
   getNewTiles() {
     return this.http.get('/api/tiles-list'); // The request will be proxied to http://localhost:8080/users
   }
 
-  getNewFilteredTiles(filter:any) {
+  getNewFilteredTiles(filter: any) {
     return this.http.get(`/api/tiles-list/${filter}`); // The request will be proxied to http://localhost:8080/users
   }
 
@@ -39,7 +36,7 @@ export class ApicallService {
     return this.http.get('/api/tiles-collection'); // The request will be proxied to http://localhost:8080/users
   }
 
-  getFilteredRoomScenes(filter:any) {
+  getFilteredRoomScenes(filter: any) {
     return this.http.get(`/api/room-scenes/${filter}`); // The request will be proxied to http://localhost:8080/users
   }
 
@@ -47,7 +44,17 @@ export class ApicallService {
   getNewRoomScenes() {
     return this.http.get('/api/room-scenes'); // The request will be proxied to http://localhost:8080/users
   }
-  
+
+  // Example method to get search results from your API
+  getSearchAPI(searchTerm: any) {
+    return this.http.get(`/api/searchApi?query=${searchTerm? searchTerm.reg: ''}`);
+  }
+
+  // Example method to get search results from your API
+  getSearchAPIFilters(searchTerm: any) {
+    return this.http.get(`/api/searchAPI-Filters`);
+  }
+
   // Example method to fetch data from your API
   getData2(): Observable<any> {
     return this.http.get(`${this.apiUrl}weatherforecast`);
@@ -56,13 +63,10 @@ export class ApicallService {
     return this.http.get(`${this.apiUrl}configuration`);
   }
   getAllTiles(): Observable<any> {
-    ///Tiles/GetTiles
     return this.http.get(`${this.apiUrl}tiles`);
   }
 
-  
   getRoomScenes(): Observable<any> {
-    ///Tiles/GetTiles
     return this.http.get(`${this.apiUrl}tiles/getroomscene`);
   }
   getFilters(): Observable<any> {

@@ -10,94 +10,63 @@ import { ApicallService } from '../../shared/apicall.service';
 export class ProductCollectiongallerysearchComponent implements OnInit {
   ngOnInit(): void {}
 
-  loading = true;
+  loading = false;
   filtered: any = [];
-  searching = false;
-  public tileDetails:any;
-  displayStyle = "none"; 
-
-  public tilesCollection: any = [];
-  public searchFilters: any = [];
-  public noResults: any = [];
+  getFilterTags: any
+  public noResults: any = false;
   constructor(
     private route: ActivatedRoute,
     public apicallService: ApicallService
   ) {
-    this.filtered = this.getAllTiles();
-    this.getFilters();
+    this.getSearchResults()
+    // this.getSearchFilters()
   }
 
-  openPopup(value:any) { 
-    this.tileDetails = value
-    this.displayStyle = "block"; 
-  } 
-  closePopup() { 
-    this.displayStyle = "none"; 
-  } 
 
-  // For search
-  onSubmit(value: any) {
-    this.loading = true;
-    this.searching = true;
-    this.noResults = false;
-    setTimeout(() => {
-      this.getAllTiles();
-      this.filtered = this.tilesCollection.filter((tile: any) =>
-        tile?.pst_name.toLowerCase().includes(value.reg.toLowerCase())
-      );
-      if (this.filtered.length === 0) {
-        this.noResults = true;
-      }
-      this.loading = false;
-    }, 2000);
-  }
-
-  // For click filters
-  onFilterClick(value: any) {
-    this.searching = true;
+  getSearchResults(value?: any) {
     this.loading = true;
     this.noResults = false;
-    if (value === 'reset') {
-      this.getAllTiles();
-      this.loading = false;
-      this.searching = false;
-    } else {
-      setTimeout(() => {
-        this.getAllTiles();
-        this.filtered = this.tilesCollection.filter((tile: any) =>
-          tile?.pst_name.toLowerCase().includes(value.toLowerCase())
-        );
-        this.loading = false;
+     this.apicallService.getSearchAPI(value).subscribe({
+      next: (httpResponse) => {
+       this.filtered = httpResponse;
+       console.log()
         if (this.filtered.length === 0) {
+
           this.noResults = true;
         }
-      }, 2000);
-    }
+        this.loading = false;
+      },
+
+      error: (error) => {
+        console.log('Error', error);
+      },
+      complete: () => {
+        setTimeout(() => {
+          this.loading = false;
+        }, 3000);
+      },
+    });
   }
 
-  getAllTiles() {
+  getSearchFilters(value?: any) {
     this.loading = true;
-    this.apicallService.getAllTiles().subscribe({
+     this.apicallService.getSearchAPIFilters(value).subscribe({
       next: (httpResponse) => {
-        this.tilesCollection = httpResponse;
-      },
-      error: (error) => {},
-      complete: () => {
+       this.getFilterTags = httpResponse;
+       console.log(this.getFilterTags)
+        
         this.loading = false;
+      },
+
+      error: (error) => {
+        console.log('Error', error);
+      },
+      complete: () => {
+        setTimeout(() => {
+          this.loading = false;
+        }, 3000);
       },
     });
   }
 
-  getFilters() {
-    this.apicallService.getAllTiles().subscribe({
-      next: (httpResponse) => {
-        this.searchFilters = httpResponse;
-      },
-
-      error: (error) => {},
-      complete: () => {
-        this.loading = false;
-      },
-    });
-  }
 }

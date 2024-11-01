@@ -1,18 +1,12 @@
 <section>
   <!-- loading container -->
   <div *ngIf="loading" class="container-fluid">
-    <div class="row g-3">
-      <div class="spinner-border" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div>
-    </div>
+    <spinner [loaderType]="'pageloader'"></spinner>
   </div>
-
-  <!-- Room scenes slider container -->
-  <div
-    *ngIf="!loading && newRoomScenes.length !== 0"
-    class="text-center"
-  >
+</section>
+<!-- Room scenes slider container -->
+<section>
+  <div *ngIf="!loading && newRoomScenes.length !== 0" class="text-center">
     <fancy-carousel [data]="newRoomScenes"></fancy-carousel>
   </div>
 </section>
@@ -27,19 +21,9 @@
         <div class="card h-95">
           <img
             (click)="openPopup(item.thumbnail)"
-            src="{{ item.thumbnail.replace('\/', '/')}}"
+            src="{{ item.thumbnail.replace('\/', '/') }}"
           />
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="container py-5">
-    <div *ngIf="loading" class="row g-3">
-      <div class="spinner-border" role="status">
-        <span class="visually-hidden">Loading...</span>
       </div>
     </div>
   </div>
@@ -55,10 +39,14 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-body">
-        <img src="{{fullImage }}" />
+        <img src="{{ fullImage }}" />
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-primary" (click)="closePopup()">
+        <button
+          type="button"
+          class="btn btn-outline-primary"
+          (click)="closePopup()"
+        >
           Close
         </button>
       </div>

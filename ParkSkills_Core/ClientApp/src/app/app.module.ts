@@ -31,6 +31,7 @@ import { MaterialModule } from './material.module';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AboutUsComponent } from './components/about-us/about-us.component';
+import { SpinnerComponent } from './components/common/spinner/spinner.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +50,8 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
     TilesCollectionComponent,
     TopHeaderComponent,
     WelcomeComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    SpinnerComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],

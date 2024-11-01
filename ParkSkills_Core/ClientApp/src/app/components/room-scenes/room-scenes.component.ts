@@ -15,7 +15,6 @@ export class RoomScenesComponent implements OnInit {
     private route: ActivatedRoute,
     public apicallService: ApicallService
   ) {
-    // this.getAllTiles();
     this.getNewRoomScenes();
   }
 
@@ -32,24 +31,6 @@ export class RoomScenesComponent implements OnInit {
     this.displayStyle = "none"; 
   } 
 
-  getAllTiles() {
-    this.loading = true;
-    this.apicallService.getRoomScenes().subscribe({
-      next: (httpResponse) => {
-        console.log(httpResponse);
-        this.roomScenesCollection = httpResponse;
-      },
-
-      error: (error) => {
-        console.log('Error', error);
-      },
-      complete: () => {
-        this.loading = false;
-        console.log('Completed');
-      },
-    });
-  }
-
   getNewRoomScenes() {
     this.apicallService.getNewRoomScenes().subscribe({
       next: (httpResponse) => {
@@ -61,8 +42,9 @@ export class RoomScenesComponent implements OnInit {
         console.log('Error', error);
       },
       complete: () => {
-        this.loading = false;
-        console.log('Completed');
+        setTimeout(() => {
+          this.loading = false;
+        }, 3000);
       },
     });
   }
