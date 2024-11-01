@@ -19,7 +19,7 @@ export class ProductCollectiongallerysearchComponent implements OnInit {
     public apicallService: ApicallService
   ) {
     this.getSearchResults()
-    // this.getSearchFilters()
+    this.getSearchFilters()
   }
 
 

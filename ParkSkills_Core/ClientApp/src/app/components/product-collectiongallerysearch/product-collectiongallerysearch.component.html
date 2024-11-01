@@ -57,8 +57,16 @@
       </div>
     </div> -->
 
+    <div class="searchFilters" *ngIf="!loading">
+      <div *ngFor="let item of getFilterTags">
+        <button type="button" (click)="getSearchResults(item.name)" class="btn btn-outline-primary btn-sm">{{ item.name }}</button>
+      </div>
+
+    </div>
+      
+
     <div *ngIf="!loading && !noResults">
-      <div class="row" *ngIf="filtered.length !== 0" >
+      <div class="row mt-2" *ngIf="filtered.length !== 0" >
         <div class="col">
           <p>Showing <b>{{  filtered.length }}</b> results</p>
         </div>

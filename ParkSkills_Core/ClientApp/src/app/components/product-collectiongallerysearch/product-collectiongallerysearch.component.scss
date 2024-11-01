@@ -87,6 +87,16 @@ button {
   }
 }
 
+.searchFilters {
+  display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  div {
+    margin: .25rem 0;
+  }
+}
+
 .modal {
   background-color: rgb(63, 85, 113, 0.5);
   .modal-content {

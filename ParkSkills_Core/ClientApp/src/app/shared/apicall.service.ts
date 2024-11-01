@@ -47,12 +47,12 @@ export class ApicallService {
 
   // Example method to get search results from your API
   getSearchAPI(searchTerm: any) {
-    return this.http.get(`/api/searchApi?query=${searchTerm? searchTerm.reg: ''}`);
+    return this.http.get(`/api/searchApi?query=${searchTerm ? (searchTerm?.reg ? searchTerm?.reg : searchTerm) : ''}`);
   }
 
   // Example method to get search results from your API
   getSearchAPIFilters(searchTerm: any) {
-    return this.http.get(`/api/searchAPI-Filters`);
+    return this.http.get(`/api/get-filters-tags`);
   }
 
   // Example method to fetch data from your API

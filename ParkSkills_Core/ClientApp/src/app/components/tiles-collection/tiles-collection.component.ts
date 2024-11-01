@@ -27,9 +27,7 @@ export class TilesCollectionComponent implements OnInit {
     private router: Router,
     public apicallService: ApicallService
   ) {
-    console.log('this.', this.router.url);
     this.routerUrl = this.router.url;
-
     this.getTileCollection();
   }
 
