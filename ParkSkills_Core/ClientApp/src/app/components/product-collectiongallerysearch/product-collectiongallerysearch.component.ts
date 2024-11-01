@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApicallService } from '../../shared/apicall.service';
 
 @Component({
@@ -12,12 +12,15 @@ export class ProductCollectiongallerysearchComponent implements OnInit {
 
   loading = false;
   filtered: any = [];
+  public routerUrl: any;
   getFilterTags: any
   public noResults: any = false;
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     public apicallService: ApicallService
   ) {
+    this.routerUrl = this.router.url;
     this.getSearchResults()
     this.getSearchFilters()
   }

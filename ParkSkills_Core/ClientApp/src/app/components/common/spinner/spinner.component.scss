@@ -1,11 +1,18 @@
-.spinner {
-  height: 100vh;
   svg {
     font-size: 4rem;
     color: #3f5571;
+  }
+
+.pageLoader {
+  height: 100vh;
+  svg {
     position: absolute;
     top: 50%;
     margin: 0;
     left: 50%;
   }
+}
+
+.sectionLoader {
+  padding: 2rem 0;
 }

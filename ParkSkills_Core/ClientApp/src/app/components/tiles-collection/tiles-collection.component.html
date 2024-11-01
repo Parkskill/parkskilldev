@@ -1,6 +1,6 @@
 <section class="text-center container-fluid">
   <div *ngIf="loading" class="row g-3">
-    <spinner [loaderType]="'pageloader'"></spinner>
+    <spinner [loaderType]="routerUrl !== '/' ? 'pageloader' : ''"></spinner>
   </div>
   <!-- Hero slider container -->
   <div *ngIf="!loading && routerUrl !== '/' && tilesCollection.length !== 0"  class="text-center">

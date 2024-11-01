@@ -10,12 +10,6 @@
 </section>
 <section class="py-5 text-center container-fluid">
   <div class="container">
-    <div *ngIf="loading" class="row g-3">
-      <div class="spinner-border" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div>
-    </div>
-
     <!-- Regular search -->
     <div class="row searchBox">
       <div class="col">
@@ -37,18 +31,18 @@
         </form>
       </div>
     </div>
+    <div *ngIf="loading" class="row g-3">
+      <spinner></spinner>
+    </div>
 
     <!-- No Results found -->
     <div *ngIf="!loading && noResults" class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1>No Results Found</h1>
-        <p class="lead text-muted">
-          Try for another search
-        </p>
+        <p class="lead text-muted">Try for another search</p>
       </div>
     </div>
 
-    
     <!-- <div class="row row-cols-1 row-cols-md-4 g-5 justify-content-center">
       <div *ngFor="let item of getFilterTags" class="col">
         <div *ngIf="item.field_type !== ''" class="card h-95">
@@ -59,16 +53,22 @@
 
     <div class="searchFilters" *ngIf="!loading">
       <div *ngFor="let item of getFilterTags">
-        <button type="button" (click)="getSearchResults(item.name)" class="btn btn-outline-primary btn-sm">{{ item.name }}</button>
+        <button
+          type="button"
+          (click)="getSearchResults(item.name)"
+          class="btn btn-outline-primary btn-sm"
+        >
+          {{ item.name }}
+        </button>
       </div>
-
     </div>
-      
 
     <div *ngIf="!loading && !noResults">
-      <div class="row mt-2" *ngIf="filtered.length !== 0" >
+      <div class="row mt-2" *ngIf="filtered.length !== 0">
         <div class="col">
-          <p>Showing <b>{{  filtered.length }}</b> results</p>
+          <p>
+            Showing <b>{{ filtered.length }}</b> results
+          </p>
         </div>
       </div>
       <div class="row row-cols-1 row-cols-md-4 g-5 justify-content-center">
