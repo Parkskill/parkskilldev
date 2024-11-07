@@ -32,6 +32,7 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { SpinnerComponent } from './components/common/spinner/spinner.component';
+import { SortPipe } from './sort.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +52,8 @@ import { SpinnerComponent } from './components/common/spinner/spinner.component'
     TopHeaderComponent,
     WelcomeComponent,
     AboutUsComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    SortPipe
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],

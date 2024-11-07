@@ -61,10 +61,9 @@ export class ProductCollectiongallerysearchComponent implements OnInit {
     const value = this.multiFilterFormGroup.value
     console.log("value",value);
 
-    const filterVal = value?.checkboxFilters[0]
-    console.log("filterVal",filterVal);
-
-    this.getSearchResults(filterVal)
+    const filterVal = value?.checkboxFilters
+    const searchVal = filterVal.join(' ')
+    this.getSearchResults(searchVal)
   }
 
   getSearchResults(value?: any) {
@@ -96,7 +95,7 @@ export class ProductCollectiongallerysearchComponent implements OnInit {
   getSearchFilters(value?: any) {
     this.loading = true;
      this.apicallService.getSearchAPIFilters(value).subscribe({
-      next: (httpResponse) => {
+      next: (httpResponse: any) => {
        this.getFilterTags = httpResponse;
        console.log(this.getFilterTags)
         

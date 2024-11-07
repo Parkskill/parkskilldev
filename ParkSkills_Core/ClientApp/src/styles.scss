@@ -36,3 +36,18 @@ button, .btn {
 .spinner-border {
   height: 3rem;
 }
+.tileGallery {
+  height: 1000px !important;
+  width: 600px !important;
+  .thumbs--bottom {
+    li {
+      width: auto !important;
+      height: 200px !important;
+      margin: 0 .15rem;
+      img {
+        object-fit: contain;
+      }
+    }
+    
+  }
+}

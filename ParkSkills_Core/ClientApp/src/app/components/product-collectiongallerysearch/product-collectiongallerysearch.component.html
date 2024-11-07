@@ -17,7 +17,7 @@
           <div class="checkboxFilter-list">
             <form [formGroup]="multiFilterFormGroup" (ngSubmit)="onSubmit()">
               <div
-                *ngFor="let checkboxFilter of checkboxFilters; let i = index"
+                *ngFor="let checkboxFilter of checkboxFilters | sort:'asc':'name'; let i = index"
               >
                 <mat-checkbox
                   class="example-margin"
@@ -28,7 +28,7 @@
                 >
               </div>
 
-              <button>Submit</button>
+              <button class="btn btn-primary">Submit</button>
             </form>
           </div>
           <!-- <pre>{{ multiFilterFormGroup.value | json }}</pre>  -->
@@ -63,18 +63,6 @@
             <div class="col-lg-6 col-md-8 mx-auto">
               <h1>No Results Found</h1>
               <p class="lead text-muted">Try for another search</p>
-            </div>
-          </div>
-
-          <div class="searchFilters" *ngIf="!loading">
-            <div *ngFor="let item of getFilterTags">
-              <button
-                type="button"
-                (click)="getSearchResults(item.name)"
-                class="btn btn-outline-primary btn-sm"
-              >
-                {{ item.name }}
-              </button>
             </div>
           </div>
 
