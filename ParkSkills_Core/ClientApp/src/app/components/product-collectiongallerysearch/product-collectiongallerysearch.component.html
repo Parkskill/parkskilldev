@@ -11,71 +11,92 @@
 <section class="py-5 text-center container-fluid">
   <div class="container">
     <!-- Regular search -->
-    <div class="row searchBox">
-      <div class="col">
-        <form (ngSubmit)="getSearchResults(f.value)" #f="ngForm">
-          <input
-            type="text"
-            ngModel
-            name="reg"
-            #reg="ngModel"
-            placeholder="Search..."
-            class="form-control"
-          />
+    <div class="row g-0">
+      <div class="col-3">
+        <div id="checkboxFilter">
+          <div class="checkboxFilter-list">
+            <form [formGroup]="multiFilterFormGroup" (ngSubmit)="onSubmit()">
+              <div
+                *ngFor="let checkboxFilter of checkboxFilters; let i = index"
+              >
+                <mat-checkbox
+                  class="example-margin"
+                  (change)="onChange($event)"
+                  [value]="checkboxFilter.name"
+                >
+                  {{ checkboxFilter.name }}</mat-checkbox
+                >
+              </div>
 
-          <input
-            type="submit"
-            value="Search"
-            class="btn btn-block btn-outline-success"
-          />
-        </form>
-      </div>
-    </div>
-    <div *ngIf="loading" class="row g-3">
-      <spinner></spinner>
-    </div>
-
-    <!-- No Results found -->
-    <div *ngIf="!loading && noResults" class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1>No Results Found</h1>
-        <p class="lead text-muted">Try for another search</p>
-      </div>
-    </div>
-
-    <!-- <div class="row row-cols-1 row-cols-md-4 g-5 justify-content-center">
-      <div *ngFor="let item of getFilterTags" class="col">
-        <div *ngIf="item.field_type !== ''" class="card h-95">
-          {{item.field_type}}
+              <button>Submit</button>
+            </form>
+          </div>
+          <!-- <pre>{{ multiFilterFormGroup.value | json }}</pre>  -->
         </div>
       </div>
-    </div> -->
+      <div class="col-9">
+        <div class="searchBox">
+          <form (ngSubmit)="getSearchResults(f.value)" #f="ngForm">
+            <input
+              type="text"
+              ngModel
+              name="reg"
+              #reg="ngModel"
+              placeholder="Search..."
+              class="form-control"
+            />
 
-    <div class="searchFilters" *ngIf="!loading">
-      <div *ngFor="let item of getFilterTags">
-        <button
-          type="button"
-          (click)="getSearchResults(item.name)"
-          class="btn btn-outline-primary btn-sm"
-        >
-          {{ item.name }}
-        </button>
-      </div>
-    </div>
-
-    <div *ngIf="!loading && !noResults">
-      <div class="row mt-2" *ngIf="filtered.length !== 0">
-        <div class="col">
-          <p>
-            Showing <b>{{ filtered.length }}</b> results
-          </p>
+            <input
+              type="submit"
+              value="Search"
+              class="btn btn-block btn-outline-success"
+            />
+          </form>
         </div>
-      </div>
-      <div class="row row-cols-1 row-cols-md-4 g-5 justify-content-center">
-        <div *ngFor="let item of filtered" class="col">
-          <div class="card h-95">
-            <img src="{{ item.img1 ? item.img1 : item.img2 }}" />
-            <h5 class="card-title">{{ item.title }}</h5>
+        <div class="resultsContainer">
+          <div *ngIf="loading" class="row g-3">
+            <spinner></spinner>
+          </div>
+
+          <!-- No Results found -->
+          <div *ngIf="!loading && noResults" class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+              <h1>No Results Found</h1>
+              <p class="lead text-muted">Try for another search</p>
+            </div>
+          </div>
+
+          <div class="searchFilters" *ngIf="!loading">
+            <div *ngFor="let item of getFilterTags">
+              <button
+                type="button"
+                (click)="getSearchResults(item.name)"
+                class="btn btn-outline-primary btn-sm"
+              >
+                {{ item.name }}
+              </button>
+            </div>
+          </div>
+
+          <div *ngIf="!loading && !noResults">
+            <div class="row mt-2" *ngIf="filtered.length !== 0">
+              <div class="col">
+                <p>
+                  Showing <b>{{ filtered.length }}</b> results
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="row row-cols-1 row-cols-md-4 g-5 justify-content-center"
+            >
+              <div *ngFor="let item of filtered" class="col">
+                <div class="card h-95">
+                  <img src="{{ item.img1 ? item.img1 : item.img2 }}" />
+                  <h5 class="card-title">{{ item.title }}</h5>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

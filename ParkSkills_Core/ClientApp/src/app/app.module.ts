@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule} from '@angular/forms';
 import {
   provideHttpClient,
   withInterceptorsFromDi,
@@ -61,6 +61,7 @@ import { SpinnerComponent } from './components/common/spinner/spinner.component'
     GalleryComponent,
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       {
         path: '',
