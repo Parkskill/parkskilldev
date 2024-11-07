@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApicallService } from 'src/app/shared/apicall.service';
 
 @Component({
-  selector: 'room-scenes',
+  selector: 'app-room-scenes',
   templateUrl: './room-scenes.component.html',
   styleUrls: ['./room-scenes.component.scss'],
 })
@@ -11,11 +11,14 @@ export class RoomScenesComponent implements OnInit {
   loading = true;
   public roomScenesCollection: any = {};
   public newRoomScenes: any;
+  public routerUrl: any;
   constructor(
     private route: ActivatedRoute,
-    public apicallService: ApicallService
+    public apicallService: ApicallService,
+    private router: Router,
   ) {
     this.getNewRoomScenes();
+    this.routerUrl = this.router.url;
   }
 
   ngOnInit(): void {}

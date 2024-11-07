@@ -6,7 +6,7 @@
 </section>
 <!-- Room scenes slider container -->
 <section>
-  <div *ngIf="!loading && newRoomScenes.length !== 0" class="text-center">
+  <div *ngIf="!loading && routerUrl !== '/'&& newRoomScenes.length !== 0" class="text-center">
     <fancy-carousel [data]="newRoomScenes"></fancy-carousel>
   </div>
 </section>
