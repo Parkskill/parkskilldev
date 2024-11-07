@@ -24,6 +24,10 @@ export class RoomScenesComponent implements OnInit {
   ngOnInit(): void {}
   public fullImage:any ;
   displayStyle = "none"; 
+
+  openDetails(value:any) {
+    this.router.navigate([`/CollectionGalleryItem/${value}`])
+  }
   
   openPopup(value:any) { 
     this.fullImage = value
@@ -52,3 +56,11 @@ export class RoomScenesComponent implements OnInit {
     });
   }
 }
+
+
+
+// rs_collection_category
+
+
+// CollectionGalleryItem/Balboa
+

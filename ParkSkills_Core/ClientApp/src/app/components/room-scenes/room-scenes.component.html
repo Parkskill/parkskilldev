@@ -17,12 +17,13 @@
       *ngIf="!loading"
       class="row row-cols-1 row-cols-md-4 g-5 justify-content-center"
     >
-      <div *ngFor="let item of newRoomScenes" class="col">
+      <div *ngFor="let item of newRoomScenes | sort:'asc':'title'" class="col">
         <div class="card h-95">
           <img
-            (click)="openPopup(item.thumbnail)"
+            (click)="routerUrl !== '/' ? openPopup(item.thumbnail) : openDetails(item.rs_collection_category)"
             src="{{ item.thumbnail.replace('\/', '/') }}"
           />
+          <p class="pt-2">{{item.title}}</p>
         </div>
       </div>
     </div>
