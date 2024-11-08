@@ -15,23 +15,31 @@
       <div class="col-3">
         <div id="checkboxFilter">
           <div class="checkboxFilter-list">
+            <h2>Filters</h2>
             <form [formGroup]="multiFilterFormGroup" (ngSubmit)="onSubmit()">
-              <div
-                *ngFor="let checkboxFilter of checkboxFilters | sort:'asc':'name'; let i = index"
-              >
-                <mat-checkbox
-                  class="example-margin"
-                  (change)="onChange($event)"
-                  [value]="checkboxFilter.name"
-                >
-                  {{ checkboxFilter.name }}</mat-checkbox
-                >
+              <div *ngFor="let taxonomy of checkboxFilters">
+                <div class="taxonomy-group" *ngIf="taxonomy.terms.length > 0">
+                  <h4>{{ taxonomy.vocabulary }}</h4>
+                  <div class="checkboxes">
+                  <!-- Loop through terms in the current vocabulary -->
+                  <div *ngFor="let term of taxonomy.terms">
+                    <mat-checkbox
+                      class="example-margin"
+                      (change)="onChange($event)"
+                      [value]="term.name "
+                    >
+                      {{ term.name }}</mat-checkbox
+                    >
+                  </div>
+                </div>
+                </div>
               </div>
 
-              <button class="btn btn-primary">Submit</button>
+              <div class="text-end">
+                <button class="btn btn-primary">Submit</button>
+              </div>
             </form>
           </div>
-          <!-- <pre>{{ multiFilterFormGroup.value | json }}</pre>  -->
         </div>
       </div>
       <div class="col-9">

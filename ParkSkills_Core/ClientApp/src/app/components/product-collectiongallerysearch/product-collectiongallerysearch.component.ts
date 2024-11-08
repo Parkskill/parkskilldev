@@ -19,6 +19,7 @@ export class ProductCollectiongallerysearchComponent implements OnInit {
   filtered: any = [];
   public routerUrl: any;
   getFilterTags: any
+  getFilterFacetTags: any
   public noResults: any = false;
 
   
@@ -94,7 +95,7 @@ export class ProductCollectiongallerysearchComponent implements OnInit {
 
   getSearchFilters(value?: any) {
     this.loading = true;
-     this.apicallService.getSearchAPIFilters(value).subscribe({
+     this.apicallService.getSearchAPIFacetFilters().subscribe({
       next: (httpResponse: any) => {
        this.getFilterTags = httpResponse;
        console.log(this.getFilterTags)

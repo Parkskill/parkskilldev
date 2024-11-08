@@ -51,3 +51,12 @@ button, .btn {
     
   }
 }
+
+.mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background, .mdc-checkbox__native-control:enabled:indeterminate~.mdc-checkbox__background {
+  background-color: #3f5571!important;
+  border-color: #3f5571!important;
+}
+
+.mdc-checkbox__ripple {
+  background-color: #3f5571!important;
+}

@@ -119,3 +119,12 @@ button {
     color: #fff  !important;
   }
 }
+
+.taxonomy-group {
+    margin-bottom: 1.5rem;
+  
+  .checkboxes {
+    max-height: 20rem;
+    overflow: scroll;
+  }
+}

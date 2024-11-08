@@ -51,8 +51,8 @@ export class ApicallService {
   }
 
   // Example method to get search results from your API
-  getSearchAPIFilters(searchTerm: any) {
-    return this.http.get(`/api/get-filters-tags`);
+  getSearchAPIFacetFilters() {
+    return this.http.get(`/api/api/taxonomies`);
   }
 
   // Example method to fetch data from your API
