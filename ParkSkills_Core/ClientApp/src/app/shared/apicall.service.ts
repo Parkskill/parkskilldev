@@ -46,8 +46,11 @@ export class ApicallService {
   }
 
   // Example method to get search results from your API
-  getSearchAPI(searchTerm: any) {
-    return this.http.get(`/api/searchApi?query=${searchTerm ? (searchTerm?.reg ? searchTerm?.reg : searchTerm) : ''}`);
+  getSearchAPI(searchTerm: any,pageSize:any, pageIndex: any) {
+    console.log(searchTerm,pageSize,pageIndex)
+    return this.http.get(`/api/searchApi?query=${searchTerm ? (searchTerm?.reg ? searchTerm?.reg : searchTerm) : ''}?&page=${pageIndex}`);
+    // return this.http.get(`/api/searchApi?&page=${pageIndex}`);
+
   }
 
   // Example method to get search results from your API

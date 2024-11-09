@@ -20,7 +20,7 @@
       <div *ngFor="let item of newRoomScenes | sort:'asc':'title'" class="col">
         <div class="card h-95">
           <img
-            (click)="routerUrl !== '/' ? openPopup(item.thumbnail) : openDetails(item.rs_collection_category)"
+            (click)="openDetails(item.rs_collection_category)"
             src="{{ item.thumbnail.replace('\/', '/') }}"
           />
           <p class="pt-2">{{item.title}}</p>

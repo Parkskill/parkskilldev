@@ -24,14 +24,25 @@ h1, h2, h3, h4 {
 //Prim1:#3f5571
 //Prim2: #657A92
 
-button, .btn {
+.btn,button {
   border-color: #3f5571 !important;
-  color: #000 !important;
+}
+.btn-primary,.btn-secondary {
+  color: #fff !important;
+  background-color: #3f5571 !important;
+  &:hover {
+    background-color: #445d7e !important;
+  }
+}
+
+.btn-outline-primary,.btn-outline-secondary {
+  color: #3f5571 !important;
   &:hover {
     background-color: #3f5571 !important;
     color: #fff !important;
   }
 }
+
 
 .spinner-border {
   height: 3rem;
@@ -59,4 +70,7 @@ button, .btn {
 
 .mdc-checkbox__ripple {
   background-color: #3f5571!important;
+}
+.mat-mdc-paginator {
+  font-size: 1rem !important;
 }

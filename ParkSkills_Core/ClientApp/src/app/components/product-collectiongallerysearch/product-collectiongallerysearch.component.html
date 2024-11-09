@@ -16,27 +16,28 @@
         <div id="checkboxFilter">
           <div class="checkboxFilter-list">
             <h2>Filters</h2>
-            <form [formGroup]="multiFilterFormGroup" (ngSubmit)="onSubmit()">
+            <form [formGroup]="multiFilterFormGroup" >
               <div *ngFor="let taxonomy of checkboxFilters">
                 <div class="taxonomy-group" *ngIf="taxonomy.terms.length > 0">
                   <h4>{{ taxonomy.vocabulary }}</h4>
                   <div class="checkboxes">
-                  <!-- Loop through terms in the current vocabulary -->
-                  <div *ngFor="let term of taxonomy.terms">
-                    <mat-checkbox
-                      class="example-margin"
-                      (change)="onChange($event)"
-                      [value]="term.name "
-                    >
-                      {{ term.name }}</mat-checkbox
-                    >
+                    <!-- Loop through terms in the current vocabulary -->
+                    <div *ngFor="let term of taxonomy.terms">
+                      <mat-checkbox
+                        class="example-margin"
+                        (change)="onChange($event)"
+                        [value]="term.name"
+                      >
+                        {{ term.name }}</mat-checkbox
+                      >
+                    </div>
                   </div>
-                </div>
                 </div>
               </div>
 
-              <div class="text-end">
-                <button class="btn btn-primary">Submit</button>
+              <div class="btn-group checkbox-btn-group" role="group">
+                <button type="button" class="btn btn-outline-secondary" (click)=resetCheckbox()>Reset</button>
+                <button type="button" class="btn btn-primary" (click)=onSubmit()>Submit</button>
               </div>
             </form>
           </div>
@@ -57,7 +58,7 @@
             <input
               type="submit"
               value="Search"
-              class="btn btn-block btn-outline-success"
+              class="btn btn btn-primary"
             />
           </form>
         </div>
@@ -70,15 +71,15 @@
           <div *ngIf="!loading && noResults" class="row py-lg-5">
             <div class="col-lg-6 col-md-8 mx-auto">
               <h1>No Results Found</h1>
-              <p class="lead text-muted">Try for another search</p>
+              <p class="lead text-muted">Try for another keyword or <button type="button" class="btn btn-link" (click)=resetSearch()>reset</button> your search </p>
             </div>
           </div>
 
           <div *ngIf="!loading && !noResults">
-            <div class="row mt-2" *ngIf="filtered.length !== 0">
+            <div class="row mt-2" *ngIf="!noResults">
               <div class="col">
                 <p>
-                  Showing <b>{{ filtered.length }}</b> results
+                  Showing <b>{{ searchResults?.pager?.total_items }}</b> results
                 </p>
               </div>
             </div>
@@ -86,7 +87,7 @@
             <div
               class="row row-cols-1 row-cols-md-4 g-5 justify-content-center"
             >
-              <div *ngFor="let item of filtered" class="col">
+              <div *ngFor="let item of searchResults.rows | sort:'asc':'title'" class="col">
                 <div class="card h-95">
                   <img src="{{ item.img1 ? item.img1 : item.img2 }}" />
                   <h5 class="card-title">{{ item.title }}</h5>
@@ -94,6 +95,16 @@
               </div>
             </div>
           </div>
+        </div>
+        <div class="paginationContainer mt-2 d-flex justify-content-center">
+          <mat-paginator
+            [length]="searchResults?.pager?.total_items"
+            [pageSize]="searchResults?.pager?.items_per_page"
+            (page)="handlePageEvent($event)"
+            [hidePageSize]="true"
+            [showFirstLastButtons]="true"
+          >
+          </mat-paginator>
         </div>
       </div>
     </div>

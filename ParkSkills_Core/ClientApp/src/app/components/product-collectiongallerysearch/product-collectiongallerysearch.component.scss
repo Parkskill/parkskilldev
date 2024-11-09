@@ -87,6 +87,14 @@ button {
   }
 }
 
+.checkbox-btn-group {
+  button{
+    &:first-child {
+      margin-right: .5rem;
+    }
+  }
+}
+
 .searchFilters {
   display: flex;
     align-items: center;
@@ -114,10 +122,6 @@ button {
 
 .checkboxFilter-list {
   text-align: left;
-  button {
-    background: #3f5571;
-    color: #fff  !important;
-  }
 }
 
 .taxonomy-group {
