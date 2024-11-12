@@ -7,7 +7,7 @@
 <!-- Room scenes slider container -->
 <section>
   <div *ngIf="!loading && routerUrl !== '/'&& newRoomScenes.length !== 0" class="text-center">
-    <fancy-carousel [data]="newRoomScenes"></fancy-carousel>
+    <fancy-carousel [data]="newRoomScenes.rows"></fancy-carousel>
   </div>
 </section>
 
@@ -17,7 +17,8 @@
       *ngIf="!loading"
       class="row row-cols-1 row-cols-md-4 g-5 justify-content-center"
     >
-      <div *ngFor="let item of newRoomScenes | sort:'asc':'title'" class="col">
+    <!-- <p>Hey Count:{{ total_items}}</p> -->
+     <div *ngFor="let item of newRoomScenes.rows | sort:'asc':'title'" class="col">
         <div class="card h-95">
           <img
             (click)="openDetails(item.rs_collection_category)"
@@ -26,31 +27,17 @@
           <p class="pt-2">{{item.title}}</p>
         </div>
       </div>
+      <div class="paginationContainer mt-2 d-flex justify-content-center">
+        <mat-paginator
+        [length]="newRoomScenes?.pager?.total_items"
+        [pageSize]="newRoomScenes?.pager?.items_per_page"
+        (page)="handlePageEvent($event)"
+        [hidePageSize]="true"
+        [showFirstLastButtons]="true"
+      >
+      </mat-paginator>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Modal code -->
-<div
-  class="modal"
-  tabindex="-1"
-  role="dialog"
-  [ngStyle]="{ display: displayStyle }"
->
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-        <img src="{{ fullImage }}" />
-      </div>
-      <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-outline-primary"
-          (click)="closePopup()"
-        >
-          Close
-        </button>
-      </div>
-    </div>
-  </div>
-</div>

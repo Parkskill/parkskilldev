@@ -41,15 +41,14 @@ export class ApicallService {
   }
 
   // Example method to fetch data from your API
-  getNewRoomScenes() {
-    return this.http.get('/api/room-scenes'); // The request will be proxied to http://localhost:8080/users
+  getNewRoomScenes(pageSize:any, pageIndex: any) {
+    return this.http.get(`/api/room-scenes/?&page=${pageIndex}`); // The request will be proxied to http://localhost:8080/users
   }
 
   // Example method to get search results from your API
   getSearchAPI(searchTerm: any,pageSize:any, pageIndex: any) {
     console.log(searchTerm,pageSize,pageIndex)
     return this.http.get(`/api/searchApi?query=${searchTerm ? (searchTerm?.reg ? searchTerm?.reg : searchTerm) : ''}?&page=${pageIndex}`);
-    // return this.http.get(`/api/searchApi?&page=${pageIndex}`);
 
   }
 
@@ -69,13 +68,13 @@ export class ApicallService {
     return this.http.get(`${this.apiUrl}tiles`);
   }
 
-  getRoomScenes(): Observable<any> {
-    return this.http.get(`${this.apiUrl}tiles/getroomscene`);
-  }
-  getFilters(): Observable<any> {
-    ///Tiles/GetTiles
-    return this.http.get(`${this.apiUrl}tiles/getfilters`);
-  }
+  // getRoomScenes(): Observable<any> {
+  //   return this.http.get(`${this.apiUrl}tiles/getroomscene`);
+  // }
+  // getFilters(): Observable<any> {
+  //   ///Tiles/GetTiles
+  //   return this.http.get(`${this.apiUrl}tiles/getfilters`);
+  // }
   getWelcomeImage(guid: string): Observable<any> {
     return this.http.get(`${this.apiUrl}configuration/GetById?guid=` + guid);
   }

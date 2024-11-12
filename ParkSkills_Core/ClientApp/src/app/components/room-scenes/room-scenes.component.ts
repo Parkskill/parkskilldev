@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApicallService } from 'src/app/shared/apicall.service';
 
@@ -9,9 +10,13 @@ import { ApicallService } from 'src/app/shared/apicall.service';
 })
 export class RoomScenesComponent implements OnInit {
   loading = true;
-  public roomScenesCollection: any = {};
   public newRoomScenes: any;
   public routerUrl: any;
+  pageSize = 10;
+  pageIndex = 0;
+  total_items=0;
+  @ViewChild(MatPaginator) paginator: MatPaginator | undefined;  // Reference to MatPaginator
+
   constructor(
     private route: ActivatedRoute,
     public apicallService: ApicallService,
@@ -29,20 +34,37 @@ export class RoomScenesComponent implements OnInit {
     this.router.navigate([`/CollectionGalleryItem/${value}`])
   }
   
+  // todo: remove this
   openPopup(value:any) { 
     this.fullImage = value
     console.log(this.fullImage)
     this.displayStyle = "block"; 
   } 
+  // todo: remove this
   closePopup() { 
     this.displayStyle = "none"; 
   } 
 
+  resetPaginator(): void {
+    if (this.paginator) {
+      this.paginator.pageIndex = 0; // Reset to the first page
+      this.pageIndex = 0; // Reset the pageIndex variable
+    }
+  }
+
+  handlePageEvent(event: PageEvent): void {
+    console.log("event", event)
+    this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.getNewRoomScenes()
+  }
+  
+
   getNewRoomScenes() {
-    this.apicallService.getNewRoomScenes().subscribe({
+    this.apicallService.getNewRoomScenes(this.pageSize,this.pageIndex).subscribe({
       next: (httpResponse) => {
-        console.log("DData",httpResponse);
         this.newRoomScenes = httpResponse
+        this.total_items = this.newRoomScenes?.pager.total_items
       },
 
       error: (error) => {
@@ -56,11 +78,3 @@ export class RoomScenesComponent implements OnInit {
     });
   }
 }
-
-
-
-// rs_collection_category
-
-
-// CollectionGalleryItem/Balboa
-
