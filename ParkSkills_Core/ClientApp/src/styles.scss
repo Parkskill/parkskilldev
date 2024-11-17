@@ -50,6 +50,9 @@ h1, h2, h3, h4 {
 .tileGallery {
   height: 1000px !important;
   width: 600px !important;
+  .clip {
+    margin-bottom: .5rem;
+  }
   .thumbs--bottom {
     li {
       width: auto !important;
