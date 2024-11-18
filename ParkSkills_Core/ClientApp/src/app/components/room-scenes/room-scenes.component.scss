@@ -15,7 +15,7 @@
 
 .card {
   img {
-    height: 250px;
+    height: 350px;
     width: auto;
     object-fit: cover;
     &:hover {
@@ -46,4 +46,10 @@
       }
     }
   }
+}
+
+
+.bi {
+  font-size: 3rem;
+  color: #3f5571;
 }

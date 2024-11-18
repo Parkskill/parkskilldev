@@ -1,43 +1,56 @@
-<section>
-  <!-- loading container -->
-  <div *ngIf="loading" class="container-fluid">
-    <spinner [loaderType]="'pageloader'"></spinner>
-  </div>
-</section>
 <!-- Room scenes slider container -->
 <section>
-  <div *ngIf="!loading && routerUrl !== '/'&& newRoomScenes.length !== 0" class="text-center">
+  <div
+    *ngIf="!loading && routerUrl !== '/' && newRoomScenes.length !== 0"
+    class="text-center"
+  >
     <fancy-carousel [data]="newRoomScenes.rows"></fancy-carousel>
   </div>
 </section>
 
 <section>
-  <div class="py-5 text-center container">
+  <div class="py-5 text-center container-fluid">
+    <div *ngIf="routerUrl === '/'" class="row pb-5 text-center">
+      <i class="bi bi-binoculars"></i>
+      <h1>VISIT OUR ROOM SCENES</h1>
+    </div>
+    <div *ngIf="loading" class="row g-3">
+      <spinner [loaderType]="routerUrl !== '/' ? 'pageloader' : ''"></spinner>
+    </div>
     <div
       *ngIf="!loading"
       class="row row-cols-1 row-cols-md-4 g-5 justify-content-center"
     >
-    <!-- <p>Hey Count:{{ total_items}}</p> -->
-     <div *ngFor="let item of newRoomScenes.rows | sort:'asc':'title'" class="col">
+      <div
+        *ngFor="let item of newRoomScenes.rows | sort : 'asc' : 'title'"
+        class="col"
+      >
         <div class="card h-95">
           <img
             (click)="openDetails(item.rs_collection_category)"
             src="{{ item.thumbnail.replace('\/', '/') }}"
           />
-          <p class="pt-2">{{item.title}}</p>
+          <h3 class="py-4">{{ item.title }}</h3>
         </div>
       </div>
-      <div class="paginationContainer mt-2 d-flex justify-content-center">
-        <mat-paginator
-        [length]="newRoomScenes?.pager?.total_items"
-        [pageSize]="newRoomScenes?.pager?.items_per_page"
-        (page)="handlePageEvent($event)"
-        [hidePageSize]="true"
-        [showFirstLastButtons]="true"
+      <div
+        *ngIf="routerUrl !== '/'"
+        class="paginationContainer mt-2 d-flex justify-content-center"
       >
-      </mat-paginator>
+        <mat-paginator
+          [length]="newRoomScenes?.pager?.total_items"
+          [pageSize]="newRoomScenes?.pager?.items_per_page"
+          (page)="handlePageEvent($event)"
+          [hidePageSize]="true"
+          [showFirstLastButtons]="true"
+        >
+        </mat-paginator>
       </div>
+    </div>
+    <div *ngIf="routerUrl === '/' && !loading" class="row py-5 justify-content-center">
+      <a class="btn btn-outline-secondary browseMore w-auto" href="/RoomScenes"
+        >View More</a
+      >
     </div>
   </div>
 </section>
-
