@@ -2,10 +2,10 @@
   <div class="row row-cols-1 row-cols-lg-4 g-4 d-flex justify-content-center">
     <div *ngFor="let item of searchItems" class="col">
       <div class="card card-cover h-100 overflow-hidden text-white bg-white rounded-5 text-end shadow-lg"
-        style="background-image: url({{item.image}});">
+        style="background-image: url({{item.image}});background-size:cover;">
         <div class="card-body d-flex flex-column text-shadow-1 justify-content-end">
-          <h2 class="card-title">{{item.title}}</h2>
-          <a class="btn btn-outline-secondary btn-lg align-self-start" routerLink={{item.button.link}}
+          <!-- <h3 class="card-title">{{item.title}}</h3> -->
+          <a class="btn btn-primary btn-lg align-self-start" routerLink={{item.button.link}}
             role="button">{{item.button.name}}</a>
         </div>
       </div>

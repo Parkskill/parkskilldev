@@ -12,49 +12,49 @@ export class SearcyByCategoryComponent implements OnInit {
 
 	searchItems = [
 		{
-			title: 'Look our collections',
+			title: 'Search By',
 			button: {
-				name: 'View',
+				name: 'Shop by collection',
 				link: '/TilesCollections'
 			},
 			image: '/assets/images/search-by-catergory/collection.jpg'
 		},
 		{
-			title: 'Choose your desired tile color',
+			title: 'Search By',
 			button: {
-				name: 'Search by color',
+				name: 'Shop by Color',
 				link: '/CollectionGallerySearch'
 			},
 			image: '/assets/images/search-by-catergory/color.png'
 		},
 		{
-			title: 'Choose your tile by type',
+			title: 'Search By',
 			button: {
-				name: 'Search by type',
+				name: 'Shop by Type',
 				link: '/CollectionGallerySearch'
 			},
 			image: '/assets/images/search-by-catergory/type.png'
 		},
 		{
-			title: 'Hard to select look type?',
+			title: 'Search By',
 			button: {
-				name: 'Search by look',
+				name: 'Shop by Look',
 				link: '/CollectionGallerySearch'
 			},
 			image: '/assets/images/search-by-catergory/look.jpg'
 		},
 		{
-			title: 'Unable find right size?',
+			title: 'Search By',
 			button: {
-				name: 'Shop here',
+				name: 'Shop by Size',
 				link: '/CollectionGallerySearch'
 			},
 			image: '/assets/images/search-by-catergory/size.png'
 		},
 		{
-			title: 'View our tile shapes',
+			title: 'Search By',
 			button: {
-				name: 'Search here',
+				name: 'Shop by Shape',
 				link: '/CollectionGallerySearch'
 			},
 			image: '/assets/images/search-by-catergory/shape.png'

@@ -75,7 +75,7 @@ export class ProductCollectiongallerysearchComponent implements OnInit {
       checkboxFilters.push(new FormControl(selectedOption.source.value));
     } else {
       const i = checkboxFilters.controls.findIndex(
-        (x) => x.value === selectedOption.source.value
+        (x:any) => x.value === selectedOption.source.value
       );
       checkboxFilters.removeAt(i);
     }
