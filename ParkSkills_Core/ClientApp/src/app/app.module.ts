@@ -1,3 +1,4 @@
+import { SearcyByCategoryComponent } from './components/home/searcy-by-category/searcy-by-category.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule,ReactiveFormsModule} from '@angular/forms';
@@ -33,6 +34,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { SpinnerComponent } from './components/common/spinner/spinner.component';
 import { SortPipe } from './sort.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,6 +55,7 @@ import { SortPipe } from './sort.pipe';
     WelcomeComponent,
     AboutUsComponent,
     SpinnerComponent,
+    SearcyByCategoryComponent,
     SortPipe
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
