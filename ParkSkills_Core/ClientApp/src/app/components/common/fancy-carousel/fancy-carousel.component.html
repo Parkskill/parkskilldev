@@ -9,8 +9,10 @@
       <div class="mask">
         <div class="container">
           <div class="row g-0">
-            <div class="col-md-6 col-12 my-auto order-md-1 order-2">
+            <div class="col-md-6 col-12 my-auto order-md-1 order-2 content-container">
               <h4>{{ item.title}}</h4>
+              <p *ngIf="item.summary">{{ item.summary}}</p>
+              <a *ngIf="item.link"[routerLink]="item.link.replace('/api','')">Click here</a>
             </div>
             <div class="col-md-6 col-12 order-md-2 order-1">
               <img

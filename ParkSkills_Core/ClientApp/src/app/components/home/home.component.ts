@@ -12,7 +12,8 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  constructor(private route: ActivatedRoute, public apicallService: ApicallService) {
-  }
+  
+
+
 
 }

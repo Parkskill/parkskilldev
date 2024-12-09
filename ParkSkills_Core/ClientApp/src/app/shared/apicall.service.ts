@@ -36,6 +36,10 @@ export class ApicallService {
     return this.http.get('/api/tiles-collection'); // The request will be proxied to http://localhost:8080/users
   }
 
+  getHomePageHero() {
+    return this.http.get('/api/home-page-hero-slider'); // The request will be proxied to http://localhost:8080/users
+  }
+
   getFilteredRoomScenes(filter: any) {
     return this.http.get(`/api/room-scenes/${filter}`); // The request will be proxied to http://localhost:8080/users
   }

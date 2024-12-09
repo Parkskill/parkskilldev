@@ -10,23 +10,33 @@ import { ApicallService } from '../../shared/apicall.service';
 })
 export class BannerComponent implements OnInit {
 
-  public configurations: any = {};
-  public baseUri: string = "";
+  public newRoomScenes: any;
   ngOnInit(): void {
   }
-  constructor(private route: ActivatedRoute, public apicallService: ApicallService) {
- }
 
-  onSearch(event :any): void {
-    console.log('clicked');
+  constructor(private route: ActivatedRoute, public apicallService: ApicallService) {
+    this.getHomePageHeroSlider();
+  }
+
+  getHomePageHeroSlider() {
+    this.apicallService.getHomePageHero().subscribe({
+      next: (httpResponse: any) => {
+        this.newRoomScenes = httpResponse
+        console.log(this.newRoomScenes)
+      },
+
+      error: (error: any) => {
+        console.log('Error', error);
+      },
+      complete: () => {
+
+      },
+    });
   }
 }
-interface Configuration {
-  pst_phonenumber: string;
-  pst_quotenotes: string;
-  pst_welcometext: string;
-  pst_quoteboby: string;
-  pst_aboutheader: string;
-  pst_aboutbody: string;
-  pst_email: string;
-}
+
+
+
+
+
+
