@@ -72,6 +72,11 @@ export class ApicallService {
     return this.http.get(`${this.apiUrl}tiles`);
   }
 
+  getCatalogs() {
+    return this.http.get('/api/catalogs'); // The request will be proxied to http://localhost:8080/users
+  }
+  
+
   // getRoomScenes(): Observable<any> {
   //   return this.http.get(`${this.apiUrl}tiles/getroomscene`);
   // }

@@ -40,7 +40,7 @@
   text-transform: uppercase;
   letter-spacing: 2px;
   background: none;
-  border: 3px solid #3f5571;
+  border: none;
   transition: 0.3s;
   &:hover {
     //box-shadow: 8px 8px 8px blue;
@@ -62,3 +62,13 @@
     }
   }
 }
+
+
+// .tileGallery {
+  .thumbs.thumbs--bottom.ng-star-inserted {
+    background: none !important;
+    li {
+      margin: 0
+    }
+  }
+// }

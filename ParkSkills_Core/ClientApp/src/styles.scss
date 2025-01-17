@@ -80,3 +80,20 @@ h1, h2, h3, h4 {
     margin: 0 !important;
   }
 }
+
+.galleryContainer {
+  .tileGallery {
+    .thumbs--bottom{
+      background: none !important;
+      li {
+        margin: 0;
+        &.thumbs-item--selected:after {
+          border: none;
+        }
+        &:not(:last-child) {
+          border-right: 5px solid rgba(255,255,255)
+        }
+      }
+    }
+  }
+}
