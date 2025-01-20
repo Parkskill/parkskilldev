@@ -1,1 +1,105 @@
-<p>product-tilesearch works!</p>
+<section class="py-5 text-center container-fluid hero">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1>Product Search</h1>
+        <p class="lead text-muted">
+          Find and enquire about wide variety of tiles
+        </p>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div *ngIf="loading" class="container-fluid">
+      <div class="row g-3">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="loading" class="row g-3">
+    </div>
+    <div class="row g-0 my-5 mx-5">
+      <div class="col-lg-3">
+        <div *ngIf="!loading">
+          <mat-accordion>
+            <mat-expansion-panel
+              *ngFor="let section of sections; let i = index"
+              [ngClass]="{ highlight: isSectionChecked(i) }"
+            >
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{ section.title }}
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+  
+              <div *ngFor="let checkbox of section.checkboxes; let j = index">
+                <mat-checkbox
+                  [(ngModel)]="checkbox.checked"
+                  (change)="onCheckboxChange(i)"
+                >
+                  {{ checkbox.label }}
+                </mat-checkbox>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+  
+          <div class="text-center mt-4">
+            <button
+              type="button" 
+              class="btn btn-primary mx-4" 
+              color="primary"
+              (click)="getSelectedValues()"
+              [disabled]="!isAnyCheckboxChecked()"
+            >
+              Submit
+            </button>
+            <button class="btn btn-outline-secondary" (click)="resetSelections()"  [disabled]="!isAnyCheckboxChecked()">
+              Reset
+            </button>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-lg-9">
+        <div class="resultsContainer">
+          <!-- No Results found -->
+          <div *ngIf="!loading && noResults" class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+              <h1>No Results Found</h1>
+             
+            </div>
+          </div>
+  
+          <div *ngIf="!loading && !noResults">
+            <!-- <div class="text-center" *ngIf="!noResults">
+                <p>
+                  Showing <b>{{ total_items }}</b> results
+                </p>
+            </div> -->
+  
+            <div class="row row-cols-1 row-cols-md-4 g-5 justify-content-center">
+              <div
+                *ngFor="let item of searchResults.rows"
+                class="col"
+              >
+                <div class="card h-95">
+                  <img src="{{ item.img1 ? item.img1 : item.img2 }}" />
+                  <h5 class="card-title">{{ item.title }}</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="!loading" class="d-flex justify-content-center mt-4">
+          <mat-paginator
+            [length]="total_items"
+            [pageSize]="itemsPerPage"
+            [pageIndex]="currentPage"
+            (page)="onPageChange($event)">
+          </mat-paginator>
+        </div>
+      
+      </div>
+    </div>
+  </section>
+  

@@ -71,9 +71,7 @@ export class RoomScenesComponent implements OnInit {
         console.log('Error', error);
       },
       complete: () => {
-        setTimeout(() => {
           this.loading = false;
-        }, 3000);
       },
     });
   }

@@ -47,9 +47,7 @@ export class TilesCollectionComponent implements OnInit {
       },
       error: (error) => {},
       complete: () => {
-        setTimeout(() => {
           this.loading = false;
-        }, 3000);
       },
     });
   }

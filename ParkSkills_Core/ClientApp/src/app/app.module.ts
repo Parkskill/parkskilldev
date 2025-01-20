@@ -45,7 +45,6 @@ import { SortPipe } from './sort.pipe';
     ProductCollectiongalleryitemviewComponent,
     ProductCollectiongallerysearchComponent,
     RoomScenesComponent,
-    ProductTilesearchComponent,
     ProductDetailsComponent,
     SideNavComponent,
     SubscriptionComponent,
