@@ -52,21 +52,13 @@ export class ProductTilesearchComponent implements OnInit {
 
   ngOnInit(): void {}
 
-
-  // get paginatedSections() {
-  //   const startIndex = this.currentPage * this.pageSize;
-  //   return this.sections.slice(startIndex, startIndex + this.pageSize);
-  // }
-
   onPageChange(event: any) {
-    console.log("event",event);
     this.currentPage = event.pageIndex;
     this.getSearchResults();
   }
 
   // Method to handle pagination response
   handlePaginationResponse(response: any) {
-    console.log("response",response)
     this.currentPage = response?.pager.current_page;
     this.total_items = response?.pager.total_items;
     this.totalPages = response?.pager.total_pages;
