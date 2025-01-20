@@ -19,11 +19,8 @@ import { HomeComponent } from './components/home/home.component';
 import { ProductCollectiongalleryitemviewComponent } from './components/product-collectiongalleryitemview/product-collectiongalleryitemview.component';
 import { ProductCollectiongallerysearchComponent } from './components/product-collectiongallerysearch/product-collectiongallerysearch.component';
 import { ProductTilesearchComponent } from './components/product-tilesearch/product-tilesearch.component';
-import { SideNavComponent } from './components/side-nav/side-nav.component';
-import { SubscriptionComponent } from './components/subscription/subscription.component';
 import { TilesCollectionComponent } from './components/tiles-collection/tiles-collection.component';
 import { TopHeaderComponent } from './components/top-header/top-header.component';
-import { WelcomeComponent } from './components/welcome/welcome.component';
 import { ApicallService } from './shared/apicall.service';
 import { ApiResolver } from './shared/api-resolver.service'; // Import the resolver
 import { RoomScenesComponent } from './components/room-scenes/room-scenes.component';
@@ -46,12 +43,9 @@ import { SortPipe } from './sort.pipe';
     ProductCollectiongallerysearchComponent,
     RoomScenesComponent,
     ProductDetailsComponent,
-    SideNavComponent,
-    SubscriptionComponent,
     FancyBannerComponent,
     TilesCollectionComponent,
     TopHeaderComponent,
-    WelcomeComponent,
     AboutUsComponent,
     SpinnerComponent,
     SearcyByCategoryComponent,
