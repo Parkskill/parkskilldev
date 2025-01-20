@@ -10,7 +10,7 @@ import { ApicallService } from 'src/app/shared/apicall.service';
 export class FooterComponent implements OnInit {
   public catalogList: any = {};
   catalogLoading = true;
-
+  currentYear: number | undefined;
   constructor(
     private route: ActivatedRoute,
     public apicallService: ApicallService
@@ -19,6 +19,7 @@ export class FooterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.currentYear = new Date().getFullYear();
   }
 
     // get tiles by ID
