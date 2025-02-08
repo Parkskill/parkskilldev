@@ -32,6 +32,7 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 import { SpinnerComponent } from './components/common/spinner/spinner.component';
 import { SortPipe } from './sort.pipe';
 import { TileCatalogComponent } from './components/tile-catalog/tile-catalog.component';
+import { ExtractGoogleDriveLinkPipe } from './extract-google-drive-link.pipe';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { TileCatalogComponent } from './components/tile-catalog/tile-catalog.com
     SpinnerComponent,
     SearcyByCategoryComponent,
     SortPipe,
-    TileCatalogComponent
+    TileCatalogComponent,
+    ExtractGoogleDriveLinkPipe
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],

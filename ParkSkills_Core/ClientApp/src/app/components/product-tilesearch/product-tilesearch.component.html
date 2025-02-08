@@ -83,7 +83,7 @@
 
           <div class="row row-cols-1 row-cols-md-4 g-5 justify-content-center">
             <div *ngFor="let item of searchResults.rows" class="col">
-              <div class="card h-95">
+              <div class="card h-95" (click)="navigateToDetail(item.field_collection_category ? item.field_collection_category : item.field_rs_collection_category )">
                 <img src="{{ item.img1 ? item.img1 : item.img2 }}" />
                 <h5 class="card-title">{{ item.title }}</h5>
               </div>

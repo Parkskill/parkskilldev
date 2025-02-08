@@ -46,6 +46,7 @@
         </div>
       </div>
     </div>
+
     <div
       *ngIf="filteredTilesByCategory.length == 0"
       class="row justify-content-center"
@@ -59,6 +60,14 @@
           </p>
         </div>
       </div>
+    </div>
+
+    <div
+      *ngIf="!rsLoading && filteredRoomScenesByCategory.length !== 0"
+      class="text-center"
+    >    
+        <a class="catalogItem" [href]="filteredRoomScenesByCategory.rows[0].catalog | extractGoogleDriveLink" target="_blank">View catalog</a>
+      <!-- </div> -->
     </div>
   </div>
 </section>

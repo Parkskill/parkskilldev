@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatExpansionModule, MatAccordion } from '@angular/material/expansion';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -44,7 +45,8 @@ export class ProductTilesearchComponent implements OnInit {
   pager: any = {};
 
   constructor(
-    public apicallService: ApicallService
+    public apicallService: ApicallService,
+    private router: Router
   ) {
     this.getSearchFilters();
     this.getSearchResults();
@@ -111,6 +113,11 @@ export class ProductTilesearchComponent implements OnInit {
     this.accordion.closeAll();
     this.getSearchResults();
   }
+
+  navigateToDetail(itemId: number): void {
+    this.router.navigate(['/CollectionGalleryItem', itemId]);
+  }
+
 
   // API Calls
   getSearchFilters() {

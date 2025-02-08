@@ -15,7 +15,6 @@ export class ProductCollectiongalleryitemviewComponent implements OnInit {
   public filteredTilesByCategory: any = {};
   public filteredRoomScenesByCategory: any = {};
   public id: any;
-
   ngOnInit(): void {}
 
   constructor(
