@@ -31,6 +31,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { SpinnerComponent } from './components/common/spinner/spinner.component';
 import { SortPipe } from './sort.pipe';
+import { TileCatalogComponent } from './components/tile-catalog/tile-catalog.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { SortPipe } from './sort.pipe';
     AboutUsComponent,
     SpinnerComponent,
     SearcyByCategoryComponent,
-    SortPipe
+    SortPipe,
+    TileCatalogComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],
@@ -102,6 +104,11 @@ import { SortPipe } from './sort.pipe';
       {
         path: 'ContactUs',
         component: ContactUsComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'Catalog',
+        component: TileCatalogComponent,
         pathMatch: 'full',
       },
       //{ path: 'counter', component: CounterComponent },

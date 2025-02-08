@@ -1,0 +1,23 @@
+<section class="py-5 text-center hero">
+  <div class="container-fluid">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1>Catalog</h1>
+        <p class="lead text-muted">Checkout out catalog for desired tile selection</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="py-5 text-center container">
+    <div *ngIf="!catalogLoading" class="row row-cols-1 g-0 row-cols-lg-3">
+      <div class="col catalogItem" *ngFor="let item of catalogList; let i = index">
+        <a
+          class=""
+          target="_blank"
+          href="{{ item.field_catalogue_link }}"
+          >{{ item.title }} </a>
+      </div>
+    </div>
+  </div>
+</section>

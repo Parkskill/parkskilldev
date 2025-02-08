@@ -10,7 +10,7 @@ import { ApicallService } from '../../shared/apicall.service';
 })
 export class BannerComponent implements OnInit {
 
-  public newRoomScenes: any;
+  public homepageSlider: any;
   ngOnInit(): void {
   }
 
@@ -21,8 +21,7 @@ export class BannerComponent implements OnInit {
   getHomePageHeroSlider() {
     this.apicallService.getHomePageHero().subscribe({
       next: (httpResponse: any) => {
-        this.newRoomScenes = httpResponse
-        console.log(this.newRoomScenes)
+        this.homepageSlider = httpResponse
       },
 
       error: (error: any) => {

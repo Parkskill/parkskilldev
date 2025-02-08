@@ -60,12 +60,9 @@
         <div class="col mb-3">
           <div>
             <h5>Catalog List</h5>
-            <div *ngIf="!catalogLoading">
               <ul class="nav flex-column">
-                <li class="nav-item mb-2" *ngFor="let item of catalogList">
-                  <a class="nav-link" target="_blank" href={{item.field_catalogue_link}}>{{item.title}} <i class="bi bi-download"></i></a></li>
+                <li class="nav-item mb-2">  <a [routerLink]="['/Catalog']" class="nav-link">Catalog</a></li>
                 </ul>
-            </div>
           </div>
           <div class="mt-5">
             <a class="navbar-brand" href="#"
