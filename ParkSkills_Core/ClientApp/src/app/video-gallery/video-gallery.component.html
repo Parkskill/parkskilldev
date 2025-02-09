@@ -1,0 +1,28 @@
+<section class="py-5 text-center hero">
+  <div class="container-fluid">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1>Video gallery</h1>
+        <p class="lead text-muted">View our video gallery</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="py-5 text-center container">
+    <div class="row row-cols-1 g-5 ">
+
+        <div *ngFor="let video of videoGalleryList.rows" class="col">
+            
+            <iframe
+              width="560"
+              height="315"
+              [src]="getSanitizedUrl(video.video_link)"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+    </div>
+  </div>
+</section>

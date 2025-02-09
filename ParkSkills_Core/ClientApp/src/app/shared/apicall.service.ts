@@ -76,14 +76,10 @@ export class ApicallService {
     return this.http.get('/api/catalogs'); // The request will be proxied to http://localhost:8080/users
   }
   
+  getVideoGallery() {
+    return this.http.get('/api/video-gallery'); // The request will be proxied to http://localhost:8080/users
+  }
 
-  // getRoomScenes(): Observable<any> {
-  //   return this.http.get(`${this.apiUrl}tiles/getroomscene`);
-  // }
-  // getFilters(): Observable<any> {
-  //   ///Tiles/GetTiles
-  //   return this.http.get(`${this.apiUrl}tiles/getfilters`);
-  // }
   getWelcomeImage(guid: string): Observable<any> {
     return this.http.get(`${this.apiUrl}configuration/GetById?guid=` + guid);
   }

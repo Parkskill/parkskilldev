@@ -33,6 +33,8 @@ import { SpinnerComponent } from './components/common/spinner/spinner.component'
 import { SortPipe } from './sort.pipe';
 import { TileCatalogComponent } from './components/tile-catalog/tile-catalog.component';
 import { ExtractGoogleDriveLinkPipe } from './extract-google-drive-link.pipe';
+import { VideoGalleryComponent } from './video-gallery/video-gallery.component';
+import { FaqComponent } from './faq/faq.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,8 @@ import { ExtractGoogleDriveLinkPipe } from './extract-google-drive-link.pipe';
     SearcyByCategoryComponent,
     SortPipe,
     TileCatalogComponent,
-    ExtractGoogleDriveLinkPipe
+    ExtractGoogleDriveLinkPipe,
+    VideoGalleryComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],
@@ -98,6 +101,11 @@ import { ExtractGoogleDriveLinkPipe } from './extract-google-drive-link.pipe';
         pathMatch: 'full',
       },
       {
+        path: 'VideoGallery',
+        component: VideoGalleryComponent,
+        pathMatch: 'full',
+      },
+      {
         path: 'AboutUs',
         component: AboutUsComponent,
         pathMatch: 'full',
@@ -111,6 +119,11 @@ import { ExtractGoogleDriveLinkPipe } from './extract-google-drive-link.pipe';
       {
         path: 'Catalog',
         component: TileCatalogComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'faq',
+        component: FaqComponent,
         pathMatch: 'full',
       },
       //{ path: 'counter', component: CounterComponent },

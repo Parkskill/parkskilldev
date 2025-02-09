@@ -15,7 +15,7 @@ export class SearcyByCategoryComponent implements OnInit {
 			title: 'Search By',
 			button: {
 				name: 'Shop by collection',
-				link: '/TilesCollections'
+				link: '/TileSearch'
 			},
 			image: '/assets/images/search-by-catergory/collection.jpg'
 		},
