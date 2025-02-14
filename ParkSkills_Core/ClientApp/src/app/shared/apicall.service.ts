@@ -80,6 +80,10 @@ export class ApicallService {
     return this.http.get('/api/video-gallery'); // The request will be proxied to http://localhost:8080/users
   }
 
+  getBasicPageData(page: string) {
+    return this.http.get(`/api/basic_page?pageRef=${page}`); // The request will be proxied to http://localhost:8080/users
+  }
+
   getWelcomeImage(guid: string): Observable<any> {
     return this.http.get(`${this.apiUrl}configuration/GetById?guid=` + guid);
   }

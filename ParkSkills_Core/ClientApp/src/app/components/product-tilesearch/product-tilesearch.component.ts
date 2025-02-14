@@ -8,7 +8,6 @@ import { MatExpansionModule, MatAccordion } from '@angular/material/expansion';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-product-tilesearch',
   templateUrl: './product-tilesearch.component.html',
@@ -36,7 +35,6 @@ export class ProductTilesearchComponent implements OnInit {
   public noResults: any = false;
   pageSize: any;
 
-
   pageIndex = 0;
   total_items = 0;
   currentPage = 0;
@@ -46,13 +44,18 @@ export class ProductTilesearchComponent implements OnInit {
 
   constructor(
     public apicallService: ApicallService,
-    private router: Router
-  ) {
-    this.getSearchFilters();
-    this.getSearchResults();
-  }
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      const vocabulary = params['vocabulary'] || '';
+      this.getSearchFilters();
+      this.updateCheckboxesFromQueryParams(vocabulary);
+      this.getSelectedValues();
+    });
+  }
 
   onPageChange(event: any) {
     this.currentPage = event.pageIndex;
@@ -77,9 +80,10 @@ export class ProductTilesearchComponent implements OnInit {
     return this.sections.some((section: any) => section.checkboxes.some((checkbox: any) => checkbox.checked));
   }
 
-  // Trigger on checkbox change to update the state
+  // Trigger on checkbox change to update the state and submit search
   onCheckboxChange(sectionIndex: number): void {
     this.isSectionChecked(sectionIndex);
+    this.getSelectedValues();
   }
 
   getCheckBoxValues(): void {
@@ -95,14 +99,14 @@ export class ProductTilesearchComponent implements OnInit {
     this.processing = false;
   }
 
-  // Get all selected values
+  // Get all selected values and perform search
   getSelectedValues(): void {
     const selectValues = this.sections.map((section: any) => ({
       title: section.title,
       selectedOptions: section.checkboxes.filter((checkbox: any) => checkbox.checked).map((checkbox: any) => checkbox.label)
     }));
     const selectValuesformatted = selectValues.flatMap((section: { title: string; selectedOptions: string[] }) => section.selectedOptions);
-    this.getSearchResults(selectValuesformatted.join(' '))
+    this.getSearchResults(selectValuesformatted.join(' '));
   }
 
   // Reset all selections and collapse all sections
@@ -118,7 +122,6 @@ export class ProductTilesearchComponent implements OnInit {
     this.router.navigate(['/CollectionGalleryItem', itemId]);
   }
 
-
   // API Calls
   getSearchFilters() {
     this.loading = true;
@@ -126,6 +129,11 @@ export class ProductTilesearchComponent implements OnInit {
       next: (httpResponse: any) => {
         this.getFilterTags = httpResponse;
         this.getCheckBoxValues();
+        this.route.queryParams.subscribe(params => {
+          const vocabulary = params['vocabulary'] || '';
+          this.updateCheckboxesFromQueryParams(vocabulary);
+          this.getSelectedValues();
+        });
         this.loading = false;
       },
       error: (error) => {
@@ -139,19 +147,15 @@ export class ProductTilesearchComponent implements OnInit {
     });
   }
 
-
   getSearchResults(value?: any) {
-    // this.loading = true;
-    this.apicallService.getSearchAPI(value, this.itemsPerPage,this.currentPage).subscribe({
+    this.apicallService.getSearchAPI(value, this.itemsPerPage, this.currentPage).subscribe({
       next: (httpResponse) => {
         this.searchResults = httpResponse;
         this.handlePaginationResponse(httpResponse);
         if (this.searchResults?.rows.length === 0) {
           this.noResults = true;
         }
-        // this.loading = false;
       },
-
       error: (error) => {
         console.log('Error', error);
       },
@@ -160,6 +164,16 @@ export class ProductTilesearchComponent implements OnInit {
           // this.loading = false;
         }, 3000);
       },
+    });
+  }
+
+  updateCheckboxesFromQueryParams(vocabulary: string): void {
+    this.sections.forEach((section: any) => {
+      if (section.title === vocabulary) {
+        section.checkboxes.forEach((checkbox: any) => {
+          checkbox.checked = true;
+        });
+      }
     });
   }
 }

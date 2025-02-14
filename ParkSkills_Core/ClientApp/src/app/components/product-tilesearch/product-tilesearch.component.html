@@ -44,7 +44,7 @@
         </mat-accordion>
 
         <div class="text-center mt-4">
-          <button
+          <!-- <button
             type="button"
             class="btn btn-primary mx-4"
             color="primary"
@@ -52,7 +52,7 @@
             [disabled]="!isAnyCheckboxChecked()"
           >
             Submit
-          </button>
+          </button> -->
           <button
             class="btn btn-outline-secondary"
             (click)="resetSelections()"
@@ -68,13 +68,13 @@
     <div class="col-lg-9">
       <div *ngIf="!loading" class="resultsContainer">
         <!-- No Results found -->
-        <div *ngIf="noResults" class="row py-lg-5">
+        <!-- <div *ngIf="noResults" class="row py-lg-5">
           <div class="col-lg-6 col-md-8 mx-auto">
             <h1>No Results Found</h1>
           </div>
-        </div>
+        </div> -->
 
-        <div *ngIf="!noResults">
+        <!-- <div *ngIf="!noResults"> -->
           <!-- <div class="text-center" *ngIf="!noResults">
                 <p>
                   Showing <b>{{ total_items }}</b> results
@@ -103,5 +103,5 @@
         </div>
       </div>
     </div>
-  </div>
+  <!-- </div> -->
 </section>

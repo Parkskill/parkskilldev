@@ -15,7 +15,7 @@ export class SearcyByCategoryComponent implements OnInit {
 			title: 'Search By',
 			button: {
 				name: 'Shop by collection',
-				link: '/TileSearch'
+				link: '/TileSearch?vocabulary=Tiles collection'
 			},
 			image: '/assets/images/search-by-catergory/collection.jpg'
 		},
@@ -23,7 +23,7 @@ export class SearcyByCategoryComponent implements OnInit {
 			title: 'Search By',
 			button: {
 				name: 'Shop by Color',
-				link: '/TileSearch'
+				link: '/TileSearch?vocabulary=Color'
 			},
 			image: '/assets/images/search-by-catergory/color.png'
 		},
@@ -31,7 +31,7 @@ export class SearcyByCategoryComponent implements OnInit {
 			title: 'Search By',
 			button: {
 				name: 'Shop by Type',
-				link: '/TileSearch'
+				link: '/TileSearch?vocabulary=Type'
 			},
 			image: '/assets/images/search-by-catergory/type.png'
 		},
@@ -39,7 +39,7 @@ export class SearcyByCategoryComponent implements OnInit {
 			title: 'Search By',
 			button: {
 				name: 'Shop by Look',
-				link: '/TileSearch'
+				link: '/TileSearch?vocabulary=Look type'
 			},
 			image: '/assets/images/search-by-catergory/look.jpg'
 		},
@@ -47,7 +47,7 @@ export class SearcyByCategoryComponent implements OnInit {
 			title: 'Search By',
 			button: {
 				name: 'Shop by Size',
-				link: '/TileSearch'
+				link: '/TileSearch?vocabulary=Size'
 			},
 			image: '/assets/images/search-by-catergory/size.png'
 		},
@@ -55,7 +55,7 @@ export class SearcyByCategoryComponent implements OnInit {
 			title: 'Search By',
 			button: {
 				name: 'Shop by Shape',
-				link: '/TileSearch'
+				link: '/TileSearch?vocabulary=Shape'
 			},
 			image: '/assets/images/search-by-catergory/shape.png'
 		}
