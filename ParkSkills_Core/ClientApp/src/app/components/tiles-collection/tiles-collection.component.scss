@@ -18,17 +18,21 @@ button {
 }
 .card {
   img {
-    width: auto;
     object-fit: cover;
-    min-height: 250px;
-    max-height: 250px;
+    height: 300px;
+    width: 300px;
+    &:hover {
+      cursor: pointer;
+    }
   }
   text-transform: uppercase;
   letter-spacing: 2px;
   background: none;
+  transition: 0.3s;
+  border: none;
   &:hover {
-    cursor: pointer;
-  }
+    transform: scale(1.05);
+}
 }
 
 .bi {

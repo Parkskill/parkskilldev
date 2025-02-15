@@ -8,20 +8,28 @@
   </div>
 
   <div *ngIf="!loading" 
-  [ngClass]="routerUrl === '/' ? 'container-fluid' : 'container py-5'"
+  class='container text-center mt-5'
   >
     <!-- Default tile load -->
     <div *ngIf="routerUrl === '/'" class="row pb-5 text-center">
       <i class="bi bi-body-text"></i>
       <h1>VIEW OUR TILE COLLECTIONS</h1>
     </div>
-    <div
-    [ngClass]="routerUrl === '/' ? 'row row-cols-1 row-cols-md-4 g-5 justify-content-center' : 'row row-cols-1 row-cols-md-6 g-5 justify-content-center'">
-      <div *ngFor="let item of tilesCollection | sort:'asc':'title'" class="col">
-        <div class="card shadow h-75">
-          <img (click)="onRedirect(item)" src="{{ item.thumbnail }}" />
+
+    <div class="row row-cols-1 row-cols-md-4 g-0">
+      <div
+        class="col d-flex justify-content-center mb-4"
+        *ngFor="let card of tilesCollection | sort : 'asc' : 'title'"
+      >
+        <div class="card">
+          <img
+            [src]="card.thumbnail"
+            (click)="onRedirect(card)"
+            class="card-img-top"
+            alt="Card Image"
+          />
           <div class="card-body">
-            <p class="card-title">{{ item.title }}</p>
+            <h5 class="card-title">{{ card.title }}</h5>
           </div>
         </div>
       </div>

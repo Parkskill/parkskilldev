@@ -4,7 +4,20 @@ a {
   margin-left: auto;
 }
 
-.card  {
-  height: 250px !important;
-  // background-image: url('./images/collection.jpg')
+.card {
+  img {
+    object-fit: cover;
+    height: 400px;
+    width: 400px;
+  }
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: none;
+  transition: 0.3s;
+  border: none;
+  .card-body {
+    position: absolute;
+    bottom: 0;
+    right: 0px;
+  }
 }
