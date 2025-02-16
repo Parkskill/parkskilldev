@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApicallService } from 'src/app/shared/apicall.service';
@@ -17,6 +17,22 @@ export class RoomScenesComponent implements OnInit {
   total_items=0;
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;  // Reference to MatPaginator
 
+
+  isLargeScreen: boolean = false;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkScreenWidth();
+  }
+  
+  ngOnInit() {
+    this.checkScreenWidth();
+  }
+  
+  checkScreenWidth() {
+    console.log("window.innerWidth", window.innerWidth)
+    this.isLargeScreen = window.innerWidth >= 2000;
+  }
   constructor(
     private route: ActivatedRoute,
     public apicallService: ApicallService,
@@ -26,7 +42,6 @@ export class RoomScenesComponent implements OnInit {
     this.routerUrl = this.router.url;
   }
 
-  ngOnInit(): void {}
   public fullImage:any ;
   displayStyle = "none"; 
 

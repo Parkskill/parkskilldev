@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
 	selector: 'searcy-by-category',
@@ -8,7 +8,20 @@ import { Component, OnInit } from '@angular/core';
 export class SearcyByCategoryComponent implements OnInit {
 	constructor() {}
 
-	ngOnInit(): void {}
+	isLargeScreen: boolean = false;
+
+	@HostListener('window:resize', ['$event'])
+	onResize(event: any) {
+	  this.checkScreenWidth();
+	}
+  
+	ngOnInit() {
+	  this.checkScreenWidth();
+	}
+  
+	checkScreenWidth() {
+	  this.isLargeScreen = window.innerWidth >= 2000;
+	}
 
 	searchItems = [
 		{

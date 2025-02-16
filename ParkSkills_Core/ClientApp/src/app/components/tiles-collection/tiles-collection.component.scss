@@ -32,10 +32,22 @@ button {
   border: none;
   &:hover {
     transform: scale(1.05);
-}
+  }
 }
 
 .bi {
   font-size: 3rem;
   color: #3f5571;
 }
+
+.large-screen {
+  max-width: 2000px;
+  margin: 0 auto;
+  .card {
+    img {
+      height: 450px;
+      width: 450px;
+    }
+  }
+}
+

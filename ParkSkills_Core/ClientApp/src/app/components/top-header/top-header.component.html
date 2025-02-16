@@ -2,7 +2,7 @@
   class="navbar navbar-expand-lg sticky-top bg-body-tertiary"
   id="ftco-navbar"
 >
-  <div class="container nav-link-container">
+  <div [ngClass]="{'container-fluid large-screen': isLargeScreen, 'container': !isLargeScreen}" class="nav-link-container">
     <a class="navbar-brand" href="#"
       ><img src="../../../assets/images/parkskill_newlogo.png"
     /></a>

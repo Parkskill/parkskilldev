@@ -9,22 +9,103 @@
 </section>
 
 <section>
-  <div class="container text-center mt-5">
-    <div *ngIf="routerUrl === '/'" class="row pb-5 text-center g-0">
+  <!-- Load different styled roomscenes -->
+  <div  *ngIf="routerUrl === '/'"  [ngClass]="{'container-fluid large-screen': isLargeScreen, 'container': !isLargeScreen}" class="card-container mt-5">
+
+  <!-- <div *ngIf="routerUrl === '/'" class="container card-container mt-5"> -->
+    <div class="row mb-4 text-center">
       <i class="bi bi-binoculars"></i>
       <h1>VISIT OUR ROOM SCENES</h1>
     </div>
+
+    <div [ngClass]="{'large-screen': isLargeScreen}" class="row cards-row g-0">
+      <ng-container
+        *ngFor="
+          let card of newRoomScenes.rows
+            | slice : 0 : 6
+            | sort : 'asc' : 'title';
+          let i = index
+        "
+      >
+        <!-- First row: big card in the first two columns, small card in the third column -->
+        <div *ngIf="i % 4 === 0" class="col-12 col-md-8 mb-3">
+          <div class="card h-100 big-card">
+            <img
+              (click)="openDetails(card.rs_collection_category)"
+              [src]="card.rs_hero_image.replace('\/', '/')"
+              class="card-img-top"
+              alt="Card Image"
+            />
+            <div class="card-body">
+              <h5 class="card-title">{{ card.title }}</h5>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="i % 4 === 1" class="col-12 col-md-4 mb-3">
+          <div class="card h-100 small-card">
+            <img
+              (click)="openDetails(card.rs_collection_category)"
+              [src]="card.thumbnail.replace('\/', '/')"
+              class="card-img-top"
+              alt="Card Image"
+            />
+            <div class="card-body">
+              <h5 class="card-title">{{ card.title }}</h5>
+            </div>
+          </div>
+        </div>
+        <!-- Second row: small card in the first column, big card in the next two columns -->
+        <div *ngIf="i % 4 === 2" class="col-12 col-md-4 mb-3">
+          <div class="card h-100 small-card">
+            <img
+              (click)="openDetails(card.rs_collection_category)"
+              [src]="card.thumbnail.replace('\/', '/')"
+              class="card-img-top"
+              alt="Card Image"
+            />
+            <div class="card-body">
+              <h5 class="card-title">{{ card.title }}</h5>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="i % 4 === 3" class="col-12 col-md-8 mb-3">
+          <div class="card h-100 big-card">
+            <img
+              (click)="openDetails(card.rs_collection_category)"
+              [src]="card.rs_hero_image.replace('\/', '/')"
+              class="card-img-top"
+              alt="Card Image"
+            />
+            <div class="card-body">
+              <h5 class="card-title">{{ card.title }}</h5>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="row mt-2">
+      <div class="col text-end">
+        <a class="icon-link" [routerLink]="['/RoomScenes']">
+          View more <i class="bi bi-arrow-right-short"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- load default room scenes layout -->
+  <div class="container default-card-container text-center mt-5">
     <div *ngIf="loading" class="row g-3">
       <spinner [loaderType]="routerUrl !== '/' ? 'pageloader' : ''"></spinner>
     </div>
 
-    <div class="row row-cols-1 row-cols-md-4 g-0">
+    <div *ngIf="routerUrl !== '/'" class="row row-cols-1 row-cols-md-4 g-0">
       <div
         class="col d-flex justify-content-center mb-4"
         *ngFor="let card of newRoomScenes.rows | sort : 'asc' : 'title'"
       >
         <div class="card">
           <img
+            (click)="openDetails(card.rs_collection_category)"
             [src]="card.thumbnail.replace('\/', '/')"
             class="card-img-top"
             alt="Card Image"
@@ -48,17 +129,6 @@
         [showFirstLastButtons]="true"
       >
       </mat-paginator>
-    </div>
-
-    <div
-      *ngIf="routerUrl === '/' && !loading"
-      class="row py-5 justify-content-center"
-    >
-      <a
-        class="btn btn-outline-secondary btn-lg browseMore w-auto"
-        routerLink="/RoomScenes"
-        >View More</a
-      >
     </div>
   </div>
 </section>

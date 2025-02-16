@@ -45,3 +45,12 @@
   width: auto;
   height: 70px;
 }
+
+.large-screen {
+  max-width: 2000px;
+  margin: 0 auto;
+
+  .navbar-nav {
+    margin-right: 0 !important;
+  }
+}

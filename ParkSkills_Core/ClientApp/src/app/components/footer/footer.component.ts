@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApicallService } from 'src/app/shared/apicall.service';
 
@@ -14,29 +14,42 @@ export class FooterComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     public apicallService: ApicallService
-  ) { 
+  ) {
     this.getCatalogs()
   }
 
-  ngOnInit(): void {
-    this.currentYear = new Date().getFullYear();
+
+  isLargeScreen: boolean = false;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkScreenWidth();
   }
 
-    // get tiles by ID
-    getCatalogs() {
-      this.apicallService
-        .getCatalogs()
-        .subscribe({
-          next: (httpResponse:any) => {
-            console.log("respn", httpResponse)
-            this.catalogList = httpResponse;
-          },
-          error: (error:any) => {},
-          complete: () => {
-            this.catalogLoading = false;
-          },
-        });
-    }
+
+  checkScreenWidth() {
+    this.isLargeScreen = window.innerWidth >= 2000;
+  }
+  ngOnInit(): void {
+    this.currentYear = new Date().getFullYear();
+    this.checkScreenWidth();
+  }
+
+  // get tiles by ID
+  getCatalogs() {
+    this.apicallService
+      .getCatalogs()
+      .subscribe({
+        next: (httpResponse: any) => {
+          console.log("respn", httpResponse)
+          this.catalogList = httpResponse;
+        },
+        error: (error: any) => { },
+        complete: () => {
+          this.catalogLoading = false;
+        },
+      });
+  }
 
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApicallService } from '../../shared/apicall.service';
 
@@ -8,11 +8,26 @@ import { ApicallService } from '../../shared/apicall.service';
   styleUrls: ['./tiles-collection.component.scss'],
 })
 export class TilesCollectionComponent implements OnInit {
-  ngOnInit(): void {}
 
   onRedirect(linkUrl: any) {
     this.router.navigate([`/CollectionGalleryItem/${linkUrl.title}`]);
   }
+
+
+    isLargeScreen: boolean = false;
+  
+    @HostListener('window:resize', ['$event'])
+    onResize(event: any) {
+      this.checkScreenWidth();
+    }
+    
+    ngOnInit() {
+      this.checkScreenWidth();
+    }
+    
+    checkScreenWidth() {
+      this.isLargeScreen = window.innerWidth >= 2000;
+    }
 
   loading = true;
   public tileDetails: any;

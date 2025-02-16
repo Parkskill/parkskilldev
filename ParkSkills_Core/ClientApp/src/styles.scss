@@ -1,8 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
-@import 'bootstrap/scss/bootstrap.scss';
+@import "bootstrap/scss/bootstrap.scss";
 @import "bootstrap-icons/font/bootstrap-icons.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "./fonts/font.scss";
 
+
+html {
+  text-rendering: optimizeLegibility !important;
+  -webkit-text-stroke: 0.3pt;
+  -webkit-font-smoothing: antialiased !important;
+}
 
 *,
 *::before,
@@ -10,13 +17,14 @@
   box-sizing: inherit;
 }
 body {
-  font-size: 16px;
   color: #000;
-  font-family: Roboto, Helvetica, sans-serif;
   margin: 0 auto;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   color: #3f5571;
 }
 
@@ -24,18 +32,21 @@ h1, h2, h3, h4 {
 //Prim1:#3f5571
 //Prim2: #657A92
 
-.btn,button {
+.btn,
+button {
   border-color: #3f5571 !important;
 }
 
-.btn,button {
+.btn,
+button {
   &:disabled {
     cursor: not-allowed !important;
     pointer-events: all !important;
   }
 }
 
-.btn-primary,.btn-secondary {
+.btn-primary,
+.btn-secondary {
   color: #fff !important;
   background-color: #3f5571 !important;
   &:hover {
@@ -43,14 +54,14 @@ h1, h2, h3, h4 {
   }
 }
 
-.btn-outline-primary,.btn-outline-secondary {
+.btn-outline-primary,
+.btn-outline-secondary {
   color: #3f5571 !important;
   &:hover {
     background-color: #3f5571 !important;
     color: #fff !important;
   }
 }
-
 
 .spinner-border {
   height: 3rem;
@@ -59,28 +70,29 @@ h1, h2, h3, h4 {
   height: 1000px !important;
   width: 600px !important;
   .clip {
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
   }
   .thumbs--bottom {
     li {
       width: auto !important;
       height: 200px !important;
-      margin: 0 .15rem;
+      margin: 0 0.15rem;
       img {
         object-fit: contain;
       }
     }
-    
   }
 }
 
-.mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background, .mdc-checkbox__native-control:enabled:indeterminate~.mdc-checkbox__background {
-  background-color: #3f5571!important;
-  border-color: #3f5571!important;
+.mdc-checkbox__native-control:enabled:checked ~ .mdc-checkbox__background,
+.mdc-checkbox__native-control:enabled:indeterminate
+  ~ .mdc-checkbox__background {
+  background-color: #3f5571 !important;
+  border-color: #3f5571 !important;
 }
 
 .mdc-checkbox__ripple {
-  background-color: #3f5571!important;
+  background-color: #3f5571 !important;
 }
 .mat-mdc-paginator {
   font-size: 1rem !important;
@@ -92,7 +104,7 @@ h1, h2, h3, h4 {
 .mat-expansion-panel-header {
   text-transform: uppercase;
   font-size: 1.5rem !important;
-  padding: .5rem 1.25rem !important;
+  padding: 0.5rem 1.25rem !important;
 }
 
 .mat-expansion-panel-body label.mdc-label {
@@ -102,7 +114,7 @@ h1, h2, h3, h4 {
 
 .galleryContainer {
   .tileGallery {
-    .thumbs--bottom{
+    .thumbs--bottom {
       background: none !important;
       li {
         margin: 0;
@@ -110,9 +122,28 @@ h1, h2, h3, h4 {
           border: none;
         }
         &:not(:last-child) {
-          border-right: 5px solid rgba(255,255,255)
+          border-right: 5px solid rgba(255, 255, 255);
         }
       }
     }
+  }
+}
+
+.icon-link {
+  color: #3f5571;
+  font-size: 2rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  &:hover {
+    color: #657A92;
+    i.bi-arrow-right-short {
+      transition: margin 0.3s ease-in-out;
+      margin-right: 10px; /* Adjust the value as needed */
+    }
+  }
+  i.bi-arrow-right-short {
+    transition: margin 0.3s ease-in-out;
+    position: relative;
+    top: 5px;
   }
 }

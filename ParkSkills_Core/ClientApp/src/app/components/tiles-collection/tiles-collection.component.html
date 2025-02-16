@@ -3,19 +3,54 @@
     <spinner [loaderType]="routerUrl !== '/' ? 'pageloader' : ''"></spinner>
   </div>
   <!-- Hero slider container -->
-  <div *ngIf="!loading && routerUrl !== '/' && tilesCollection.length !== 0"  class="text-center">
+  <div
+    *ngIf="!loading && routerUrl !== '/' && tilesCollection.length !== 0"
+    class="text-center"
+  >
     <fancy-carousel [data]="tilesCollection"></fancy-carousel>
   </div>
 
-  <div *ngIf="!loading" 
-  class='container text-center mt-5'
-  >
-    <!-- Default tile load -->
-    <div *ngIf="routerUrl === '/'" class="row pb-5 text-center">
+
+  <div *ngIf="routerUrl === '/'"  [ngClass]="{'container-fluid large-screen': isLargeScreen, 'container': !isLargeScreen}" class="text-center mt-5" id="custom-cards">
+    <!-- Home page load -->
+    <div class="row mb-4 text-center">
       <i class="bi bi-body-text"></i>
       <h1>VIEW OUR TILE COLLECTIONS</h1>
     </div>
 
+    <div class="row row-cols-1 row-cols-md-4 g-0">
+      <div
+        class="col d-flex justify-content-center mb-4"
+        *ngFor="
+          let card of tilesCollection | slice : 0 : 8 | sort : 'asc' : 'title'
+        "
+      >
+        <div class="card">
+          <img
+            [src]="card.thumbnail"
+            (click)="onRedirect(card)"
+            class="card-img-top"
+            alt="Card Image"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ card.title }}</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-2">
+      <div class="col text-end">
+        <a class="icon-link" [routerLink]="['/TilesCollections']">
+          View more <i class="bi bi-arrow-right-short"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- default load -->
+
+  <div *ngIf="!loading && routerUrl !== '/'" class="container text-center mt-5">
     <div class="row row-cols-1 row-cols-md-4 g-0">
       <div
         class="col d-flex justify-content-center mb-4"
