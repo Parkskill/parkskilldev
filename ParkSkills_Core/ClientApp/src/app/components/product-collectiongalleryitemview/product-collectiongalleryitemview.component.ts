@@ -30,7 +30,6 @@ export class ProductCollectiongalleryitemviewComponent implements OnInit {
   openPopup(value: any) {
     this.tileDetails = value;
     this.tileDetails.sliderImages =  this.productImages(this.tileDetails.images)
-    console.log(this.tileDetails)
     this.displayStyle = 'block';
   }
 
@@ -38,9 +37,10 @@ export class ProductCollectiongalleryitemviewComponent implements OnInit {
   productImages(imagePaths: any) {
     const imageUrls = imagePaths.split(',');
     const imageObj = imageUrls.map((imageUrl:any) => {
-      return  {
-        src: imageUrl,
-        thumbSrc: imageUrl,
+      const trimmedUrl = imageUrl.trim();
+      return {
+        src: trimmedUrl,
+        thumbSrc: trimmedUrl,
       };
     });
 
