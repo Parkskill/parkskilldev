@@ -78,8 +78,14 @@
   tabindex="-1"
   role="dialog"
   [ngStyle]="{ display: displayStyle }"
+  (click)="closePopup()"
+  (keydown.esc)="closePopup()"
 >
-  <div class="modal-dialog modal-dialog-centered" role="document">
+  <div
+    class="modal-dialog modal-dialog-centered"
+    role="document"
+    (click)="$event.stopPropagation()"
+  >
     <div class="modal-content">
       <div class="modal-body">
         <div class="container galleryContainer">
