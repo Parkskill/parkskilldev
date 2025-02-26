@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApicallService } from 'src/app/shared/apicall.service';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'contact-us',
@@ -8,32 +9,47 @@ import { ApicallService } from 'src/app/shared/apicall.service';
   styleUrls: ['./contact-us.component.scss'],
 })
 export class ContactUsComponent implements OnInit {
-  loading = true;
-  public roomScenesCollection: any = {};
+loading = false;
+  public routerUrl: any;
+  public getContactUsData: any;
 
   constructor(
     private route: ActivatedRoute,
-    public apicallService: ApicallService
+    private router: Router,
+    private sanitizer: DomSanitizer,
+    public apicallService: ApicallService,
   ) {
-    this.getAllTiles();
+    this.routerUrl = this.router.url;
+    this.getBasicPageData();
+
   }
+
+  sanitizeHTML(html: string): SafeHtml {
+
+    return this.sanitizer.bypassSecurityTrustHtml(html);
+
+  }
+
+
 
   ngOnInit(): void {}
 
-  getAllTiles() {
+  getBasicPageData() {
     this.loading = true;
-    this.apicallService.getAllTiles().subscribe({
+    this.apicallService.getBasicPageData("contact-us").subscribe({
       next: (httpResponse: any) => {
-        console.log(httpResponse);
-        this.roomScenesCollection = httpResponse;
+        this.getContactUsData = httpResponse;
+        console.log('Contact Data', this.getContactUsData);
+        this.loading = false;
       },
 
-      error: (error: any) => {
+      error: (error) => {
         console.log('Error', error);
       },
       complete: () => {
-        this.loading = false;
-        console.log('Completed');
+        setTimeout(() => {
+          this.loading = false;
+        }, 3000);
       },
     });
   }

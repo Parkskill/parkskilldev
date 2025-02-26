@@ -1,1 +1,35 @@
-This is FAQ Page
+<section *ngIf="!loading" class="py-5 mb-4 text-center container-fluid hero">
+  <img
+    src="{{ getFAQData[0].hero_image }}"
+    alt="Background Image"
+    class="background-image"
+  />
+
+  <div class="row">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1>{{ getFAQData[0].title }}</h1>
+      <p [innerHTML]="getFAQData?.[0]?.summary"></p>
+    </div>
+  </div>
+</section>
+<section>
+  <section>
+    <!-- loading container -->
+    <div *ngIf="loading" class="container-fluid">
+      <div class="row g-3">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="!loading" class="container">
+      <div class="row g-3">
+        <!-- filter container -->
+        <div class="col">
+          <div [innerHTML]="getFAQData[0].body"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>

@@ -34,6 +34,7 @@ export class ProductTilesearchComponent implements OnInit {
   public routerUrl: any;
   public noResults: any = false;
   pageSize: any;
+  public getSearchPageData: any;
 
   pageIndex = 0;
   total_items = 0;
@@ -54,6 +55,7 @@ export class ProductTilesearchComponent implements OnInit {
       this.getSearchFilters();
       this.updateCheckboxesFromQueryParams(vocabulary);
       this.getSelectedValues();
+      this.getBasicPageData();
     });
   }
 
@@ -121,6 +123,27 @@ export class ProductTilesearchComponent implements OnInit {
   navigateToDetail(itemId: number): void {
     this.router.navigate(['/CollectionGalleryItem', itemId]);
   }
+
+  getBasicPageData() {
+    this.loading = true;
+    this.apicallService.getBasicPageData("search").subscribe({
+      next: (httpResponse: any) => {
+        this.getSearchPageData = httpResponse;
+        console.log('search Data', this.getSearchPageData);
+        this.loading = false;
+      },
+
+      error: (error) => {
+        console.log('Error', error);
+      },
+      complete: () => {
+        setTimeout(() => {
+          this.loading = false;
+        }, 3000);
+      },
+    });
+  }
+
 
   // API Calls
   getSearchFilters() {

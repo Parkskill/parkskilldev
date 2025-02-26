@@ -9,15 +9,43 @@ import { ApicallService } from 'src/app/shared/apicall.service';
 })
 export class TileCatalogComponent implements OnInit {
   public catalogList: any = {};
+  public routerUrl: any;
+  public getCatalogData: any;
+  loading = false;
+
   catalogLoading = true;
   constructor(
     private route: ActivatedRoute,
     public apicallService: ApicallService
   ) { 
     this.getCatalogs()
+    this.getBasicPageData();
+
   }
   ngOnInit(): void {
   }
+
+
+  getBasicPageData() {
+    this.loading = true;
+    this.apicallService.getBasicPageData("catalog").subscribe({
+      next: (httpResponse: any) => {
+        this.getCatalogData = httpResponse;
+        console.log('FAQ Data', this.getCatalogData);
+        this.loading = false;
+      },
+
+      error: (error) => {
+        console.log('Error', error);
+      },
+      complete: () => {
+        setTimeout(() => {
+          this.loading = false;
+        }, 3000);
+      },
+    });
+  }
+
 
   getCatalogs() {
     this.apicallService

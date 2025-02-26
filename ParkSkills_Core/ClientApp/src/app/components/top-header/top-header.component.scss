@@ -1,4 +1,8 @@
 nav {
+  font-size: 1.5rem;
+  .dropdown-item {
+    font-size: 1.5rem;
+  }
   a {
     color: #6d6a68;
   }
@@ -14,7 +18,7 @@ nav {
     height: 70px;
   }
   a.nav-link {
-    padding: 1.75rem;
+    padding: 1.45rem 1.75rem;
     font-weight: 600;
     color: #3f5571;
     text-transform: uppercase;

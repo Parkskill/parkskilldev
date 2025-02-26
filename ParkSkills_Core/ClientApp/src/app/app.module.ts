@@ -56,7 +56,9 @@ import { FaqComponent } from './faq/faq.component';
     SortPipe,
     TileCatalogComponent,
     ExtractGoogleDriveLinkPipe,
-    VideoGalleryComponent
+    VideoGalleryComponent,
+    FaqComponent,
+    ContactUsComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],
