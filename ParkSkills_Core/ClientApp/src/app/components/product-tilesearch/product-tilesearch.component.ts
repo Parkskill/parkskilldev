@@ -23,6 +23,7 @@ import { Router } from '@angular/router';
 })
 export class ProductTilesearchComponent implements OnInit {
   @ViewChild(MatAccordion) accordion!: MatAccordion;
+  isLargeScreen: boolean = false;
 
   loading = true;
   public roomScenesCollection: any = {};
@@ -49,7 +50,7 @@ export class ProductTilesearchComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.route.queryParams.subscribe(params => {
       const vocabulary = params['vocabulary'] || '';
       this.getSearchFilters();
@@ -57,8 +58,16 @@ export class ProductTilesearchComponent implements OnInit {
       this.getSelectedValues();
       this.getBasicPageData();
     });
+    this.isLargeScreen = window.innerWidth >= 2000;
   }
 
+
+    
+  checkScreenWidth() {
+    console.log("window.innerWidth", window.innerWidth)
+    this.isLargeScreen = window.innerWidth >= 2000;
+  }
+  
   onPageChange(event: any) {
     this.currentPage = event.pageIndex;
     this.getSearchResults();
@@ -124,7 +133,7 @@ export class ProductTilesearchComponent implements OnInit {
     this.router.navigate(['/CollectionGalleryItem', itemId]);
   }
 
-  getBasicPageData() {
+  getBasicPageData(): void {
     this.loading = true;
     this.apicallService.getBasicPageData("search").subscribe({
       next: (httpResponse: any) => {

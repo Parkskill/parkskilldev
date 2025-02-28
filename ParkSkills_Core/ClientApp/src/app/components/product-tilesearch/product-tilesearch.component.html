@@ -22,34 +22,41 @@
       </div>
     </div>
   </div>
-  <div class="row g-0 my-5 mx-5">
-    <!-- filter container -->
-    <div class="col-lg-3">
-      <div *ngIf="!loading">
-        <mat-accordion>
-          <mat-expansion-panel
-            *ngFor="let section of sections; let i = index"
-            [ngClass]="{ highlight: isSectionChecked(i) }"
-          >
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                {{ section.title }}
-              </mat-panel-title>
-            </mat-expansion-panel-header>
+  <div
+    [ngClass]="{
+      'container-fluid large-screen': isLargeScreen,
+      container: !isLargeScreen
+    }"
+    class="card-container mt-5"
+  >
+    <div class="row g-0 my-5 mx-5">
+      <!-- filter container -->
+      <div class="col-lg-3">
+        <div *ngIf="!loading">
+          <mat-accordion>
+            <mat-expansion-panel
+              *ngFor="let section of sections; let i = index"
+              [ngClass]="{ highlight: isSectionChecked(i) }"
+            >
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{ section.title }}
+                </mat-panel-title>
+              </mat-expansion-panel-header>
 
-            <div *ngFor="let checkbox of section.checkboxes; let j = index">
-              <mat-checkbox
-                [(ngModel)]="checkbox.checked"
-                (change)="onCheckboxChange(i)"
-              >
-                {{ checkbox.label }}
-              </mat-checkbox>
-            </div>
-          </mat-expansion-panel>
-        </mat-accordion>
+              <div *ngFor="let checkbox of section.checkboxes; let j = index">
+                <mat-checkbox
+                  [(ngModel)]="checkbox.checked"
+                  (change)="onCheckboxChange(i)"
+                >
+                  {{ checkbox.label }}
+                </mat-checkbox>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
 
-        <div class="text-center mt-4">
-          <!-- <button
+          <div class="text-center mt-4">
+            <!-- <button
             type="button"
             class="btn btn-primary mx-4"
             color="primary"
@@ -58,62 +65,63 @@
           >
             Submit
           </button> -->
-          <button
-            class="btn btn-outline-secondary"
-            (click)="resetSelections()"
-            [disabled]="!isAnyCheckboxChecked()"
-          >
-            Reset
-          </button>
+            <button
+              class="btn btn-outline-secondary"
+              (click)="resetSelections()"
+              [disabled]="!isAnyCheckboxChecked()"
+            >
+              Reset
+            </button>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- search results container -->
-    <div class="col-lg-9">
-      <div *ngIf="!loading" class="resultsContainer">
-        <!-- No Results found -->
-        <!-- <div *ngIf="noResults" class="row py-lg-5">
+      <!-- search results container -->
+      <div class="col-lg-9">
+        <div *ngIf="!loading" class="resultsContainer">
+          <!-- No Results found -->
+          <!-- <div *ngIf="noResults" class="row py-lg-5">
           <div class="col-lg-6 col-md-8 mx-auto">
             <h1>No Results Found</h1>
           </div>
         </div> -->
 
-        <!-- <div *ngIf="!noResults"> -->
-        <!-- <div class="text-center" *ngIf="!noResults">
+          <!-- <div *ngIf="!noResults"> -->
+          <!-- <div class="text-center" *ngIf="!noResults">
                 <p>
                   Showing <b>{{ total_items }}</b> results
                 </p>
             </div> -->
 
-        <div class="row row-cols-1 row-cols-md-4 g-5 justify-content-center">
-          <div *ngFor="let item of searchResults.rows" class="col">
-            <div
-              class="card h-95"
-              (click)="
-                navigateToDetail(
-                  item.field_collection_category
-                    ? item.field_collection_category
-                    : item.field_rs_collection_category
-                )
-              "
-            >
-              <img src="{{ item.img1 ? item.img1 : item.img2 }}" />
-              <h5 class="card-title">{{ item.title }}</h5>
+          <div class="row row-cols-1 row-cols-md-4 g-5 justify-content-center">
+            <div *ngFor="let item of searchResults.rows" class="col">
+              <div
+                class="card h-95"
+                (click)="
+                  navigateToDetail(
+                    item.field_collection_category
+                      ? item.field_collection_category
+                      : item.field_rs_collection_category
+                  )
+                "
+              >
+                <img src="{{ item.img1 ? item.img1 : item.img2 }}" />
+                <h5 class="card-title">{{ item.title }}</h5>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- pagination -->
-      <div class="d-flex justify-content-center mt-4">
-        <mat-paginator
-          [length]="total_items"
-          [pageSize]="itemsPerPage"
-          [pageIndex]="currentPage"
-          (page)="onPageChange($event)"
-        >
-        </mat-paginator>
+        <!-- pagination -->
+        <div class="d-flex justify-content-center mt-4">
+          <mat-paginator
+            [length]="total_items"
+            [pageSize]="itemsPerPage"
+            [pageIndex]="currentPage"
+            (page)="onPageChange($event)"
+          >
+          </mat-paginator>
+        </div>
       </div>
     </div>
   </div>
