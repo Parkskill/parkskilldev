@@ -1,13 +1,18 @@
-<section class="py-5 text-center container-fluid hero">
-  <div class="row py-lg-5">
+<section class="py-5 mb-4 text-center container-fluid hero">
+  <img
+    src="{{ getSearchPageData?.[0]?.hero_image }}"
+    alt="Background Image"
+    class="background-image"
+  />
+
+  <div class="row">
     <div class="col-lg-6 col-md-8 mx-auto">
-      <h1>Product Search</h1>
-      <p class="lead text-muted">
-        Find and enquire about wide variety of tiles
-      </p>
+      <h1>{{ getSearchPageData?.[0]?.title }}</h1>
+      <p [innerHTML]="getSearchPageData?.[0]?.summary"></p>
     </div>
   </div>
 </section>
+
 <section>
   <!-- loading container -->
   <div *ngIf="loading" class="container-fluid">
@@ -75,33 +80,42 @@
         </div> -->
 
         <!-- <div *ngIf="!noResults"> -->
-          <!-- <div class="text-center" *ngIf="!noResults">
+        <!-- <div class="text-center" *ngIf="!noResults">
                 <p>
                   Showing <b>{{ total_items }}</b> results
                 </p>
             </div> -->
 
-          <div class="row row-cols-1 row-cols-md-4 g-5 justify-content-center">
-            <div *ngFor="let item of searchResults.rows" class="col">
-              <div class="card h-95" (click)="navigateToDetail(item.field_collection_category ? item.field_collection_category : item.field_rs_collection_category )">
-                <img src="{{ item.img1 ? item.img1 : item.img2 }}" />
-                <h5 class="card-title">{{ item.title }}</h5>
-              </div>
+        <div class="row row-cols-1 row-cols-md-4 g-5 justify-content-center">
+          <div *ngFor="let item of searchResults.rows" class="col">
+            <div
+              class="card h-95"
+              (click)="
+                navigateToDetail(
+                  item.field_collection_category
+                    ? item.field_collection_category
+                    : item.field_rs_collection_category
+                )
+              "
+            >
+              <img src="{{ item.img1 ? item.img1 : item.img2 }}" />
+              <h5 class="card-title">{{ item.title }}</h5>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- pagination -->
-        <div class="d-flex justify-content-center mt-4">
-          <mat-paginator
-            [length]="total_items"
-            [pageSize]="itemsPerPage"
-            [pageIndex]="currentPage"
-            (page)="onPageChange($event)"
-          >
-          </mat-paginator>
-        </div>
+      <!-- pagination -->
+      <div class="d-flex justify-content-center mt-4">
+        <mat-paginator
+          [length]="total_items"
+          [pageSize]="itemsPerPage"
+          [pageIndex]="currentPage"
+          (page)="onPageChange($event)"
+        >
+        </mat-paginator>
       </div>
     </div>
+  </div>
   <!-- </div> -->
 </section>
