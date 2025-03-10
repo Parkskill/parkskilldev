@@ -6,7 +6,9 @@ nav {
   a {
     color: #6d6a68;
   }
-  height: 4rem;
+  @media screen and (min-width: 991.99px) {
+    height: 6rem;
+  }
   background: #fff;
   .nav-link-container {
     @media screen and (max-width: 991.98px) {
@@ -15,10 +17,16 @@ nav {
   }
   img {
     width: auto;
-    height: 70px;
+    height: 30px;
+    @media screen and (min-width: 991.99px) {
+      height: 70px;
+    }
   }
   a.nav-link {
-    padding: 1.45rem 1.75rem;
+    padding: .75rem 0;
+    @media screen and (min-width: 991.99px) {
+      padding: 1.45rem 1.75rem;
+    }
     font-weight: 600;
     color: #3f5571;
     text-transform: uppercase;
@@ -78,3 +86,16 @@ nav {
   }
 }
 
+
+
+.bi {
+  color: #3f5571;
+}
+
+.navbar-toggler {
+  &:focus {
+    @media screen and (max-width: 991.98px) {
+      box-shadow: none !important;
+    }
+  }
+}

@@ -23,13 +23,6 @@
   &.cards-row {
     margin: 0 2rem;
   }
-
-  // .card {
-  //   img {
-  //     height: 450px;
-  //     width: 450px;
-  //   }
-  // }
 }
 
 
@@ -46,12 +39,16 @@
   .col-12 {
     &:nth-child(odd) {
       .big-card {
-        margin-right: 1rem;
+        @media (min-width: 767.99px) { 
+          margin-right: 1rem;
+        }
       }
     }
     &:nth-child(even) {
       .big-card {
-        margin-left: 1rem;
+        @media (min-width: 767.99px) { 
+          margin-left: 1rem;
+        }
       }
     }
   }

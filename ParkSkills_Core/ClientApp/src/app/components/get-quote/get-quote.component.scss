@@ -8,3 +8,10 @@
   margin: 0 auto;
 }
 
+.tilesSection {
+  @media (max-width: 767.98px) { 
+    &:not(:last-child) {
+      margin-bottom: 2rem;
+    }
+  }
+}

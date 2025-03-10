@@ -7,8 +7,12 @@ a {
 .card {
   img {
     object-fit: cover;
-    height: 400px;
-    width: 400px;
+    height: 300px;
+    width: 300px;
+    @media (min-width: 1399.99px) {
+       height: 400px;
+       width: 400px;
+    }
   }
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -33,4 +37,7 @@ a {
   }
 }
 
-
+.bi {
+  font-size: 3rem;
+  color: #3f5571;
+}

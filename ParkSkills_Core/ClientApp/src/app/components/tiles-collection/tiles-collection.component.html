@@ -11,14 +11,14 @@
   </div>
 
 
-  <div *ngIf="routerUrl === '/'"  [ngClass]="{'container-fluid large-screen': isLargeScreen, 'container': !isLargeScreen}" class="text-center mt-5" id="custom-cards">
+  <div *ngIf="routerUrl === '/'"  [ngClass]="{'container-fluid large-screen': isLargeScreen, 'container': !isLargeScreen}" class="text-center py-3 py-sm-4" id="custom-cards">
     <!-- Home page load -->
     <div class="row mb-4 text-center">
-      <i class="bi bi-body-text"></i>
+      <i class="bi bi-ui-checks-grid"></i>
       <h1>VIEW OUR TILE COLLECTIONS</h1>
     </div>
 
-    <div class="row row-cols-1 row-cols-md-4 g-0">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-0">
       <div
         class="col d-flex justify-content-center mb-4"
         *ngFor="
