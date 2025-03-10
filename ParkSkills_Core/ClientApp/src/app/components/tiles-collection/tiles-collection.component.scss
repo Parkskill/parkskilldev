@@ -21,6 +21,10 @@ button {
     object-fit: cover;
     height: 300px;
     width: 300px;
+    @media (min-width: 1199.99px) { 
+      height: 275px;
+      width: 275px;
+    }
     &:hover {
       cursor: pointer;
     }
